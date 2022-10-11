@@ -16,7 +16,12 @@ public class Judgement {
         return count;
     }
 
-    public boolean hasPlace(int place, int number) {
-        return false;
+    public boolean hasPlace(List<Integer> computer, int place, int number) {
+        //        if (computer.get(place) == number) {
+        //            return true;
+        //        }
+        //        return false;
+
+        return computer.get(place) == number;
     }
 }
