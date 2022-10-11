@@ -1,19 +1,20 @@
 package baseball;
 
-import baseball.domain.Judgement;
+import baseball.domain.Referee;
 
 import java.util.Arrays;
 
 public class Application {
     public static void main(String[] args) {
-        // NumberGenerator numberGenerator = new NumberGenerator();
-        // List<Integer> numbers = numberGenerator.createRandomNumbers();
-        // System.out.println("numbers = " + numbers);
+        Referee referee = new Referee();
 
-        Judgement judgement = new Judgement();
-        // int count = judgement.correctCount(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3));
-        // System.out.println("count = " + count); // 3
-        boolean hasPlace = judgement.hasPlace(Arrays.asList(1, 2, 3), 0, 1);
-        System.out.println("hasPlace = " + hasPlace); // true
+        String result1 = referee.compare(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3));
+        System.out.println("result1 = " + result1); // 0볼 3 스트라이크
+
+        String result2 = referee.compare(Arrays.asList(1, 2, 3), Arrays.asList(2, 1, 3));
+        System.out.println("result2 = " + result2); // 2 볼 1 스트라이크
+
+        String result3 = referee.compare(Arrays.asList(4, 5, 7), Arrays.asList(2, 1, 3));
+        System.out.println("result3 = " + result3); // 아웃
     }
 }
