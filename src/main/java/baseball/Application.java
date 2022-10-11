@@ -1,20 +1,40 @@
 package baseball;
 
+import baseball.domain.NumberGenerator;
 import baseball.domain.Referee;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
+        NumberGenerator numberGenerator = new NumberGenerator();
+        List<Integer> computer = numberGenerator.createRandomNumbers();
+
         Referee referee = new Referee();
 
-        String result1 = referee.compare(Arrays.asList(1, 2, 3), Arrays.asList(1, 2, 3));
-        System.out.println("result1 = " + result1); // 0볼 3 스트라이크
+        String result = "";
 
-        String result2 = referee.compare(Arrays.asList(1, 2, 3), Arrays.asList(2, 1, 3));
-        System.out.println("result2 = " + result2); // 2 볼 1 스트라이크
+        while (!result.equals("0 볼 3 스트라이크")) {
+            result = referee.compare(computer, askPlayer());
+            System.out.println(result);
+        }
 
-        String result3 = referee.compare(Arrays.asList(4, 5, 7), Arrays.asList(2, 1, 3));
-        System.out.println("result3 = " + result3); // 아웃
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+    }
+
+    public static List<Integer> askPlayer() {
+        System.out.print("숫자를 입력해 주세요 : ");
+
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
+
+        List<Integer> player = new ArrayList<>();
+        for (String number : input.split("")) {
+            player.add(Integer.valueOf(number));
+        }
+
+        return player;
     }
 }

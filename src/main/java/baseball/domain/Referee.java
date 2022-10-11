@@ -19,7 +19,8 @@ public class Referee {
         // 남은 개수가 볼의 개수가 된다.
         int ball = correctCount - strike;
 
-        if (strike == 0) {
+        // 같은 숫자가 전혀 없으면 아웃이다.
+        if (correctCount == 0) {
             return "아웃";
         }
 
