@@ -1,7 +1,13 @@
 package baseball;
 
+import baseball.domain.NumberGenerator;
+
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
-        System.out.println("hello, world!");
+        NumberGenerator numberGenerator = new NumberGenerator();
+        List<Integer> numbers = numberGenerator.createRandomNumbers();
+        System.out.println("numbers = " + numbers);
     }
 }

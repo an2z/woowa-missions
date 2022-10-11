@@ -14,7 +14,7 @@
 <br><br><br>
 
 ## 기능 목록
-- [ ] 1~9까지 서로 다른 임의의 수 3개를 생성한다. ➡ `NumberGenerator.createRandomNumbers()`
+- [x] 1~9까지 서로 다른 임의의 수 3개를 생성한다. ➡ `NumberGenerator.createRandomNumbers()`
 - [ ] 컴퓨터의 수(3자리)와 플레이어의 수(3자리)를 비교할 수 있다. ➡ `Referee.compare()`
   - [ ] 몇 개의 숫자가 같은지 알 수 있다. ➡ `Judgement.correctCount()`
   - [ ] 특정 자리에 특정 숫자가 있는지 알 수 있다. ➡ `Judgement.hasPlace()`
