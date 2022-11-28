@@ -49,7 +49,7 @@ public class Player {
     }
 
     private static boolean isDuplicated(List<Integer> numbers, Integer number) {
-        return numbers.contains(number);
+        return numbers.indexOf(number) != numbers.lastIndexOf(number);
     }
 
     @Override
