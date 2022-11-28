@@ -34,7 +34,7 @@
 
 #### ⚾️ 숫자 야구 게임
 
-- [ ] 컴퓨터 수를 생성한다.
+- [x] 컴퓨터 수를 생성한다.
     - `camp.nextstep.edu.missionutils.Randoms`의 `pickNumberInRange()`를 활용한다.
 - [ ] 컴퓨터 수와 플레이어 수를 비교한다.
     - [ ] 같은 수가 몇 개 있는지 확인한다.
