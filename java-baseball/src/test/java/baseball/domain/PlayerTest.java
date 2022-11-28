@@ -31,4 +31,18 @@ class PlayerTest {
         assertThrows(IllegalArgumentException.class,
                 () -> new Player(numbers));
     }
+
+    @DisplayName("각 자리 숫자가 서로 다른 숫자가 아닐 경우 예외 발생 확인")
+    @CsvSource({
+            "1, 1, 2",
+            "1, 2, 2",
+            "1, 2, 1",
+            "1, 1, 1"
+    })
+    @ParameterizedTest
+    void makeDuplicatedNumbers(int number1, int number2, int number3) {
+        List<Integer> numbers = Arrays.asList(number1, number2, number3);
+        assertThrows(IllegalArgumentException.class,
+                () -> new Player(numbers));
+    }
 }
