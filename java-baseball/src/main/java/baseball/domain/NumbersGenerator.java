@@ -16,4 +16,12 @@ public class NumbersGenerator {
         }
         return computer;
     }
+
+    public List<Integer> makePlayer(String input) {
+        List<Integer> playerNumbers = new ArrayList<>();
+        for (String number : input.split("")) {
+            playerNumbers.add(Integer.parseInt(number));
+        }
+        return playerNumbers;
+    }
 }

@@ -1,19 +1,16 @@
 package baseball.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class BaseBallGame {
 
-    public Player makePlayer(String input) {
-        return new Player(makePlayerNumbers(input));
-    }
+    private final NumbersGenerator numbersGenerator = new NumbersGenerator();
 
-    private List<Integer> makePlayerNumbers(String input) {
-        List<Integer> playerNumbers = new ArrayList<>();
-        for (String number : input.split("")) {
-            playerNumbers.add(Integer.parseInt(number));
-        }
-        return playerNumbers;
+    private Player player;
+
+    public Player makePlayer(String input) {
+        List<Integer> playerNumbers = numbersGenerator.makePlayer(input);
+        player = new Player(playerNumbers);
+        return player;
     }
 }
