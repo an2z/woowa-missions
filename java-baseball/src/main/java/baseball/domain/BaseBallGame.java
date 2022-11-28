@@ -6,6 +6,7 @@ public class BaseBallGame {
 
     private Computer computer;
     private Player player;
+    private Judgment judgment;
 
     public void makePlayer(String input) {
         player = new Player(numbersGenerator.makePlayer(input));
@@ -13,5 +14,10 @@ public class BaseBallGame {
 
     public void makeComputer() {
         computer = new Computer(numbersGenerator.makeComputer());
+    }
+
+    public void judgeGame() {
+        judgment = new Judgment();
+        judgment.judge(computer, player);
     }
 }
