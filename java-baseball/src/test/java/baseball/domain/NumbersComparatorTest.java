@@ -33,4 +33,18 @@ class NumbersComparatorTest {
         int actual = comparator.compareSameNumber(computer, player);
         assertThat(actual).isEqualTo(expected);
     }
+
+    @DisplayName("몇 개의 수가 같은 자리에 있는지 비교한다.")
+    @CsvSource({
+            "1, 3, 2, 1",
+            "1, 2, 4, 2",
+            "1, 2, 3, 3 ",
+            "2, 3, 1, 0"
+    })
+    @ParameterizedTest
+    void compareSamePlace(int number1, int number2, int number3, int expected) {
+        List<Integer> player = Arrays.asList(number1, number2, number3);
+        int actual = comparator.compareSamePlace(computer, player);
+        assertThat(actual).isEqualTo(expected);
+    }
 }
