@@ -13,7 +13,7 @@
 - 잘못된 값을 입력할 경우 `IllegalArgumentException` 발생 후 어플리케이션 종료!
 - `camp.nextstep.edu.missionutils.Console`의 `readLine()`을 활용한다.
 
-- [ ] 플레이어에게 3자리 수를 입력받는다.
+- [x] 플레이어에게 3자리 수를 입력받는다.
 - [ ] 플레이어에게 게임 재시작/종료 여부를 입력받는다.
 
 #### 🖥 출력
