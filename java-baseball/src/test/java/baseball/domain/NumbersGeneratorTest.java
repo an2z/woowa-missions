@@ -6,9 +6,9 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class RandomNumbersGeneratorTest {
+class NumbersGeneratorTest {
 
-    NumbersGenerator generator = new RandomNumbersGenerator();
+    private final NumbersGenerator generator = new NumbersGenerator();
 
     @DisplayName("컴퓨터 수로 3자리 숫자가 생성된다.")
     @Test
