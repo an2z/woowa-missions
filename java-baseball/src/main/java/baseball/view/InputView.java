@@ -7,6 +7,10 @@ public class InputView {
         return input();
     }
 
+    public String readGameCommand() {
+        return input();
+    }
+
     private String input() {
         return readLine();
     }
