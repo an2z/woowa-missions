@@ -12,6 +12,14 @@ public class Player {
         this.numbers = numbers;
     }
 
+    public boolean contains(int number) {
+        return numbers.contains(number);
+    }
+
+    public boolean isSamePlace(int place, int number) {
+        return numbers.get(place) == number;
+    }
+
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);

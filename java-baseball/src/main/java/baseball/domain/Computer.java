@@ -11,6 +11,22 @@ public class Computer {
         this.numbers = numbers;
     }
 
+    public int countSameNumber(Player player) {
+        return (int) numbers.stream()
+                .filter(player::contains)
+                .count();
+    }
+
+    public int countSamePlace(Player player) {
+        int count = 0;
+        for (int place = 0; place < numbers.size(); place++) {
+            if (player.isSamePlace(place, numbers.get(place))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
