@@ -13,7 +13,14 @@ public class Player {
     }
 
     private void validate(List<Integer> numbers) {
+        validateSize(numbers);
         validateRange(numbers);
+    }
+
+    private void validateSize(List<Integer> numbers) {
+        if (isWrongSize(numbers.size())) {
+            throw new IllegalArgumentException("[ERROR] 3자리의 숫자만 가능합니다.");
+        }
     }
 
     private void validateRange(List<Integer> numbers) {
@@ -22,6 +29,10 @@ public class Player {
                 throw new IllegalArgumentException("[ERROR] 각 자리 숫자는 1부터 9까지의 숫자만 가능합니다.");
             }
         }
+    }
+
+    private boolean isWrongSize(int size) {
+        return size != 3;
     }
 
     private boolean isOutOfRange(int number) {
