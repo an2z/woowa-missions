@@ -15,6 +15,7 @@ public class Player {
     private void validate(List<Integer> numbers) {
         validateSize(numbers);
         validateRange(numbers);
+        validateDuplication(numbers);
     }
 
     private void validateSize(List<Integer> numbers) {
@@ -31,12 +32,24 @@ public class Player {
         }
     }
 
+    private void validateDuplication(List<Integer> numbers) {
+        for (Integer number : numbers) {
+            if (isDuplicated(numbers, number)) {
+                throw new IllegalArgumentException("[ERROR] 각 자리 숫자는 서로 달라야 합니다.");
+            }
+        }
+    }
+
     private boolean isWrongSize(int size) {
         return size != 3;
     }
 
     private boolean isOutOfRange(int number) {
         return number < 1 || 9 < number;
+    }
+
+    private static boolean isDuplicated(List<Integer> numbers, Integer number) {
+        return numbers.contains(number);
     }
 
     @Override
