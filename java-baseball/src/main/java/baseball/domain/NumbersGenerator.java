@@ -11,14 +11,14 @@ public class NumbersGenerator {
     private static final int NUMBERS_SIZE = 3;
 
     public List<Integer> makeComputerNumbers() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < NUMBERS_SIZE) {
+        List<Integer> computerNumbers = new ArrayList<>();
+        while (computerNumbers.size() < NUMBERS_SIZE) {
             int randomNumber = Randoms.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
+            if (!computerNumbers.contains(randomNumber)) {
+                computerNumbers.add(randomNumber);
             }
         }
-        return computer;
+        return computerNumbers;
     }
 
     public List<Integer> makePlayerNumbers(String input) {
