@@ -10,11 +10,11 @@ public class BaseBallGame {
     private Command command;
 
     public void makePlayer(String input) {
-        player = new Player(numbersGenerator.makePlayer(input));
+        player = new Player(numbersGenerator.makePlayerNumbers(input));
     }
 
     public void makeComputer() {
-        computer = new Computer(numbersGenerator.makeComputer());
+        computer = new Computer(numbersGenerator.makeComputerNumbers());
     }
 
     public void judgeGame() {

@@ -6,7 +6,7 @@ import java.util.List;
 
 public class NumbersGenerator {
 
-    public List<Integer> makeComputer() {
+    public List<Integer> makeComputerNumbers() {
         List<Integer> computer = new ArrayList<>();
         while (computer.size() < 3) {
             int randomNumber = Randoms.pickNumberInRange(1, 9);
@@ -17,7 +17,7 @@ public class NumbersGenerator {
         return computer;
     }
 
-    public List<Integer> makePlayer(String input) {
+    public List<Integer> makePlayerNumbers(String input) {
         List<Integer> playerNumbers = new ArrayList<>();
         for (String number : input.split("")) {
             playerNumbers.add(Integer.parseInt(number));

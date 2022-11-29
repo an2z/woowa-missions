@@ -16,7 +16,7 @@ class NumbersGeneratorTest {
     @DisplayName("컴퓨터 수로 3자리 숫자가 생성된다.")
     @Test
     void makeComputer() {
-        List<Integer> numbers = generator.makeComputer();
+        List<Integer> numbers = generator.makeComputerNumbers();
         int actual = numbers.size();
         assertThat(actual).isEqualTo(3);
     }
@@ -29,7 +29,7 @@ class NumbersGeneratorTest {
     })
     @ParameterizedTest
     void makePlayer(String input, int number1, int number2, int number3) {
-        List<Integer> numbers = generator.makePlayer(input);
+        List<Integer> numbers = generator.makePlayerNumbers(input);
         List<Integer> expected = Arrays.asList(number1, number2, number3);
         assertThat(numbers).isEqualTo(expected);
     }
