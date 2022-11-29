@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import java.util.Objects;
+
 public class Command {
 
     private static final String STOP = "2";
@@ -25,5 +27,22 @@ public class Command {
 
     private boolean isWrongStatus(String status) {
         return !(status.equals(RESTART) || status.equals(STOP));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Command command = (Command) o;
+        return Objects.equals(status, command.status);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status);
     }
 }
