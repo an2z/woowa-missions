@@ -20,4 +20,8 @@ public class BaseBallGame {
         judgment = new Judgment();
         judgment.judge(computer, player);
     }
+
+    public Judgment getJudgment() {
+        return judgment;
+    }
 }
