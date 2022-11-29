@@ -1,5 +1,6 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Arrays;
@@ -44,5 +45,19 @@ class PlayerTest {
         List<Integer> numbers = Arrays.asList(number1, number2, number3);
         assertThrows(IllegalArgumentException.class,
                 () -> new Player(numbers));
+    }
+
+    @DisplayName("VO 동등 비교 확인")
+    @CsvSource({
+            "1, 2, 3",
+            "4, 5, 6",
+            "7, 8, 9",
+    })
+    @ParameterizedTest
+    void checkValueObject(int number1, int number2, int number3) {
+        Player player1 = new Player(Arrays.asList(number1, number2, number3));
+        Player player2 = new Player(Arrays.asList(number1, number2, number3));
+        assertThat(player1).isEqualTo(player2);
+        assertThat(player1).hasSameHashCodeAs(player2);
     }
 }
