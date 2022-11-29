@@ -1,5 +1,7 @@
 package baseball.domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -13,5 +15,15 @@ class CommandTest {
     void makeWrongCommand(String status) {
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> new Command(status));
+    }
+
+    @DisplayName("VO 동등 비교 확인")
+    @CsvSource({"1", "2"})
+    @ParameterizedTest
+    void checkValueObject(String status) {
+        Command command1 = new Command(status);
+        Command command2 = new Command(status);
+        assertThat(command1).isEqualTo(command2);
+        assertThat(command1).hasSameHashCodeAs(command2);
     }
 }
