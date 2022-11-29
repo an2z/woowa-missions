@@ -14,4 +14,12 @@ public class Judgment {
             ball = ball - strike;
         }
     }
+
+    public int getBall() {
+        return ball;
+    }
+
+    public int getStrike() {
+        return strike;
+    }
 }
