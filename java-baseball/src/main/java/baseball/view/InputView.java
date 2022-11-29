@@ -4,6 +4,8 @@ import static camp.nextstep.edu.missionutils.Console.readLine;
 
 public class InputView {
 
+    private static final String NUMBER_FORMAT_ERROR = "[ERROR] 숫자 형식만 가능합니다.";
+
     public String readPlayerNumbers() {
         String input = input();
         validateNumberFormat(input);
@@ -18,7 +20,7 @@ public class InputView {
         try {
             Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자 형식만 가능합니다.");
+            throw new IllegalArgumentException(NUMBER_FORMAT_ERROR);
         }
     }
 
