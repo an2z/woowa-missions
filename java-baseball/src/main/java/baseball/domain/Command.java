@@ -4,7 +4,7 @@ public class Command {
 
     private static final String STOP = "2";
     private static final String RESTART = "1";
-    private static final String COMMAND_ERROR = "[ERROR] " + RESTART + " 또는 " + STOP + "만 가능합니다.";
+    private static final String COMMAND_ERROR = "[ERROR] %s 또는 %s만 가능합니다.";
 
     private final String status;
 
@@ -19,7 +19,7 @@ public class Command {
 
     private void validate(String status) {
         if (isWrongStatus(status)) {
-            throw new IllegalArgumentException(COMMAND_ERROR);
+            throw new IllegalArgumentException(String.format(COMMAND_ERROR, RESTART, STOP));
         }
     }
 
