@@ -41,4 +41,18 @@ class JudgmentTest {
         int actual = judgment.getStrike();
         assertThat(actual).isEqualTo(expected);
     }
+
+    @DisplayName("3스트라이크인지 확인한다.")
+    @CsvSource({
+            "1, 2, 3, true",
+            "1, 3, 2, false",
+            "3, 2, 1, false"
+    })
+    @ParameterizedTest
+    void makeAllStrike(int number1, int number2, int number3, boolean expected) {
+        Player player = new Player(Arrays.asList(number1, number2, number3));
+        judgment.judge(computer, player);
+        boolean actual = judgment.isAllStrike();
+        assertThat(actual).isEqualTo(expected);
+    }
 }
