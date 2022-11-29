@@ -9,9 +9,8 @@ public class Judgment {
 
     public void judge(Computer computer, Player player) {
         ball = comparator.compareSameNumber(computer, player);
-        int samePlaceCount = comparator.compareSamePlace(computer, player);
-        if (samePlaceCount > 0) {
-            strike = samePlaceCount;
+        strike = comparator.compareSamePlace(computer, player);
+        if (strike > 0) {
             ball = ball - strike;
         }
     }
