@@ -3,7 +3,6 @@ package baseball.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -11,13 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 class NumbersComparatorTest {
 
     private final NumbersComparator comparator = new NumbersComparator();
-
-    private Computer computer;
-
-    @BeforeEach
-    void setUp() {
-        computer = new Computer(Arrays.asList(1, 2, 3));
-    }
+    private final Computer computer = new Computer(Arrays.asList(1, 2, 3));
 
     @DisplayName("몇 개의 수가 같은지 비교한다.")
     @CsvSource({
