@@ -1,6 +1,7 @@
 package baseball.domain;
 
 public class Judgment {
+
     private final NumbersComparator comparator = new NumbersComparator();
 
     private int ball;
