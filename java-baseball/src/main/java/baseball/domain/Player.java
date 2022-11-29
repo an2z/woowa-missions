@@ -5,6 +5,13 @@ import java.util.Objects;
 
 public class Player {
 
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 9;
+    private static final int NUMBERS_SIZE = 3;
+    private static final String SIZE_ERROR = "[ERROR] %d자리 숫자만 가능합니다.";
+    private static final String RANGE_ERROR = "[ERROR] 각 자리 숫자는 %d부터 %d까지 숫자만 가능합니다.";
+    private static final String DUPLICATION_ERROR = "[ERROR] 각 자리 숫자는 서로 달라야 합니다.";
+
     private final List<Integer> numbers;
 
     public Player(List<Integer> numbers) {
@@ -28,14 +35,14 @@ public class Player {
 
     private void validateSize(List<Integer> numbers) {
         if (isWrongSize(numbers.size())) {
-            throw new IllegalArgumentException("[ERROR] 3자리의 숫자만 가능합니다.");
+            throw new IllegalArgumentException(String.format(SIZE_ERROR, NUMBERS_SIZE));
         }
     }
 
     private void validateRange(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (isOutOfRange(number)) {
-                throw new IllegalArgumentException("[ERROR] 각 자리 숫자는 1부터 9까지의 숫자만 가능합니다.");
+                throw new IllegalArgumentException(String.format(RANGE_ERROR, MIN_NUMBER, MAX_NUMBER));
             }
         }
     }
@@ -43,17 +50,17 @@ public class Player {
     private void validateDuplication(List<Integer> numbers) {
         for (Integer number : numbers) {
             if (isDuplicated(numbers, number)) {
-                throw new IllegalArgumentException("[ERROR] 각 자리 숫자는 서로 달라야 합니다.");
+                throw new IllegalArgumentException(DUPLICATION_ERROR);
             }
         }
     }
 
     private boolean isWrongSize(int size) {
-        return size != 3;
+        return size != NUMBERS_SIZE;
     }
 
     private boolean isOutOfRange(int number) {
-        return number < 1 || 9 < number;
+        return number < MIN_NUMBER || MAX_NUMBER < number;
     }
 
     private static boolean isDuplicated(List<Integer> numbers, Integer number) {
