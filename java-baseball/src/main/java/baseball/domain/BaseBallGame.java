@@ -7,6 +7,7 @@ public class BaseBallGame {
     private Computer computer;
     private Player player;
     private Judgment judgment;
+    private Command command;
 
     public void makePlayer(String input) {
         player = new Player(numbersGenerator.makePlayer(input));
@@ -23,6 +24,15 @@ public class BaseBallGame {
 
     public boolean isAllStrike() {
         return judgment.isAllStrike();
+    }
+
+    public boolean restarts(String input) {
+        makeCommand(input);
+        return command.restarts();
+    }
+
+    private void makeCommand(String input) {
+        command = new Command(input);
     }
 
     public Judgment getJudgment() {

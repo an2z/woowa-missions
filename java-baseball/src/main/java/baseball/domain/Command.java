@@ -9,6 +9,10 @@ public class Command {
         this.status = status;
     }
 
+    public boolean restarts() {
+        return status.equals("1");
+    }
+
     private void validate(String status) {
         if (isWrongStatus(status)) {
             throw new IllegalArgumentException("[ERROR] 1 또는 2만 가능합니다.");

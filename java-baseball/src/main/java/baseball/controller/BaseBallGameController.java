@@ -12,7 +12,11 @@ public class BaseBallGameController {
 
     public void play() {
         outputView.printGameStart();
-        start();
+        do {
+            start();
+            outputView.printGameSuccess();
+            outputView.printGameCommandInputMsg();
+        } while (game.restarts(inputView.readGameCommand()));
     }
 
     private void start() {
