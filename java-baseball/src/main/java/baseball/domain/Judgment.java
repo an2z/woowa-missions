@@ -16,6 +16,10 @@ public class Judgment {
         }
     }
 
+    public boolean isAllStrike() {
+        return strike == 3 && ball == 0;
+    }
+
     public int getBall() {
         return ball;
     }

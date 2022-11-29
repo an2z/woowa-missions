@@ -21,6 +21,10 @@ public class BaseBallGame {
         judgment.judge(computer, player);
     }
 
+    public boolean isAllStrike() {
+        return judgment.isAllStrike();
+    }
+
     public Judgment getJudgment() {
         return judgment;
     }

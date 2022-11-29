@@ -14,9 +14,11 @@ public class BaseBallGameController {
         outputView.printGameStart();
         game.makeComputer();
 
-        outputView.printNumbersInputMsg();
-        game.makePlayer(inputView.readPlayerNumbers());
-        game.judgeGame();
-        outputView.printGameResult(game.getJudgment());
+        do {
+            outputView.printNumbersInputMsg();
+            game.makePlayer(inputView.readPlayerNumbers());
+            game.judgeGame();
+            outputView.printGameResult(game.getJudgment());
+        } while (!game.isAllStrike());
     }
 }
