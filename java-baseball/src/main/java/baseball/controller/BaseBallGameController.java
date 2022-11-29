@@ -12,8 +12,11 @@ public class BaseBallGameController {
 
     public void play() {
         outputView.printGameStart();
-        game.makeComputer();
+        start();
+    }
 
+    private void start() {
+        game.makeComputer();
         do {
             outputView.printNumbersInputMsg();
             game.makePlayer(inputView.readPlayerNumbers());
