@@ -3,10 +3,10 @@ package baseball.domain;
 public class BaseBallGame {
 
     private final NumbersGenerator numbersGenerator = new NumbersGenerator();
+    private final Judgment judgment = new Judgment();
 
     private Computer computer;
     private Player player;
-    private Judgment judgment;
     private Command command;
 
     public void makePlayer(String input) {
@@ -18,7 +18,6 @@ public class BaseBallGame {
     }
 
     public void judgeGame() {
-        judgment = new Judgment();
         judgment.judge(computer, player);
     }
 
