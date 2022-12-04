@@ -16,10 +16,6 @@ public enum Level {
     private String name;
     private List<String> missions;
 
-    Level(String name) {
-        this.name = name;
-    }
-
     Level(String name, List<String> missions) {
         this.name = name;
         this.missions = missions;
