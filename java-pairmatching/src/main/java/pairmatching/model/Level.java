@@ -13,8 +13,8 @@ public enum Level {
 
     private static final String LEVEL_ERROR = "[ERROR] 올바르지 않은 레벨입니다.";
 
-    private String name;
-    private List<String> missions;
+    private final String name;
+    private final List<String> missions;
 
     Level(String name, List<String> missions) {
         this.name = name;
