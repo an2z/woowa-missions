@@ -8,7 +8,7 @@ public enum Course {
 
     private static final String COURSE_ERROR = "[ERROR] 올바르지 않은 과정입니다.";
 
-    private String type;
+    private final String type;
 
     Course(String type) {
         this.type = type;
