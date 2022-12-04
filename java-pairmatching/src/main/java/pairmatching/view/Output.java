@@ -6,6 +6,8 @@ import pairmatching.model.Level;
 
 public class Output {
     private static final String FUNCTION_SELECTION = "기능을 선택하세요.";
+    private static final String OPTION_SELECTION = "과정, 레벨, 미션을 선택하세요.";
+    private static final String OPTION_SELECTION_EXAMPLE = "ex) 백엔드, 레벨1, 자동차경주";
     private static final String COURSE = "과정";
     private static final String MISSION = "미션";
     private static final String LIST = "  - ";
@@ -35,6 +37,11 @@ public class Output {
             System.out.println(LIST + output);
         }
         System.out.println(SEPARATE_LINE);
+    }
+
+    public void printOptionSelection() {
+        System.out.println(OPTION_SELECTION);
+        System.out.println(OPTION_SELECTION_EXAMPLE);
     }
 
     private String makeMissionOutput(Level level) {
