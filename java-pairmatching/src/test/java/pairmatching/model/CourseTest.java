@@ -1,5 +1,6 @@
 package pairmatching.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -15,5 +16,13 @@ class CourseTest {
         assertThatThrownBy(() -> Course.getByType(type))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith("[ERROR]");
+    }
+
+    @DisplayName("주어진 타입에 해당하는 과정이 선택되는지 확인")
+    @CsvSource({"백엔드, BACKEND", "프론트엔드, FRONTEND",})
+    @ParameterizedTest
+    void makeLevelByNameAndMission(String type, Course expected) {
+        Course actual = Course.getByType(type);
+        assertThat(actual).isEqualTo(expected);
     }
 }
