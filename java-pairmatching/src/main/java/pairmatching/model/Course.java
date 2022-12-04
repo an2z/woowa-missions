@@ -20,4 +20,9 @@ public enum Course {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(COURSE_ERROR));
     }
+
+    @Override
+    public String toString() {
+        return type;
+    }
 }
