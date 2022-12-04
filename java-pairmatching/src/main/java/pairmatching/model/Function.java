@@ -10,8 +10,8 @@ public enum Function {
 
     private static final String SIGN_ERROR = "[ERROR] 1, 2, 3, Q 중에서 선택해주세요.";
 
-    private String sign;
-    private String explain;
+    private final String sign;
+    private final String explain;
 
     Function(String sign, String explain) {
         this.sign = sign;
