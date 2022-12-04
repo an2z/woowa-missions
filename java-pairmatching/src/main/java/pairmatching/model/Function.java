@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public enum Function {
     MATCHING("1", "페어 매칭"),
-    FIND("2", "페어 조회"),
+    LOOKUP("2", "페어 조회"),
     INIT("3", "페어 초기화"),
     QUIT("Q", "종료");
 
