@@ -12,6 +12,7 @@ public enum Level {
     LEVEL5("레벨5", new ArrayList<>());
 
     private static final String LEVEL_ERROR = "[ERROR] 올바르지 않은 레벨입니다.";
+    private static final String MISSION_ERROR = "[ERROR] 올바르지 않은 미션입니다.";
 
     private final String name;
     private final List<String> missions;
@@ -26,5 +27,16 @@ public enum Level {
                 .filter(value -> name.equals(value.name))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(LEVEL_ERROR));
+    }
+
+    public static Level getByMission(Level level, String mission) {
+        if (!isExistMission(level, mission)) {
+            throw new IllegalArgumentException(MISSION_ERROR);
+        }
+        return level;
+    }
+
+    private static boolean isExistMission(Level level, String mission) {
+        return level.missions.contains(mission);
     }
 }
