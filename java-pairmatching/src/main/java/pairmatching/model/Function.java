@@ -24,4 +24,9 @@ public enum Function {
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(SIGN_ERROR));
     }
+
+    @Override
+    public String toString() {
+        return sign + ". " + explain;
+    }
 }
