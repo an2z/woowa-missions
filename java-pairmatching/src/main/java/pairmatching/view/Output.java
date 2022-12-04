@@ -15,6 +15,10 @@ public class Output {
     private static final String SEPARATOR = " | ";
     private static final String SEPARATE_LINE = "#############################################";
 
+    public void printError(String message) {
+        System.out.println(message);
+    }
+
     public void printFunctionSelection() {
         System.out.println(FUNCTION_SELECTION);
     }
