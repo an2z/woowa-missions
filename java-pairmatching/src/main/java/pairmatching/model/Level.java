@@ -1,5 +1,6 @@
 package pairmatching.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public enum Level {
@@ -8,6 +9,8 @@ public enum Level {
     LEVEL3("레벨3"),
     LEVEL4("레벨4", List.of("성능개선", "배포")),
     LEVEL5("레벨5");
+
+    private static final String LEVEL_ERROR = "[ERROR] 올바르지 않은 레벨입니다.";
 
     private String name;
     private List<String> missions;
@@ -19,5 +22,12 @@ public enum Level {
     Level(String name, List<String> missions) {
         this.name = name;
         this.missions = missions;
+    }
+
+    public static Level getByName(String name) {
+        return Arrays.stream(Level.values())
+                .filter(value -> name.equals(value.name))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(LEVEL_ERROR));
     }
 }
