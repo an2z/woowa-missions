@@ -1,5 +1,6 @@
 package pairmatching.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -15,5 +16,19 @@ class LevelTest {
         assertThatThrownBy(() -> Level.getByName(name))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith("[ERROR]");
+    }
+
+    @DisplayName("주어진 이름에 해당하는 레벨이 선택되는지 확인")
+    @CsvSource({
+            "레벨1, LEVEL1",
+            "레벨2, LEVEL2",
+            "레벨3, LEVEL3",
+            "레벨4, LEVEL4",
+            "레벨5, LEVEL5"
+    })
+    @ParameterizedTest
+    void makeLevelByNameAndMission(String name, Level expected) {
+        Level actual = Level.getByName(name);
+        assertThat(actual).isEqualTo(expected);
     }
 }
