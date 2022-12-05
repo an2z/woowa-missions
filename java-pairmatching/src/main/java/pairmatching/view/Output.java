@@ -3,6 +3,7 @@ package pairmatching.view;
 import pairmatching.model.Course;
 import pairmatching.model.Function;
 import pairmatching.model.Level;
+import pairmatching.model.Mission;
 
 public class Output {
     private static final String FUNCTION_SELECTION = "기능을 선택하세요.";
@@ -61,7 +62,7 @@ public class Output {
 
     private void appendMission(StringBuilder output, Level level) {
         int count = 0;
-        for (String mission : level.getMissions()) {
+        for (Mission mission : level.getMissions()) {
             if (count != 0) {
                 output.append(SEPARATOR);
             }
