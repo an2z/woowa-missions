@@ -12,8 +12,8 @@ class FunctionTest {
     @DisplayName("존재하지 않는 기능일 경우 예외 발생 확인")
     @CsvSource({"4", "5", "6", "A", "q"})
     @ParameterizedTest
-    void makeFunctionByWrongSign(String sign) {
-        assertThatThrownBy(() -> Function.getBySign(sign))
+    void makeFunctionByWrongSign(String command) {
+        assertThatThrownBy(() -> Function.find(command))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith("[ERROR]");
     }
@@ -26,8 +26,8 @@ class FunctionTest {
             "Q, QUIT"
     })
     @ParameterizedTest
-    void makeFunctionBySign(String sign, Function expected) {
-        Function actual = Function.getBySign(sign);
+    void makeFunctionBySign(String command, Function expected) {
+        Function actual = Function.find(command);
         assertThat(actual).isEqualTo(expected);
     }
 }

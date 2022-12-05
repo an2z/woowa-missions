@@ -10,23 +10,23 @@ public enum Function {
 
     private static final String SIGN_ERROR = "[ERROR] 1, 2, 3, Q 중에서 선택해주세요.";
 
-    private final String sign;
+    private final String command;
     private final String explain;
 
-    Function(String sign, String explain) {
-        this.sign = sign;
+    Function(String command, String explain) {
+        this.command = command;
         this.explain = explain;
     }
 
-    public static Function getBySign(String sign) {
+    public static Function find(String command) {
         return Arrays.stream(Function.values())
-                .filter(value -> sign.equals(value.sign))
+                .filter(value -> command.equals(value.command))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(SIGN_ERROR));
     }
 
     @Override
     public String toString() {
-        return sign + ". " + explain;
+        return command + ". " + explain;
     }
 }
