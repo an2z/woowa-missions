@@ -16,7 +16,7 @@ public enum Course {
         this.fileName = fileName;
     }
 
-    public static Course getByType(String type) {
+    public static Course find(String type) {
         return Arrays.stream(Course.values())
                 .filter(value -> type.equals(value.type))
                 .findAny()

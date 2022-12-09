@@ -30,7 +30,7 @@ public enum Level {
         this.missions = missions;
     }
 
-    public static Level getByName(String name) {
+    public static Level find(String name) {
         return Arrays.stream(Level.values())
                 .filter(value -> name.equals(value.name))
                 .findAny()
