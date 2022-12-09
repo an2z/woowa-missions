@@ -13,6 +13,10 @@ public class Money {
         this.amount = amount;
     }
 
+    public int count() {
+        return this.amount / MIN_MONEY;
+    }
+
     public void validate(int amount) {
         if (isWrongUnit(amount) || isSmallerThanMin(amount)) {
             throw new IllegalArgumentException(String.format(MONEY_ERROR, MIN_MONEY));
