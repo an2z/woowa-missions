@@ -1,5 +1,6 @@
 package lotto.model;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
@@ -20,5 +21,12 @@ class MoneyTest {
         assertThatThrownBy(() -> new Money(1100))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageStartingWith("[ERROR]");
+    }
+
+    @DisplayName("1000원 단위일 경우 객체 생성 확인")
+    @Test
+    void createMoney() {
+        Money money = new Money(1000);
+        assertThat(money).isEqualTo(new Money(1000));
     }
 }
