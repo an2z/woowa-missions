@@ -12,5 +12,6 @@ public class LottoGameController {
     public void run() {
         output.requestAmount();
         game.buyLotto(input.readAmount());
+        output.printLotto(game.getLottos());
     }
 }

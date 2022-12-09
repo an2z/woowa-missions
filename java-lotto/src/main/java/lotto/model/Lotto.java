@@ -48,4 +48,9 @@ public class Lotto {
     private static boolean isDuplicateNumber(List<Integer> numbers, int number) {
         return numbers.indexOf(number) != numbers.lastIndexOf(number);
     }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
+    }
 }

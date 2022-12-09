@@ -8,4 +8,8 @@ public class LottoGame {
     public void buyLotto(int amount) {
         lottos = lottoMachine.buy(new Money(amount));
     }
+
+    public Lottos getLottos() {
+        return lottos;
+    }
 }
