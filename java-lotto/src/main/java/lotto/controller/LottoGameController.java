@@ -16,5 +16,7 @@ public class LottoGameController {
 
         output.requestWinningNumbers();
         game.makeWinningLotto(input.readWinningNumbers());
+
+        output.requestBonusNumber();
     }
 }
