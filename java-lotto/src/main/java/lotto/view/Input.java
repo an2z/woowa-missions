@@ -19,6 +19,10 @@ public class Input {
         return convertToList(input());
     }
 
+    public int readBonusNumber() {
+        return convertToInt(input());
+    }
+
     private List<Integer> convertToList(String numbers) {
         checkDigitAndDelimiter(numbers);
         return Arrays.stream(numbers.split(DELIMITER))
