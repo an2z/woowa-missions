@@ -12,7 +12,7 @@ public class Bonus {
     }
 
     private void validate(int number) {
-        if (isValidRange(number)) {
+        if (!isValidRange(number)) {
             throw new IllegalArgumentException(String.format(RANGE_ERROR, MIN_NUMBER, MAX_NUMBER));
         }
     }
