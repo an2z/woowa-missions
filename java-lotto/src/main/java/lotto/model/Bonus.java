@@ -11,6 +11,10 @@ public class Bonus {
         this.number = number;
     }
 
+    public boolean isContain(Lotto lotto) {
+        return lotto.isContain(number);
+    }
+
     private void validate(int number) {
         if (!isValidRange(number)) {
             throw new IllegalArgumentException(String.format(RANGE_ERROR, MIN_NUMBER, MAX_NUMBER));
