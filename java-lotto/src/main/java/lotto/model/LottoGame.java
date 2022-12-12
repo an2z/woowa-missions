@@ -12,8 +12,8 @@ public class LottoGame {
         lottos = lottoMachine.buy(new Money(amount));
     }
 
-    public void makeWinningLotto(List<Integer> winningNumbers) {
-        winningLotto = new WinningLotto(new Lotto(winningNumbers));
+    public void makeWinningLotto(List<Integer> winningNumbers, int bonusNumber) {
+        winningLotto = new WinningLotto(new Lotto(winningNumbers), new Bonus(bonusNumber));
     }
 
     public Lottos getLottos() {
