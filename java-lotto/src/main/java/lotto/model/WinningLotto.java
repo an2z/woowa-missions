@@ -13,7 +13,7 @@ public class WinningLotto {
     }
 
     private void validate(Lotto lotto, Bonus bonus) {
-        if (bonus.isContain(lotto)) {
+        if (bonus.isExist(lotto)) {
             throw new IllegalArgumentException(DUPLICATION_ERROR);
         }
     }

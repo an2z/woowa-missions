@@ -11,8 +11,8 @@ public class Bonus {
         this.number = number;
     }
 
-    public boolean isContain(Lotto lotto) {
-        return lotto.isContain(number);
+    public boolean isExist(Lotto lotto) {
+        return lotto.isExist(number);
     }
 
     private void validate(int number) {

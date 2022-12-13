@@ -19,7 +19,7 @@ public class Lotto {
         this.numbers = numbers;
     }
 
-    public boolean isContain(int number) {
+    public boolean isExist(int number) {
         return numbers.contains(number);
     }
 
