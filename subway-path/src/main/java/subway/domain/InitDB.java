@@ -54,68 +54,21 @@ public class InitDB {
     }
 
     private static void initPath() {
-        PathRepository.addPath(
-                new Path(
-                        StationRepository.findStation(GYODAE_STATION),
-                        StationRepository.findStation(GANGNAM_STATION),
-                        TWO,
-                        THREE
-                )
+        List<List<Object>> paths = Arrays.asList(
+                Arrays.asList(findStation(GYODAE_STATION), findStation(GANGNAM_STATION), TWO, THREE),
+                Arrays.asList(findStation(GANGNAM_STATION), findStation(YEOKSAM_STATION), TWO, THREE),
+                Arrays.asList(findStation(GYODAE_STATION), findStation(SOUTH_TERMINAL_STATION), THREE, TWO),
+                Arrays.asList(findStation(SOUTH_TERMINAL_STATION), findStation(YANGJAE_STATION), SIX, FIVE),
+                Arrays.asList(findStation(YANGJAE_STATION), findStation(MAEBONG_STATION), ONE, ONE),
+                Arrays.asList(findStation(GANGNAM_STATION), findStation(YANGJAE_STATION), TWO, EIGHT),
+                Arrays.asList(findStation(YANGJAE_STATION), findStation(YANGJAE_CITIZEN_FOREST_STATION), TEN, THREE)
         );
 
-        PathRepository.addPath(
-                new Path(
-                        StationRepository.findStation(GANGNAM_STATION),
-                        StationRepository.findStation(YEOKSAM_STATION),
-                        TWO,
-                        THREE
-                )
-        );
-
-        PathRepository.addPath(
-                new Path(
-                        StationRepository.findStation(GYODAE_STATION),
-                        StationRepository.findStation(SOUTH_TERMINAL_STATION),
-                        THREE,
-                        TWO
-                )
-        );
-
-        PathRepository.addPath(
-                new Path(
-                        StationRepository.findStation(SOUTH_TERMINAL_STATION),
-                        StationRepository.findStation(YANGJAE_STATION),
-                        SIX,
-                        FIVE
-                )
-        );
-
-        PathRepository.addPath(
-                new Path(
-                        StationRepository.findStation(YANGJAE_STATION),
-                        StationRepository.findStation(MAEBONG_STATION),
-                        ONE,
-                        ONE
-                )
-        );
-
-        PathRepository.addPath(
-                new Path(
-                        StationRepository.findStation(GANGNAM_STATION),
-                        StationRepository.findStation(YANGJAE_STATION),
-                        TWO,
-                        EIGHT
-                )
-        );
-
-        PathRepository.addPath(
-                new Path(
-                        StationRepository.findStation(YANGJAE_STATION),
-                        StationRepository.findStation(YANGJAE_CITIZEN_FOREST_STATION),
-                        TEN,
-                        THREE
-                )
-        );
+        for (List<Object> path : paths) {
+            PathRepository.addPath(
+                    new Path((Station) path.get(0), (Station) path.get(1), (int) path.get(2), (int) path.get(3))
+            );
+        }
     }
 
     private static void initSubway() {
