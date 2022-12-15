@@ -1,6 +1,7 @@
 package subway.domain;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class InitDB {
     private static final String GYODAE_STATION = "교대역";
@@ -34,19 +35,22 @@ public class InitDB {
     }
 
     private static void initStation() {
-        StationRepository.addStation(new Station(GYODAE_STATION));
-        StationRepository.addStation(new Station(GANGNAM_STATION));
-        StationRepository.addStation(new Station(YEOKSAM_STATION));
-        StationRepository.addStation(new Station(SOUTH_TERMINAL_STATION));
-        StationRepository.addStation(new Station(YANGJAE_STATION));
-        StationRepository.addStation(new Station(YANGJAE_CITIZEN_FOREST_STATION));
-        StationRepository.addStation(new Station(MAEBONG_STATION));
+        List<String> names = Arrays.asList(
+                GYODAE_STATION, GANGNAM_STATION, YEOKSAM_STATION, SOUTH_TERMINAL_STATION,
+                YANGJAE_STATION, YANGJAE_CITIZEN_FOREST_STATION, MAEBONG_STATION
+        );
+
+        for (String name : names) {
+            StationRepository.addStation(new Station(name));
+        }
     }
 
     private static void initLine() {
-        LineRepository.addLine(new Line(TWO_LINE));
-        LineRepository.addLine(new Line(THREE_LINE));
-        LineRepository.addLine(new Line(SHINBUNDANG_LINE));
+        List<String> names = Arrays.asList(TWO_LINE, THREE_LINE, SHINBUNDANG_LINE);
+
+        for (String name : names) {
+            LineRepository.addLine(new Line(name));
+        }
     }
 
     private static void initPath() {
