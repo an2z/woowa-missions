@@ -6,31 +6,31 @@ import org.jgrapht.graph.DefaultWeightedEdge;
 import org.jgrapht.graph.WeightedMultigraph;
 
 public class PathGraph {
-    private static final WeightedMultigraph<Station, DefaultWeightedEdge> graphOfDistance = new WeightedMultigraph(
+    private static final WeightedMultigraph<Station, DefaultWeightedEdge> distanceGraph = new WeightedMultigraph(
             DefaultWeightedEdge.class);
-    private static final WeightedMultigraph<Station, DefaultWeightedEdge> graphOfTime = new WeightedMultigraph(
+    private static final WeightedMultigraph<Station, DefaultWeightedEdge> timeGraph = new WeightedMultigraph(
             DefaultWeightedEdge.class);
 
     public static void addVertex(List<Station> stations) {
         for (Station station : stations) {
-            graphOfDistance.addVertex(station);
-            graphOfTime.addVertex(station);
+            distanceGraph.addVertex(station);
+            timeGraph.addVertex(station);
         }
     }
 
     public static void setEdgeDistance(Station start, Station end, int distance) {
-        graphOfDistance.setEdgeWeight(graphOfDistance.addEdge(start, end), distance);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(start, end), distance);
     }
 
     public static void setEdgeTime(Station start, Station end, int time) {
-        graphOfDistance.setEdgeWeight(graphOfDistance.addEdge(start, end), time);
+        distanceGraph.setEdgeWeight(distanceGraph.addEdge(start, end), time);
     }
 
     public static List<Station> getPathOfDistance(Station start, Station end) {
-        return new DijkstraShortestPath(graphOfDistance).getPath(start, end).getVertexList();
+        return new DijkstraShortestPath(distanceGraph).getPath(start, end).getVertexList();
     }
 
     public static List<Station> getPathOfTime(Station start, Station end) {
-        return new DijkstraShortestPath(graphOfTime).getPath(start, end).getVertexList();
+        return new DijkstraShortestPath(timeGraph).getPath(start, end).getVertexList();
     }
 }
