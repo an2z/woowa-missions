@@ -20,7 +20,21 @@ public class SubwayController {
         output.printMain();
         output.askChoice();
         if (isStart()) {
-            // 경로 조회 구현
+            lookup();
+        }
+    }
+
+    private void lookup() {
+        output.printStandard();
+        choiceStandard();
+    }
+
+    private void choiceStandard() {
+        try {
+            subwayService.choiceStandard(input.read());
+        } catch (IllegalArgumentException e) {
+            output.printError(e.getMessage());
+            choiceStandard();
         }
     }
 
