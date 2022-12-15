@@ -9,7 +9,7 @@ public class Output {
     private static final String STANDARD = "%n## 경로 기준%n1. 최단 거리%n2. 최단시간%nB. 돌아가기%n";
     private static final String START_STATION = "%n## 출발역을 입력하세요.%n";
     private static final String END_STATION = "%n## 도착역을 입력하세요.%n";
-    private static final String RESULT = "%n##조회 결과%n";
+    private static final String RESULT = "%n## 조회 결과%n";
     private static final String DISTANCE = "총 거리: %dkm";
     private static final String TIME = "총 소요시간: %d분";
     private static final String LINE = "---";
