@@ -1,6 +1,7 @@
 package subway.controller;
 
 import java.util.Scanner;
+import subway.domain.StandardCommand;
 import subway.domain.SubwayService;
 import subway.veiw.Input;
 import subway.veiw.Output;
@@ -26,15 +27,23 @@ public class SubwayController {
 
     private void lookup() {
         output.printStandard();
-        choiceStandard();
+
+        if (choiceStandard().isDistance()) {
+            output.askStartStation();
+            String startStation = input.read();
+            output.askEndStation();
+            String endStation = input.read();
+
+            subwayService.findPathOfDistance(startStation, endStation);
+        }
     }
 
-    private void choiceStandard() {
+    private StandardCommand choiceStandard() {
         try {
-            subwayService.choiceStandard(input.read());
+            return subwayService.choiceStandard(input.read());
         } catch (IllegalArgumentException e) {
             output.printError(e.getMessage());
-            choiceStandard();
+            return choiceStandard();
         }
     }
 

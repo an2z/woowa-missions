@@ -1,13 +1,19 @@
 package subway.domain;
 
-public class SubwayService {
-    private StandardCommand standard;
+import java.util.List;
 
+public class SubwayService {
     public boolean isStart(String command) {
         return MainCommand.find(command).isLookup();
     }
 
-    public void choiceStandard(String command) {
-        standard = StandardCommand.find(command);
+    public StandardCommand choiceStandard(String command) {
+        return StandardCommand.find(command);
+    }
+
+    public List<Station> findPathOfDistance(String startStation, String endStation) {
+        return PathGraph.getPathOfDistance(
+                StationRepository.findStation(startStation), StationRepository.findStation(endStation)
+        );
     }
 }
