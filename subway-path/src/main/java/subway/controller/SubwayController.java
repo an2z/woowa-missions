@@ -35,7 +35,8 @@ public class SubwayController {
             String endStation = input.read();
 
             output.printResult(
-                    subwayService.makeResultOfDistance(startStation, endStation)
+                    subwayService.makeResultOfDistance(startStation, endStation),
+                    subwayService.calculateToTalDistance()
             );
         }
     }

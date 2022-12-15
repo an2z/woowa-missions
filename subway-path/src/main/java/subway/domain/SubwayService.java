@@ -19,4 +19,13 @@ public class SubwayService {
         );
         return result;
     }
+
+    public int calculateToTalDistance() {
+        int totalDistance = 0;
+        for (int index = 0; index < result.size() - 1; index++) {
+            Path path = PathRepository.findPath(result.get(index), result.get(index + 1));
+            totalDistance += path.getDistance();
+        }
+        return totalDistance;
+    }
 }
