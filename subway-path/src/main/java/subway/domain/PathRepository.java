@@ -5,16 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class PathRepository {
-    private static final List<Path> PATHS = new ArrayList<>();
+    private static final List<Path> paths = new ArrayList<>();
 
     private PathRepository() {
     }
 
     public static List<Path> paths() {
-        return Collections.unmodifiableList(PATHS);
+        return Collections.unmodifiableList(paths);
     }
 
     public static void addPath(Path path) {
-        PATHS.add(path);
+        paths.add(path);
     }
 }
