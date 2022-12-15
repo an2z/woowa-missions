@@ -7,6 +7,9 @@ import java.util.List;
 public class PathRepository {
     private static final List<Path> PATHS = new ArrayList<>();
 
+    private PathRepository() {
+    }
+
     public static List<Path> paths() {
         return Collections.unmodifiableList(PATHS);
     }

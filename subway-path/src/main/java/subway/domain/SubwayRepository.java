@@ -8,6 +8,9 @@ import java.util.Map;
 public class SubwayRepository {
     private static final Map<Line, List<Station>> subways = new HashMap<>();
 
+    private SubwayRepository() {
+    }
+
     public static Map<Line, List<Station>> subways() {
         return Collections.unmodifiableMap(subways);
     }
