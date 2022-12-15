@@ -6,6 +6,7 @@ public class Output {
     private static final String STANDARD = "%n## 경로 기준%n1. 최단 거리%n2. 최단시간%nB. 돌아가기%n";
     private static final String START_STATION = "%n## 출발역을 입력하세요.%n";
     private static final String END_STATION = "%n## 도착역을 입력하세요.%n";
+    private static final String ERROR = "[ERROR] ";
 
     public void printMain() {
         System.out.printf(MAIN);
@@ -25,5 +26,9 @@ public class Output {
 
     public void askEndStation() {
         System.out.printf(END_STATION);
+    }
+
+    public void printError(String massage) {
+        System.out.println(ERROR + massage);
     }
 }
