@@ -33,7 +33,6 @@ public class InitDB {
         initStation();
         initLine();
         initPath();
-        initSubway();
         initPathGraph();
     }
 
@@ -54,6 +53,31 @@ public class InitDB {
         for (String name : names) {
             LineRepository.addLine(new Line(name));
         }
+
+        addStationToLine();
+    }
+
+    private static void addStationToLine() {
+        List<List<Station>> stations = Arrays.asList(
+                Arrays.asList(
+                        findStation(GYODAE_STATION), findStation(GANGNAM_STATION), findStation(YEOKSAM_STATION)
+                ),
+                Arrays.asList(
+                        findStation(GYODAE_STATION), findStation(SOUTH_TERMINAL_STATION),
+                        findStation(YANGJAE_STATION), findStation(MAEBONG_STATION)
+                ),
+                Arrays.asList(
+                        findStation(GANGNAM_STATION), findStation(YANGJAE_STATION),
+                        findStation(YANGJAE_CITIZEN_FOREST_STATION)
+                )
+        );
+
+        List<Line> lines = LineRepository.lines();
+        for (int index = 0; index < lines.size(); index++) {
+            for (Station station : stations.get(index)) {
+                lines.get(index).addStation(station);
+            }
+        }
     }
 
     private static void initPath() {
@@ -72,36 +96,6 @@ public class InitDB {
                     new Path((Station) path.get(0), (Station) path.get(1), (int) path.get(2), (int) path.get(3))
             );
         }
-    }
-
-    private static void initSubway() {
-        SubwayRepository.addSubway(
-                LineRepository.findLine(TWO_LINE),
-                Arrays.asList(
-                        StationRepository.findStation(GYODAE_STATION),
-                        StationRepository.findStation(GANGNAM_STATION),
-                        StationRepository.findStation(YEOKSAM_STATION)
-                )
-        );
-
-        SubwayRepository.addSubway(
-                LineRepository.findLine(THREE_LINE),
-                Arrays.asList(
-                        StationRepository.findStation(GYODAE_STATION),
-                        StationRepository.findStation(SOUTH_TERMINAL_STATION),
-                        StationRepository.findStation(YANGJAE_STATION),
-                        StationRepository.findStation(MAEBONG_STATION)
-                )
-        );
-
-        SubwayRepository.addSubway(
-                LineRepository.findLine(SHINBUNDANG_LINE),
-                Arrays.asList(
-                        StationRepository.findStation(GANGNAM_STATION),
-                        StationRepository.findStation(YANGJAE_STATION),
-                        StationRepository.findStation(YANGJAE_CITIZEN_FOREST_STATION)
-                )
-        );
     }
 
     private static void initPathGraph() {
