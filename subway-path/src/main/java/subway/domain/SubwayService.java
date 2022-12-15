@@ -28,4 +28,13 @@ public class SubwayService {
         }
         return totalDistance;
     }
+
+    public int calculateTotalTime() {
+        int totalTime = 0;
+        for (int index = 0; index < result.size() - 1; index++) {
+            Path path = PathRepository.findPath(result.get(index), result.get(index + 1));
+            totalTime += path.getTime();
+        }
+        return totalTime;
+    }
 }

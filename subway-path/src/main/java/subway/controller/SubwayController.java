@@ -36,7 +36,8 @@ public class SubwayController {
 
             output.printResult(
                     subwayService.makeResultOfDistance(startStation, endStation),
-                    subwayService.calculateToTalDistance()
+                    subwayService.calculateToTalDistance(),
+                    subwayService.calculateTotalTime()
             );
         }
     }

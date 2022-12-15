@@ -11,6 +11,7 @@ public class Output {
     private static final String END_STATION = "%n## 도착역을 입력하세요.%n";
     private static final String RESULT = "%n##조회 결과%n";
     private static final String DISTANCE = "총 거리: %dkm";
+    private static final String TIME = "총 소요시간: %d분";
     private static final String LINE = "---";
     private static final String INFO = "[INFO] ";
     private static final String ERROR = "[ERROR] ";
@@ -35,11 +36,12 @@ public class Output {
         System.out.printf(END_STATION);
     }
 
-    public void printResult(List<Station> stations, int totalDiscount) {
+    public void printResult(List<Station> stations, int totalDiscount, int totalTime) {
         System.out.printf(RESULT);
+
         System.out.println(INFO + LINE);
         System.out.println(INFO + String.format(DISTANCE, totalDiscount));
-        // todo: 총 소요시간 출력 구현
+        System.out.println(INFO + String.format(TIME, totalTime));
         System.out.println(INFO + LINE);
 
         for (Station station : stations) {
