@@ -1,5 +1,7 @@
 package subway.domain;
 
+import static subway.domain.StationRepository.findStation;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,6 +34,7 @@ public class InitDB {
         initLine();
         initPath();
         initSubway();
+        initPathGraph();
     }
 
     private static void initStation() {
@@ -99,5 +102,15 @@ public class InitDB {
                         StationRepository.findStation(YANGJAE_CITIZEN_FOREST_STATION)
                 )
         );
+    }
+
+    private static void initPathGraph() {
+        PathGraph.addVertex(StationRepository.stations());
+
+        List<Path> paths = PathRepository.paths();
+        for (Path path : paths) {
+            PathGraph.setEdgeDistance(path.getStartStation(), path.getEndStation(), path.getDistance());
+            PathGraph.setEdgeTime(path.getStartStation(), path.getEndStation(), path.getTime());
+        }
     }
 }
