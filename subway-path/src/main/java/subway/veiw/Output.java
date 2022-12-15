@@ -1,11 +1,17 @@
 package subway.veiw;
 
+import java.util.List;
+import subway.domain.Station;
+
 public class Output {
     private static final String MAIN = "## 메인 화면%n1. 경로 조회%nQ. 종료%n";
     private static final String CHOICE = "%n## 원하는 기능을 선택하세요.%n";
     private static final String STANDARD = "%n## 경로 기준%n1. 최단 거리%n2. 최단시간%nB. 돌아가기%n";
     private static final String START_STATION = "%n## 출발역을 입력하세요.%n";
     private static final String END_STATION = "%n## 도착역을 입력하세요.%n";
+    private static final String RESULT = "%n##조회 결과%n";
+    private static final String LINE = "---";
+    private static final String INFO = "[INFO] ";
     private static final String ERROR = "[ERROR] ";
 
     public void printMain() {
@@ -26,6 +32,17 @@ public class Output {
 
     public void askEndStation() {
         System.out.printf(END_STATION);
+    }
+
+    public void printResult(List<Station> stations) {
+        System.out.printf(RESULT);
+        System.out.println(INFO + LINE);
+        // todo: 총 거리, 총 소요시간 출력 구현
+        System.out.println(INFO + LINE);
+
+        for (Station station : stations) {
+            System.out.println(INFO + station.getName());
+        }
     }
 
     public void printError(String massage) {

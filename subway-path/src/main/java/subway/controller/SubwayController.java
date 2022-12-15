@@ -34,7 +34,7 @@ public class SubwayController {
             output.askEndStation();
             String endStation = input.read();
 
-            subwayService.findPathOfDistance(startStation, endStation);
+            output.printResult(subwayService.findPathOfDistance(startStation, endStation));
         }
     }
 
