@@ -6,7 +6,7 @@ public class SubwayService {
     private List<Station> result;
 
     public boolean isStart(String command) {
-        return MainCommand.find(command).isLookup();
+        return MainCommand.isLookup(command);
     }
 
     public StandardCommand choiceStandard(String command) {

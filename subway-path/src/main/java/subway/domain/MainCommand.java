@@ -21,7 +21,7 @@ public enum MainCommand {
                 .orElseThrow(() -> new IllegalArgumentException(INVALID_COMMAND_ERROR));
     }
 
-    public boolean isLookup() {
-        return this.equals(LOOKUP);
+    public static boolean isLookup(String command) {
+        return LOOKUP.command.equals(command);
     }
 }
