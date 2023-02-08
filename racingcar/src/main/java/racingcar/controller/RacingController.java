@@ -5,6 +5,7 @@ import static racingcar.view.Input.readCarNames;
 import static racingcar.view.Input.readRacingCount;
 import static racingcar.view.Output.printCarNames;
 import static racingcar.view.Output.printRacingCount;
+import static racingcar.view.Output.printWinner;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class RacingController {
         int count = readRacingCount(); // todo: NumberFormat 오류 처리
 
         move(cars, count);
-        cars.findWinner();
+        printWinner(cars.findWinner());
     }
 
     private void move(Cars cars, int count) {
