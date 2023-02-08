@@ -7,6 +7,7 @@ public class Car {
     private int position = 0;
 
     public Car(String name) {
+        name = name.trim();
         validateNameLength(name);
         this.name = name;
     }
@@ -22,8 +23,8 @@ public class Car {
     }
 
     private void validateNameLength(String name) {
-        if (name.trim().length() > 5) {
-            throw new IllegalArgumentException("자동차 이름은 5글자 이하만 가능합니다.");
+        if (name.length() < 1 || name.length() > 5) {
+            throw new IllegalArgumentException("자동차 이름은 1 ~ 5글자만 가능합니다.");
         }
     }
 
