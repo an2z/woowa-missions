@@ -7,6 +7,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Cars {
+    private static final int MIN_SIZE = 2;
+    private static final String CAR_SIZE_ERROR = "경주를 진행하려면 %d대 이상의 자동차가 필요합니다.";
+
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
@@ -38,8 +41,8 @@ public class Cars {
     }
 
     private void validateCarSize(List<Car> cars) {
-        if (cars.size() < 2) {
-            throw new IllegalArgumentException("경주를 진행하려면 2대 이상의 자동차가 필요합니다.");
+        if (cars.size() < MIN_SIZE) {
+            throw new IllegalArgumentException(String.format(CAR_SIZE_ERROR, MIN_SIZE));
         }
     }
 

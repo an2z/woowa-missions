@@ -12,6 +12,7 @@ public class Output {
     private static final String RESULT = "\n실행결과";
     private static final String WINNER = "최종 우승자 : ";
     private static final String ERROR_PREFIX = "[ERROR] ";
+    private static final String DELIMITER = ", ";
 
     public static void printCarNames() {
         System.out.println(CAR_NAMES);
@@ -35,7 +36,7 @@ public class Output {
     public static void printWinner(List<Car> winner) {
         String names = winner.stream()
                 .map(Car::getName)
-                .collect(joining(", "));
+                .collect(joining(DELIMITER));
 
         System.out.println(WINNER + names);
     }
