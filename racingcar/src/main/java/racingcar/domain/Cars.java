@@ -10,6 +10,7 @@ public class Cars {
     private final List<Car> cars;
 
     public Cars(List<Car> cars) {
+        validateCarSize(cars);
         this.cars = cars;
     }
 
@@ -34,6 +35,12 @@ public class Cars {
                 .get();
 
         return map.get(maxPosition);
+    }
+
+    private void validateCarSize(List<Car> cars) {
+        if (cars.size() < 2) {
+            throw new IllegalArgumentException("경주를 진행하려면 2대 이상의 자동차가 필요합니다.");
+        }
     }
 
     @Override
