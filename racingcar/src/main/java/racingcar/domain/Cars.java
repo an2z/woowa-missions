@@ -10,6 +10,17 @@ public class Cars {
         this.cars = cars;
     }
 
+    public int getSize() {
+        return cars.size();
+    }
+
+    public Cars move(List<Integer> numbers) {
+        for (int i = 0; i < getSize(); i++) {
+            cars.get(i).move(numbers.get(i));
+        }
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

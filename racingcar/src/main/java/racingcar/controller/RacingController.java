@@ -1,5 +1,6 @@
 package racingcar.controller;
 
+import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static racingcar.view.Input.readCarNames;
 import static racingcar.view.Input.readRacingCount;
 import static racingcar.view.Output.printCarNames;
@@ -18,6 +19,24 @@ public class RacingController {
 
         printRacingCount();
         int count = readRacingCount(); // todo: NumberFormat 오류 처리
+
+        move(cars, count);
+    }
+
+    private void move(Cars cars, int count) {
+        for (int c = 0; c < count; c++) {
+            cars.move(makeRandomNumbers(cars.getSize()));
+        }
+    }
+
+    private static List<Integer> makeRandomNumbers(int size) {
+        List<Integer> numbers = new ArrayList<>();
+
+        for (int i = 0; i < size; i++) {
+            numbers.add(pickNumberInRange(0, 9));
+        }
+
+        return numbers;
     }
 
     private static Cars makeCars(String[] carNames) {

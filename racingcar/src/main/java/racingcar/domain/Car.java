@@ -11,6 +11,16 @@ public class Car {
         this.name = name;
     }
 
+    public void move(int number) {
+        if (isMovable(number)) {
+            position++;
+        }
+    }
+
+    private boolean isMovable(int number) {
+        return number >= 4;
+    }
+
     private void validateNameLength(String name) {
         if (name.trim().length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 5글자 이하만 가능합니다.");
@@ -32,5 +42,10 @@ public class Car {
     @Override
     public int hashCode() {
         return Objects.hash(name, position);
+    }
+
+    @Override
+    public String toString() {
+        return name + " : " + position;
     }
 }
