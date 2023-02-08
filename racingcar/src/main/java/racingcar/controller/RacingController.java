@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
+import static racingcar.domain.RandomNumberMaker.makeRandomNumber;
 import static racingcar.view.Input.readCarNames;
 import static racingcar.view.Input.readRacingCount;
 import static racingcar.view.Output.printCarNames;
@@ -40,7 +40,7 @@ public class RacingController {
         List<Integer> numbers = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
-            numbers.add(pickNumberInRange(0, 9));
+            numbers.add(makeRandomNumber());
         }
 
         return numbers;
