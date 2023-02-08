@@ -33,11 +33,13 @@ public class Cars {
         Map<Integer, List<Car>> map = cars.stream()
                 .collect(groupingBy(Car::getPosition));
 
-        int maxPosition = new ArrayList<>(map.keySet()).stream()
+        return map.get(findWinnerPosition(map));
+    }
+
+    private int findWinnerPosition(Map<Integer, List<Car>> map) {
+        return new ArrayList<>(map.keySet()).stream()
                 .max(Integer::compareTo)
                 .orElseThrow();
-
-        return map.get(maxPosition);
     }
 
     private void validateCarSize(List<Car> cars) {
