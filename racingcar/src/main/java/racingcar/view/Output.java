@@ -11,6 +11,7 @@ public class Output {
     private static final String RACING_COUNT = "시도할 회수는 몇회인가요?";
     private static final String RESULT = "\n실행결과";
     private static final String WINNER = "최종 우승자 : ";
+    private static final String ERROR_PREFIX = "[ERROR] ";
 
     public static void printCarNames() {
         System.out.println(CAR_NAMES);
@@ -37,6 +38,10 @@ public class Output {
                 .collect(joining(", "));
 
         System.out.println(WINNER + names);
+    }
+
+    public static void printError(String message) {
+        System.out.println(ERROR_PREFIX + message);
     }
 
     private Output() {

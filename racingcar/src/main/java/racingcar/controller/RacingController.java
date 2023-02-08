@@ -4,6 +4,7 @@ import static camp.nextstep.edu.missionutils.Randoms.pickNumberInRange;
 import static racingcar.view.Input.readCarNames;
 import static racingcar.view.Input.readRacingCount;
 import static racingcar.view.Output.printCarNames;
+import static racingcar.view.Output.printError;
 import static racingcar.view.Output.printRacingCount;
 import static racingcar.view.Output.printRacingResult;
 import static racingcar.view.Output.printResult;
@@ -18,10 +19,10 @@ public class RacingController {
 
     public void run() {
         printCarNames();
-        Cars cars = makeCars(readCarNames());
+        Cars cars = repeatMakeCars();
 
         printRacingCount();
-        int count = readRacingCount(); // todo: NumberFormat 오류 처리
+        int count = repeatReadRacingCount();
 
         move(cars, count);
         printWinner(cars.findWinner());
@@ -43,6 +44,24 @@ public class RacingController {
         }
 
         return numbers;
+    }
+
+    private int repeatReadRacingCount() {
+        try {
+            return readRacingCount();
+        } catch (IllegalArgumentException e) {
+            printError(e.getMessage());
+            return repeatReadRacingCount();
+        }
+    }
+
+    private Cars repeatMakeCars() {
+        try {
+            return makeCars(readCarNames());
+        } catch (IllegalArgumentException e) {
+            printError(e.getMessage());
+            return repeatMakeCars();
+        }
     }
 
     private static Cars makeCars(String[] carNames) {
