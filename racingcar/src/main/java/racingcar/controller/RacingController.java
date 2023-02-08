@@ -21,6 +21,7 @@ public class RacingController {
         int count = readRacingCount(); // todo: NumberFormat 오류 처리
 
         move(cars, count);
+        cars.findWinner();
     }
 
     private void move(Cars cars, int count) {

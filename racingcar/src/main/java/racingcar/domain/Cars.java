@@ -1,6 +1,9 @@
 package racingcar.domain;
 
+import static java.util.stream.Collectors.groupingBy;
+
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class Cars {
@@ -19,6 +22,18 @@ public class Cars {
             cars.get(i).move(numbers.get(i));
         }
         return this;
+    }
+
+    public List<Car> findWinner() {
+        Map<Integer, List<Car>> map = cars.stream()
+                .collect(groupingBy(Car::getPosition));
+
+        Integer maxPosition = map.keySet().stream()
+                .map(Integer::new)
+                .max(Integer::compareTo)
+                .get();
+
+        return map.get(maxPosition);
     }
 
     @Override
