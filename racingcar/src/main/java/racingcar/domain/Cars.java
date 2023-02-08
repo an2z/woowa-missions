@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import static java.util.stream.Collectors.groupingBy;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -32,10 +33,9 @@ public class Cars {
         Map<Integer, List<Car>> map = cars.stream()
                 .collect(groupingBy(Car::getPosition));
 
-        Integer maxPosition = map.keySet().stream()
-                .map(Integer::new)
+        int maxPosition = new ArrayList<>(map.keySet()).stream()
                 .max(Integer::compareTo)
-                .get();
+                .orElseThrow();
 
         return map.get(maxPosition);
     }
