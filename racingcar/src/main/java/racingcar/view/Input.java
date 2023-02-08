@@ -8,7 +8,14 @@ public class Input {
     }
 
     public static int readRacingCount() {
-        return Integer.valueOf(read());
+        return checkCount(Integer.valueOf(read()));
+    }
+
+    private static int checkCount(int count) {
+        if (count < 1) {
+            throw new IllegalArgumentException("최소 1번 이상 경주를 진행해야 합니다.");
+        }
+        return count;
     }
 
     private static String read() {
