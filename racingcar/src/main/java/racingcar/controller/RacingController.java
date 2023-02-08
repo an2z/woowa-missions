@@ -5,6 +5,8 @@ import static racingcar.view.Input.readCarNames;
 import static racingcar.view.Input.readRacingCount;
 import static racingcar.view.Output.printCarNames;
 import static racingcar.view.Output.printRacingCount;
+import static racingcar.view.Output.printRacingResult;
+import static racingcar.view.Output.printResult;
 import static racingcar.view.Output.printWinner;
 
 import java.util.ArrayList;
@@ -26,8 +28,10 @@ public class RacingController {
     }
 
     private void move(Cars cars, int count) {
+        printResult();
         for (int c = 0; c < count; c++) {
-            cars.move(makeRandomNumbers(cars.getSize()));
+            Cars movedCars = cars.move(makeRandomNumbers(cars.getSize()));
+            printRacingResult(movedCars);
         }
     }
 

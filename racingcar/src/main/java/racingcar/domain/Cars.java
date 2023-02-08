@@ -52,4 +52,8 @@ public class Cars {
     public int hashCode() {
         return Objects.hash(cars);
     }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }
