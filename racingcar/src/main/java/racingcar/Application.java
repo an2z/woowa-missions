@@ -1,11 +1,9 @@
 package racingcar;
 
-import static racingcar.view.Input.readCarNames;
-import static racingcar.view.Output.printCarNames;
+import racingcar.controller.RacingController;
 
 public class Application {
     public static void main(String[] args) {
-        printCarNames();
-        readCarNames();
+        new RacingController().run();
     }
 }
