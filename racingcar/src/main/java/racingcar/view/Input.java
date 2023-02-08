@@ -7,6 +7,10 @@ public class Input {
         return read().split(",");
     }
 
+    public static int readRacingCount() {
+        return Integer.valueOf(read());
+    }
+
     private static String read() {
         return Console.readLine();
     }
