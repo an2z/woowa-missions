@@ -24,11 +24,11 @@ public class RacingController {
 
         printRacingCount();
 
-        racing(repeatReadRacingCount());
+        race(repeatReadRacingCount());
         printWinner(racingService.findWinner());
     }
 
-    private void racing(int count) {
+    private void race(int count) {
         printResult();
         for (int c = 0; c < count; c++) {
             printRacingResult(racingService.moveCars());
