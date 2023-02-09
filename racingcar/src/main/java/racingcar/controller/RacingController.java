@@ -1,6 +1,5 @@
 package racingcar.controller;
 
-import static racingcar.domain.RandomNumberMaker.makeRandomNumbers;
 import static racingcar.view.Input.readCarNames;
 import static racingcar.view.Input.readRacingCount;
 import static racingcar.view.Output.printCarNames;
@@ -10,7 +9,6 @@ import static racingcar.view.Output.printRacingResult;
 import static racingcar.view.Output.printResult;
 import static racingcar.view.Output.printWinner;
 
-import racingcar.domain.Cars;
 import racingcar.domain.RacingService;
 
 public class RacingController {
@@ -25,17 +23,15 @@ public class RacingController {
         repeatMakeCars();
 
         printRacingCount();
-        int count = repeatReadRacingCount();
 
-        move(cars, count);
+        racing(repeatReadRacingCount());
         printWinner(cars.findWinner());
     }
 
-    private void move(Cars cars, int count) {
+    private void racing(int count) {
         printResult();
         for (int c = 0; c < count; c++) {
-            Cars movedCars = cars.move(makeRandomNumbers(cars.getSize()));
-            printRacingResult(movedCars);
+            printRacingResult(racingService.moveCars());
         }
     }
 

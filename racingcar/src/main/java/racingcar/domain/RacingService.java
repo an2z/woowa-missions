@@ -1,10 +1,16 @@
 package racingcar.domain;
 
+import static racingcar.domain.RandomNumberMaker.makeRandomNumbers;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class RacingService {
     private Cars cars;
+
+    public Cars moveCars() {
+        return cars.move(makeRandomNumbers(cars.getSize()));
+    }
 
     public void makeCars(String[] carNames) {
         List<Car> cars = new ArrayList<>();
