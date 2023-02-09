@@ -12,14 +12,19 @@ import static racingcar.view.Output.printWinner;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.Car;
 import racingcar.domain.Cars;
+import racingcar.domain.RacingService;
 
 public class RacingController {
+    private final RacingService racingService;
+
+    public RacingController() {
+        this.racingService = new RacingService();
+    }
 
     public void run() {
         printCarNames();
-        Cars cars = repeatMakeCars();
+        repeatMakeCars();
 
         printRacingCount();
         int count = repeatReadRacingCount();
@@ -55,22 +60,12 @@ public class RacingController {
         }
     }
 
-    private Cars repeatMakeCars() {
+    private void repeatMakeCars() {
         try {
-            return makeCars(readCarNames());
+            racingService.makeCars(readCarNames());
         } catch (IllegalArgumentException e) {
             printError(e.getMessage());
-            return repeatMakeCars();
+            repeatMakeCars();
         }
-    }
-
-    private static Cars makeCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-
-        return new Cars(cars);
     }
 }
