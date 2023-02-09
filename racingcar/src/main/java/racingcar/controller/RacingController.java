@@ -1,6 +1,6 @@
 package racingcar.controller;
 
-import static racingcar.domain.RandomNumberMaker.makeRandomNumber;
+import static racingcar.domain.RandomNumberMaker.makeRandomNumbers;
 import static racingcar.view.Input.readCarNames;
 import static racingcar.view.Input.readRacingCount;
 import static racingcar.view.Output.printCarNames;
@@ -10,8 +10,6 @@ import static racingcar.view.Output.printRacingResult;
 import static racingcar.view.Output.printResult;
 import static racingcar.view.Output.printWinner;
 
-import java.util.ArrayList;
-import java.util.List;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingService;
 
@@ -39,16 +37,6 @@ public class RacingController {
             Cars movedCars = cars.move(makeRandomNumbers(cars.getSize()));
             printRacingResult(movedCars);
         }
-    }
-
-    private static List<Integer> makeRandomNumbers(int size) {
-        List<Integer> numbers = new ArrayList<>();
-
-        for (int i = 0; i < size; i++) {
-            numbers.add(makeRandomNumber());
-        }
-
-        return numbers;
     }
 
     private int repeatReadRacingCount() {
