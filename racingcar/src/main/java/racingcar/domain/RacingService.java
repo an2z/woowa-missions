@@ -8,6 +8,10 @@ import java.util.List;
 public class RacingService {
     private Cars cars;
 
+    public List<Car> findWinner() {
+        return cars.findWinner();
+    }
+
     public Cars moveCars() {
         return cars.move(makeRandomNumbers(cars.getSize()));
     }

@@ -25,7 +25,7 @@ public class RacingController {
         printRacingCount();
 
         racing(repeatReadRacingCount());
-        printWinner(cars.findWinner());
+        printWinner(racingService.findWinner());
     }
 
     private void racing(int count) {
