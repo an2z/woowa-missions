@@ -1,8 +1,9 @@
 package racingcar.domain;
 
+import static java.util.stream.Collectors.toList;
 import static racingcar.domain.RandomNumberMaker.makeRandomNumbers;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RacingService {
@@ -17,11 +18,9 @@ public class RacingService {
     }
 
     public void makeCars(String[] carNames) {
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        List<Car> cars = Arrays.stream(carNames)
+                .map(Car::new)
+                .collect(toList());
 
         this.cars = new Cars(cars);
     }
