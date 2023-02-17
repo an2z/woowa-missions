@@ -1,9 +1,16 @@
+import static java.util.stream.Collectors.toList;
+
+import domain.Player;
+import java.util.List;
 import view.Input;
 import view.Output;
 
 public class Application {
     public static void main(String[] args) {
         Output.printStartMessage();
-        Input.readNames();
+        List<String> names = Input.readNames();
+        List<Player> players = names.stream()
+                .map(Player::new)
+                .collect(toList());
     }
 }
