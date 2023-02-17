@@ -1,16 +1,8 @@
-import static java.util.stream.Collectors.toList;
-
-import domain.Player;
-import java.util.List;
-import view.Input;
-import view.Output;
+import controller.LadderController;
 
 public class Application {
     public static void main(String[] args) {
-        Output.printStartMessage();
-        List<String> names = Input.readNames();
-        List<Player> players = names.stream()
-                .map(Player::new)
-                .collect(toList());
+        LadderController ladderController = new LadderController();
+        ladderController.run();
     }
 }
