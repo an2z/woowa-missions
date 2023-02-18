@@ -9,6 +9,7 @@ public class Player {
     private final String name;
 
     public Player(String name) {
+        name = name.trim();
         validate(name);
         this.name = name;
     }
