@@ -20,7 +20,7 @@ public class Player {
     }
 
     private static boolean isNotValidLength(int length) {
-        return length < MIN_LENGTH && MAX_LENGTH < length;
+        return length < MIN_LENGTH || MAX_LENGTH < length;
     }
 
     @Override
