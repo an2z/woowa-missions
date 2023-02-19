@@ -2,6 +2,7 @@ package controller;
 
 import static java.util.stream.Collectors.toList;
 
+import domain.LadderHeight;
 import domain.Player;
 import domain.Players;
 import java.util.List;
@@ -15,7 +16,7 @@ public class LadderController {
         Players players = new Players(makePlayer(names));
 
         Output.printLadderHeightMessage();
-        int ladderHeight = Input.readLadderHeight();
+        LadderHeight ladderHeight = new LadderHeight(Input.readLadderHeight());
     }
 
     private static List<Player> makePlayer(List<String> names) {
