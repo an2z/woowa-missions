@@ -13,6 +13,9 @@ public class LadderController {
         Output.printStartMessage();
         List<String> names = Input.readNames();
         Players players = new Players(makePlayer(names));
+
+        Output.printLadderHeightMessage();
+        int ladderHeight = Input.readLadderHeight();
     }
 
     private static List<Player> makePlayer(List<String> names) {
