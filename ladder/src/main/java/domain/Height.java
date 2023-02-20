@@ -19,6 +19,11 @@ public class Height {
         }
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

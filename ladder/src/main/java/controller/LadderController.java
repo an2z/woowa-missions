@@ -17,6 +17,6 @@ public class LadderController {
 
         Output.printLadderHeightMessage();
         ladderService.makeHeight(Input.readLadderHeight());
-        ladderService.makeLine();
+        ladderService.makeLadder();
     }
 }

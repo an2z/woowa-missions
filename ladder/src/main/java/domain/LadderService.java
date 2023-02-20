@@ -2,14 +2,25 @@ package domain;
 
 import static java.util.stream.Collectors.toList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class LadderService {
     private Players players;
     private Height height;
 
-    public void makeLine() {
-        new Line(players.getSize());
+    public Ladder makeLadder() {
+        List<Line> lines = new ArrayList<>();
+
+        for (int i = 0; i < height.getHeight(); i++) {
+            lines.add(makeLine());
+        }
+
+        return new Ladder(lines);
+    }
+
+    private Line makeLine() {
+        return new Line(players.getSize());
     }
 
     public void makeHeight(int height) {
