@@ -6,14 +6,14 @@ import java.util.List;
 
 public class LadderService {
     private Players players;
-    private LadderHeight ladderHeight;
+    private Height height;
 
     public void makeLine() {
         new Line(players.getSize());
     }
 
     public void makeHeight(int height) {
-        ladderHeight = new LadderHeight(height);
+        this.height = new Height(height);
     }
 
     public void makePlayers(List<String> names) {

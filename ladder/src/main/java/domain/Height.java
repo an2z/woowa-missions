@@ -2,13 +2,13 @@ package domain;
 
 import java.util.Objects;
 
-public class LadderHeight {
+public class Height {
     public static final int MIN_HEIGHT = 1;
     public static final String HEIGHT_ERROR = String.format("최소 %d개 이상의 높이가 필요합니다.", MIN_HEIGHT);
 
     private final int height;
 
-    public LadderHeight(int height) {
+    public Height(int height) {
         validate(height);
         this.height = height;
     }
@@ -27,7 +27,7 @@ public class LadderHeight {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        LadderHeight that = (LadderHeight) o;
+        Height that = (Height) o;
         return height == that.height;
     }
 
