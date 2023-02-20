@@ -13,6 +13,10 @@ public class Players {
         this.players = players;
     }
 
+    public int getSize() {
+        return players.size();
+    }
+
     private void validateSize(int size) {
         if (size < MIN_SIZE) {
             throw new IllegalArgumentException(SIZE_ERROR);

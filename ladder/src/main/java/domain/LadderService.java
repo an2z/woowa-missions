@@ -8,6 +8,10 @@ public class LadderService {
     private Players players;
     private LadderHeight ladderHeight;
 
+    public void makeLine() {
+        new Line(players.getSize());
+    }
+
     public void makeHeight(int height) {
         ladderHeight = new LadderHeight(height);
     }
