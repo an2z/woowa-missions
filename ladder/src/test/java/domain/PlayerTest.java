@@ -17,6 +17,19 @@ class PlayerTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "' pobi ', pobi",
+            "'  pobi', pobi",
+            "' p obi ', p obi"
+    })
+    @DisplayName("이름에 좌우 공백이 있다면 제거한다.")
+    void trimName(String inputName, String trimName) {
+        Player player1 = new Player(inputName);
+        Player player2 = new Player(trimName);
+        assertThat(player1).isEqualTo(player2);
+    }
+
     @Test
     @DisplayName("VO 동등 비교를 확인한다.")
     void checkVO() {
