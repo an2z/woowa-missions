@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Line {
-    private final List<Boolean> points = new ArrayList<>();
+    private final List<Status> points = new ArrayList<>();
     private final BooleanMaker booleanMaker = new BooleanMaker();
 
     public Line(int playerCount) {
@@ -13,13 +13,13 @@ public class Line {
         }
     }
 
-    private boolean getStatus() {
-        return booleanMaker.makeBoolean(getLastStatus());
+    private Status getStatus() {
+        return Status.find(booleanMaker.makeBoolean(getLastStatus()));
     }
 
-    private Boolean getLastStatus() {
+    private Status getLastStatus() {
         if (points.isEmpty()) {
-            return false;
+            return Status.UNCONNECTED;
         }
 
         return points.get(points.size() - 1);

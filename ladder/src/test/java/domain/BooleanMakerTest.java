@@ -1,6 +1,5 @@
 package domain;
 
-import static java.lang.Boolean.TRUE;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.DisplayName;
@@ -10,9 +9,9 @@ class BooleanMakerTest {
     private BooleanMaker booleanMaker = new BooleanMaker();
 
     @Test
-    @DisplayName("이전 상태가 true인 경우 false를 반환한다.")
+    @DisplayName("마지막 가로 라인이 연결 상태일 경우 false를 반환한다.")
     void makeFalse() {
-        Boolean result = booleanMaker.makeBoolean(TRUE);
+        Boolean result = booleanMaker.makeBoolean(Status.CONNECTED);
         assertThat(result).isFalse();
     }
 }
