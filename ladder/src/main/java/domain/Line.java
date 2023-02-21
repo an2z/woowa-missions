@@ -1,6 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Line {
@@ -10,10 +11,6 @@ public class Line {
         for (int i = 0; i < randomValues.size(); i++) {
             points.add(getStatus(randomValues.get(i)));
         }
-    }
-
-    public List<Status> getPoints() {
-        return points;
     }
 
     private Status getStatus(boolean randomValue) {
@@ -30,5 +27,9 @@ public class Line {
         }
 
         return points.get(points.size() - 1);
+    }
+
+    public List<Status> getPoints() {
+        return Collections.unmodifiableList(points);
     }
 }
