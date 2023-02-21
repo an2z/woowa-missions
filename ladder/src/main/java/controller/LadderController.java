@@ -15,12 +15,30 @@ public class LadderController {
 
     public void run() {
         Output.printStartMessage();
-        Players players = ladderService.makePlayers(Input.readNames());
+        Players players = repeatMakePlayers();
 
         Output.printLadderHeightMessage();
-        ladderService.makeHeight(Input.readLadderHeight());
+        repeatMakeHeight();
 
         Ladder ladder = ladderService.makeLadder();
         Output.printResult(players, ladder);
+    }
+
+    private Players repeatMakePlayers() {
+        try {
+            return ladderService.makePlayers(Input.readNames());
+        } catch (IllegalArgumentException e) {
+            Output.printErrorMessage(e.getMessage());
+            return repeatMakePlayers();
+        }
+    }
+
+    private void repeatMakeHeight() {
+        try {
+            ladderService.makeHeight(Input.readLadderHeight());
+        } catch (IllegalArgumentException e) {
+            Output.printErrorMessage(e.getMessage());
+            repeatMakeHeight();
+        }
     }
 }
