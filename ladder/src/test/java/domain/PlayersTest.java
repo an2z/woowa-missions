@@ -64,4 +64,14 @@ class PlayersTest {
 
         assertThat(firstNameLength).isEqualTo(expected);
     }
+
+    @Test
+    @DisplayName("VO 동등 비교를 확인한다.")
+    void checkVO() {
+        Players players1 = new Players(players);
+        Players players2 = new Players(players);
+
+        assertThat(players1).isEqualTo(players2);
+        assertThat(players1).hasSameHashCodeAs(players2);
+    }
 }
