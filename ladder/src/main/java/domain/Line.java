@@ -9,11 +9,11 @@ public class Line {
 
     public Line(List<Boolean> randomValues) {
         for (int i = 0; i < randomValues.size(); i++) {
-            points.add(getStatus(randomValues.get(i)));
+            points.add(makeStatus(randomValues.get(i)));
         }
     }
 
-    private Status getStatus(boolean randomValue) {
+    private Status makeStatus(boolean randomValue) {
         if (getLastStatus().isConnected()) {
             return Status.UNCONNECTED;
         }
