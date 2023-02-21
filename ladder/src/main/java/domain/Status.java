@@ -3,8 +3,8 @@ package domain;
 import java.util.Arrays;
 
 public enum Status {
-    CONNECTED(true, " "),
-    UNCONNECTED(false, "-");
+    CONNECTED(true, "-"),
+    UNCONNECTED(false, " ");
 
     private static final String NOT_FOUND_ERROR = "존재하지 않습니다.";
 
