@@ -18,9 +18,8 @@ public class LadderController {
         Players players = repeatMakePlayers();
 
         Output.printLadderHeightMessage();
-        repeatMakeHeight();
-
-        Ladder ladder = ladderService.makeLadder();
+        Ladder ladder = repeatMakeLadder();
+        
         Output.printResult(players, ladder);
     }
 
@@ -33,12 +32,12 @@ public class LadderController {
         }
     }
 
-    private void repeatMakeHeight() {
+    private Ladder repeatMakeLadder() {
         try {
-            ladderService.makeHeight(Input.readLadderHeight());
+            return ladderService.makeLadder(Input.readLadderHeight());
         } catch (IllegalArgumentException e) {
             Output.printErrorMessage(e.getMessage());
-            repeatMakeHeight();
+            return repeatMakeLadder();
         }
     }
 }

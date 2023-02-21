@@ -1,13 +1,20 @@
 package domain;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Ladder {
-    private final List<Line> lines;
+    private final List<Line> lines = new ArrayList<>();
 
-    public Ladder(List<Line> lines) {
-        this.lines = lines;
+    public Ladder(int width, int height, List<Boolean> randomValues) {
+        for (int i = 0; i < height; i++) {
+            lines.add(makeLine(width, randomValues));
+        }
+    }
+
+    private Line makeLine(int width, List<Boolean> randomValues) {
+        return new Line(width, randomValues);
     }
 
     public List<Line> getLines() {

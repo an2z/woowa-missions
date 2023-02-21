@@ -1,30 +1,21 @@
 package domain;
 
 import static java.util.stream.Collectors.toList;
+import static utils.RandomValueMaker.makeRandomValues;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LadderService {
     private Players players;
-    private Height height;
 
-    public Ladder makeLadder() {
-        List<Line> lines = new ArrayList<>();
-
-        for (int i = 0; i < height.getHeight(); i++) {
-            lines.add(makeLine());
-        }
-
-        return new Ladder(lines);
+    public Ladder makeLadder(int inputHeight) {
+        int width = players.getSize() - 1;
+        int height = makeHeight(inputHeight).getHeight();
+        return new Ladder(width, height, makeRandomValues(width));
     }
 
-    private Line makeLine() {
-        return new Line(players.getSize());
-    }
-
-    public void makeHeight(int height) {
-        this.height = new Height(height);
+    private Height makeHeight(int inputHeight) {
+        return new Height(inputHeight);
     }
 
     public Players makePlayers(List<String> names) {

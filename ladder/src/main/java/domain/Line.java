@@ -5,11 +5,10 @@ import java.util.List;
 
 public class Line {
     private final List<Status> points = new ArrayList<>();
-    private final BooleanMaker booleanMaker = new BooleanMaker();
 
-    public Line(int playerCount) {
-        for (int i = 1; i < playerCount; i++) {
-            points.add(getStatus());
+    public Line(int width, List<Boolean> randomValues) {
+        for (int i = 0; i < width; i++) {
+            points.add(getStatus(randomValues.get(i)));
         }
     }
 
@@ -17,8 +16,12 @@ public class Line {
         return points;
     }
 
-    private Status getStatus() {
-        return Status.find(booleanMaker.makeBoolean(getLastStatus()));
+    private Status getStatus(boolean randomValue) {
+        if (getLastStatus().isConnected()) {
+            return Status.UNCONNECTED;
+        }
+
+        return Status.find(randomValue);
     }
 
     private Status getLastStatus() {
