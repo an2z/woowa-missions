@@ -9,9 +9,8 @@ public class LadderService {
     private Players players;
 
     public Ladder makeLadder(int inputHeight) {
-        int width = players.getSize() - 1;
         int height = makeHeight(inputHeight).getHeight();
-        return new Ladder(width, height, makeRandomValues(width));
+        return new Ladder(height, makeRandomValues(players.getSize() - 1));
     }
 
     private Height makeHeight(int inputHeight) {

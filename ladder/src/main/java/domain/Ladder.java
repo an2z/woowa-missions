@@ -7,14 +7,14 @@ import java.util.List;
 public class Ladder {
     private final List<Line> lines = new ArrayList<>();
 
-    public Ladder(int width, int height, List<Boolean> randomValues) {
+    public Ladder(int height, List<Boolean> randomValues) {
         for (int i = 0; i < height; i++) {
-            lines.add(makeLine(width, randomValues));
+            lines.add(makeLine(randomValues));
         }
     }
 
-    private Line makeLine(int width, List<Boolean> randomValues) {
-        return new Line(width, randomValues);
+    private Line makeLine(List<Boolean> randomValues) {
+        return new Line(randomValues);
     }
 
     public List<Line> getLines() {

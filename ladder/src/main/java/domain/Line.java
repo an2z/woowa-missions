@@ -6,8 +6,8 @@ import java.util.List;
 public class Line {
     private final List<Status> points = new ArrayList<>();
 
-    public Line(int width, List<Boolean> randomValues) {
-        for (int i = 0; i < width; i++) {
+    public Line(List<Boolean> randomValues) {
+        for (int i = 0; i < randomValues.size(); i++) {
             points.add(getStatus(randomValues.get(i)));
         }
     }
