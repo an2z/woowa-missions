@@ -1,5 +1,7 @@
 package domain;
 
+import static utils.RandomValueMaker.makeRandomValues;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -7,9 +9,10 @@ import java.util.List;
 public class Ladder {
     private final List<Line> lines = new ArrayList<>();
 
-    public Ladder(int height, List<Boolean> randomValues) {
+    public Ladder(int width, int height) {
         for (int i = 0; i < height; i++) {
-            lines.add(makeLine(randomValues));
+            Line line = makeLine(makeRandomValues(width));
+            lines.add(line);
         }
     }
 

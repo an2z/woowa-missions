@@ -1,7 +1,6 @@
 package domain;
 
 import static java.util.stream.Collectors.toList;
-import static utils.RandomValueMaker.makeRandomValues;
 
 import java.util.List;
 
@@ -9,8 +8,9 @@ public class LadderService {
     private Players players;
 
     public Ladder makeLadder(int inputHeight) {
+        int width = players.getSize() - 1;
         int height = makeHeight(inputHeight).getHeight();
-        return new Ladder(height, makeRandomValues(players.getSize() - 1));
+        return new Ladder(width, height);
     }
 
     private Height makeHeight(int inputHeight) {
