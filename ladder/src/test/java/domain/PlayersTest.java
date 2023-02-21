@@ -19,7 +19,8 @@ class PlayersTest {
     void setUp() {
         players = Arrays.asList(
                 new Player("pobi"), new Player("honux"),
-                new Player("crong"), new Player("jk"));
+                new Player("crong"), new Player("jk")
+        );
     }
 
     @Test
