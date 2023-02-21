@@ -1,18 +1,67 @@
 package domain;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
 import java.util.Arrays;
 import java.util.List;
-import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 class PlayersTest {
+    List<Player> players;
+
+    @BeforeEach
+    void setUp() {
+        players = Arrays.asList(
+                new Player("pobi"), new Player("honux"),
+                new Player("crong"), new Player("jk"));
+    }
+
     @Test
     @DisplayName("플레이어가 2명 미만일 경우 예외가 발생한다.")
     void validateSize() {
         List<Player> players = Arrays.asList(new Player("pobi"));
 
-        Assertions.assertThatThrownBy(() -> new Players(players))
+        assertThatThrownBy(() -> new Players(players))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("플레이어들을 성공적으로 생성한다.")
+    void successMakingPlayers() {
+        assertThatNoException().isThrownBy(() -> new Players(players));
+    }
+
+    @Test
+    @DisplayName("플레이어들이 몇명인지 구한다.")
+    void getSize() {
+        int size = new Players(players).getSize();
+        assertThat(size).isEqualTo(4);
+    }
+
+    @Test
+    @DisplayName("플레이어 이름 중 가장 긴 이름의 길이를 구한다.")
+    void getMaxNameLength() {
+        int maxNameLength = new Players(players).getMaxNameLength();
+        assertThat(maxNameLength).isEqualTo(5);
+    }
+
+    @ParameterizedTest
+    @CsvSource({"p, 1", "po, 2", "pob, 3", "pobi, 4", "pobii, 5"})
+    @DisplayName("가장 첫번째 플레이어 이름의 길이를 구한다.")
+    void getFirstNameLength(String firstName, int expected) {
+        Players players = new Players(Arrays.asList(
+                new Player(firstName),
+                new Player("honux")
+        ));
+
+        int firstNameLength = players.getFirstNameLength();
+
+        assertThat(firstNameLength).isEqualTo(expected);
     }
 }
