@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Players {
@@ -15,6 +16,24 @@ public class Players {
 
     public int getSize() {
         return players.size();
+    }
+
+    public int getMaxNameLength() {
+        return players.stream()
+                .map(Player::getNameLength)
+                .reduce(Integer::max)
+                .orElseThrow();
+    }
+
+    public int getFirstNameLength() {
+        return players.stream()
+                .findFirst()
+                .map(Player::getNameLength)
+                .orElseThrow();
+    }
+
+    public List<Player> getPlayers() {
+        return Collections.unmodifiableList(players);
     }
 
     private void validateSize(int size) {

@@ -14,6 +14,14 @@ public class Player {
         this.name = name;
     }
 
+    public int getNameLength() {
+        return name.length();
+    }
+
+    public String getName() {
+        return name;
+    }
+
     private void validate(String name) {
         if (isNotValidLength(name.length())) {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR);

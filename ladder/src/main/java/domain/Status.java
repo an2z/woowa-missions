@@ -3,8 +3,8 @@ package domain;
 import java.util.Arrays;
 
 public enum Status {
-    CONNECTED(true, "     "),
-    UNCONNECTED(false, "-----");
+    CONNECTED(true, " "),
+    UNCONNECTED(false, "-");
 
     private static final String NOT_FOUND_ERROR = "존재하지 않습니다.";
 
@@ -25,5 +25,9 @@ public enum Status {
 
     public boolean isConnected() {
         return this.equals(CONNECTED);
+    }
+
+    public String getShape() {
+        return shape;
     }
 }

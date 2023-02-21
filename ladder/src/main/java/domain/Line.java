@@ -13,6 +13,10 @@ public class Line {
         }
     }
 
+    public List<Status> getPoints() {
+        return points;
+    }
+
     private Status getStatus() {
         return Status.find(booleanMaker.makeBoolean(getLastStatus()));
     }

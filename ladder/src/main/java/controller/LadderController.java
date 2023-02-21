@@ -1,6 +1,8 @@
 package controller;
 
+import domain.Ladder;
 import domain.LadderService;
+import domain.Players;
 import view.Input;
 import view.Output;
 
@@ -13,10 +15,12 @@ public class LadderController {
 
     public void run() {
         Output.printStartMessage();
-        ladderService.makePlayers(Input.readNames());
+        Players players = ladderService.makePlayers(Input.readNames());
 
         Output.printLadderHeightMessage();
         ladderService.makeHeight(Input.readLadderHeight());
-        ladderService.makeLadder();
+
+        Ladder ladder = ladderService.makeLadder();
+        Output.printResult(players, ladder);
     }
 }

@@ -27,8 +27,9 @@ public class LadderService {
         this.height = new Height(height);
     }
 
-    public void makePlayers(List<String> names) {
+    public Players makePlayers(List<String> names) {
         players = new Players(makePlayer(names));
+        return players;
     }
 
     private List<Player> makePlayer(List<String> names) {
