@@ -27,7 +27,6 @@ class PlayersTest {
     @DisplayName("플레이어가 2명 미만일 경우 예외가 발생한다.")
     void validateSize() {
         List<Player> players = Arrays.asList(pobi);
-
         assertThatThrownBy(() -> new Players(players))
                 .isInstanceOf(IllegalArgumentException.class);
     }
@@ -35,7 +34,8 @@ class PlayersTest {
     @Test
     @DisplayName("플레이어들을 성공적으로 생성한다.")
     void successMakingPlayers() {
-        assertThatNoException().isThrownBy(() -> new Players(players));
+        assertThatNoException()
+                .isThrownBy(() -> new Players(players));
     }
 
     @Test
