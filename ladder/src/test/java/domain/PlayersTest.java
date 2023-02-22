@@ -13,20 +13,20 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 class PlayersTest {
+    Player pobi = new Player("pobi");
+    Player honux = new Player("honux");
+    Player crong = new Player("crong");
     List<Player> players;
 
     @BeforeEach
     void setUp() {
-        players = Arrays.asList(
-                new Player("pobi"), new Player("honux"),
-                new Player("crong"), new Player("jk")
-        );
+        players = Arrays.asList(pobi, honux, crong);
     }
 
     @Test
     @DisplayName("플레이어가 2명 미만일 경우 예외가 발생한다.")
     void validateSize() {
-        List<Player> players = Arrays.asList(new Player("pobi"));
+        List<Player> players = Arrays.asList(pobi);
 
         assertThatThrownBy(() -> new Players(players))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -42,7 +42,7 @@ class PlayersTest {
     @DisplayName("플레이어들이 몇명인지 구한다.")
     void getSize() {
         int size = new Players(players).getSize();
-        assertThat(size).isEqualTo(4);
+        assertThat(size).isEqualTo(3);
     }
 
     @Test
@@ -56,14 +56,23 @@ class PlayersTest {
     @CsvSource({"p, 1", "po, 2", "pob, 3", "pobi, 4", "pobii, 5"})
     @DisplayName("가장 첫번째 플레이어 이름의 길이를 구한다.")
     void getFirstNameLength(String firstName, int expected) {
-        Players players = new Players(Arrays.asList(
-                new Player(firstName),
-                new Player("honux")
-        ));
-
+        Players players = new Players(Arrays.asList(new Player(firstName), honux));
         int firstNameLength = players.getFirstNameLength();
-
         assertThat(firstNameLength).isEqualTo(expected);
+    }
+
+    @Test
+    @DisplayName("가장 첫번째 플레이어 이름을 구한다. ")
+    void getFirstName() {
+        String firstName = new Players(players).getFirstName();
+        assertThat(firstName).isEqualTo("pobi");
+    }
+
+    @Test
+    @DisplayName("모든 플레이어의 이름을 구한다.")
+    void getAllNames() {
+        List<String> allNames = new Players(players).getAllNames();
+        assertThat(allNames).containsExactly("pobi", "honux", "crong");
     }
 
     @Test
