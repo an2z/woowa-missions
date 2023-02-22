@@ -5,11 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class Line {
-    private final List<Status> points = new ArrayList<>();
+    private final List<Status> statuses = new ArrayList<>();
 
     public Line(List<Boolean> randomValues) {
         for (int i = 0; i < randomValues.size(); i++) {
-            points.add(makeStatus(randomValues.get(i)));
+            statuses.add(makeStatus(randomValues.get(i)));
         }
     }
 
@@ -22,14 +22,14 @@ public class Line {
     }
 
     private Status getLastStatus() {
-        if (points.isEmpty()) {
+        if (statuses.isEmpty()) {
             return Status.UNCONNECTED;
         }
 
-        return points.get(points.size() - 1);
+        return statuses.get(statuses.size() - 1);
     }
 
-    public List<Status> getPoints() {
-        return Collections.unmodifiableList(points);
+    public List<Status> getStatuses() {
+        return Collections.unmodifiableList(statuses);
     }
 }

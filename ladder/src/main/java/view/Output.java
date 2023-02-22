@@ -57,18 +57,18 @@ public class Output {
     }
 
     private static void printLadder(int fistNameLength, int width, Ladder ladder) {
-        List<List<Status>> lines = ladder.getLines().stream()
-                .map(Line::getPoints)
+        List<List<Status>> statusesOfLines = ladder.getLines().stream()
+                .map(Line::getStatuses)
                 .collect(toList());
 
-        for (List<Status> line : lines) {
+        for (List<Status> statuses : statusesOfLines) {
             System.out.print(BLANK.repeat(fistNameLength - 1));
-            System.out.println(makeLadderShape(width, line));
+            System.out.println(makeLadderShape(width, statuses));
         }
     }
 
-    private static String makeLadderShape(int width, List<Status> line) {
-        String ladderShape = line.stream()
+    private static String makeLadderShape(int width, List<Status> statuses) {
+        String ladderShape = statuses.stream()
                 .map(Status::getShape)
                 .map(shape -> shape.repeat(width))
                 .collect(joining(LADDER_VERTICAL_SHAPE));
