@@ -5,7 +5,6 @@ import static java.util.stream.Collectors.toList;
 
 import domain.Ladder;
 import domain.Line;
-import domain.Player;
 import domain.Players;
 import domain.Status;
 import java.util.List;
@@ -17,6 +16,7 @@ public class Output {
     public static final String RESULT = "\n실행결과";
     public static final String BLANK = " ";
     public static final String LADDER_VERTICAL_SHAPE = "|";
+    private static final String NAME_FORMAT = " %%%ds";
 
     public static void printStartMessage() {
         System.out.println(START);
@@ -41,10 +41,19 @@ public class Output {
     }
 
     private static void printPlayers(Players players) {
-        String names = players.getPlayers().stream()
-                .map(Player::getName)
-                .collect(joining(BLANK + BLANK));
-        System.out.println(names);
+        System.out.println(players.getFirstName() + makeNamesFormat(players));
+    }
+
+    private static String makeNamesFormat(Players players) {
+        return players.getAllNames().stream()
+                .skip(1L)
+                .map(name -> convertToPrintFormat(name, players.getMaxNameLength()))
+                .collect(joining());
+    }
+
+    private static String convertToPrintFormat(String name, int width) {
+        String nameFormat = String.format(NAME_FORMAT, width);
+        return String.format(nameFormat, name);
     }
 
     private static void printLadder(int fistNameLength, int width, Ladder ladder) {

@@ -1,5 +1,7 @@
 package domain;
 
+import static java.util.stream.Collectors.toList;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +33,16 @@ public class Players {
                 .findFirst()
                 .map(Player::getNameLength)
                 .orElseThrow();
+    }
+
+    public List<String> getAllNames() {
+        return players.stream()
+                .map(Player::getName)
+                .collect(toList());
+    }
+
+    public String getFirstName() {
+        return players.get(0).getName();
     }
 
     private void validateSize(int size) {
