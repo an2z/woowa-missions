@@ -11,11 +11,11 @@ import java.util.List;
 
 public class Output {
     private static final String START = "참여할 사람 이름을 입력하세요. (이름을 쉼표(,)로 구분하세요)";
-    public static final String LADDER_HEIGHT = "\n최대 사다리 높이는 몇 개인가요?";
-    public static final String ERROR_PREFIX = "[ERROR] ";
-    public static final String RESULT = "\n실행결과";
-    public static final String BLANK = " ";
-    public static final String LADDER_VERTICAL_SHAPE = "|";
+    private static final String LADDER_HEIGHT = "\n최대 사다리 높이는 몇 개인가요?";
+    private static final String ERROR_PREFIX = "[ERROR] ";
+    private static final String RESULT = "\n실행결과";
+    private static final String BLANK = " ";
+    private static final String LADDER_VERTICAL_SHAPE = "|";
     private static final String NAME_FORMAT = " %%%ds";
 
     public static void printStartMessage() {
