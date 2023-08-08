@@ -9,6 +9,7 @@ public class Coach {
 
     public static final int MIN_NAME_LEN = 2;
     public static final int MAX_NAME_LEN = 4;
+    public static final int MAX_HATE_MENU_SIZE = 2;
 
     private final String name;
     private final List<String> hateMenus;
@@ -26,7 +27,14 @@ public class Coach {
     }
 
     public void addHateMenu(String[] menus) {
+        validateHateMenuSize(menus);
         Collections.addAll(hateMenus, menus);
+    }
+
+    private void validateHateMenuSize(String[] menus) {
+        if (MAX_HATE_MENU_SIZE < menus.length) {
+            throw new IllegalArgumentException("[ERROR] 싫어하는 메뉴의 개수는 0~2개여야 합니다.");
+        }
     }
 
     public String getName() {
