@@ -1,6 +1,7 @@
 package menu;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class LunchTeam {
 
@@ -15,5 +16,11 @@ public class LunchTeam {
         if (coaches.size() < 2 || 5 < coaches.size()) {
             throw new IllegalArgumentException("[ERROR] 코치는 2~5명으로 구성되어야 합니다.");
         }
+    }
+
+    public List<String> findCoachNames() {
+        return coaches.stream()
+                .map(Coach::getName)
+                .collect(Collectors.toList());
     }
 }

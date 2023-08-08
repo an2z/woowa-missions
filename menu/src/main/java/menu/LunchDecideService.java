@@ -23,4 +23,8 @@ public class LunchDecideService {
     private Coach makeCoach(String coachName) {
         return new Coach(coachName);
     }
+
+    public List<String> findCoachNamesOfTeam() {
+        return lunchTeam.findCoachNames();
+    }
 }
