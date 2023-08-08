@@ -18,5 +18,7 @@ public class LunchDecideController {
             String[] hateMenu = inputHateMenu();
             lunchDecideService.addHateMenu(coachName, hateMenu);
         }
+
+        lunchDecideService.decideCategory();
     }
 }
