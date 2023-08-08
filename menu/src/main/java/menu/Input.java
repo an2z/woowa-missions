@@ -4,8 +4,10 @@ import camp.nextstep.edu.missionutils.Console;
 
 public class Input {
 
-    public static String inputCoachName() {
-        return read();
+    public static final String SEPARATOR = ",";
+
+    public static String[] inputCoachName() {
+        return read().split(SEPARATOR);
     }
 
     private static String read() {
