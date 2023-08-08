@@ -27,4 +27,8 @@ public class LunchDecideService {
     public List<String> findCoachNamesOfTeam() {
         return lunchTeam.findCoachNames();
     }
+
+    public void addHateMenu(String coachName, String[] hateMenu) {
+        lunchTeam.addHateMenu(coachName, hateMenu);
+    }
 }

@@ -23,4 +23,15 @@ public class LunchTeam {
                 .map(Coach::getName)
                 .collect(Collectors.toList());
     }
+
+    public void addHateMenu(String coachName, String[] hateMenu) {
+        findCoach(coachName).addHateMenu(hateMenu);
+    }
+
+    private Coach findCoach(String coachName) {
+        return coaches.stream()
+                .filter(coach -> coach.equals(new Coach(coachName)))
+                .findFirst()
+                .orElseThrow();
+    }
 }

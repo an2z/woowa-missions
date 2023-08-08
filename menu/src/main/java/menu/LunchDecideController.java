@@ -15,7 +15,8 @@ public class LunchDecideController {
 
         for (String coachName : lunchDecideService.findCoachNamesOfTeam()) {
             outputHateMenuInputPhrase(coachName);
-            inputHateMenu();
+            String[] hateMenu = inputHateMenu();
+            lunchDecideService.addHateMenu(coachName, hateMenu);
         }
     }
 }
