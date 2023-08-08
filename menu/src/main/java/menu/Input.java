@@ -10,6 +10,10 @@ public class Input {
         return read().split(SEPARATOR);
     }
 
+    public static String[] inputHateMenu() {
+        return read().split(SEPARATOR);
+    }
+
     private static String read() {
         return Console.readLine();
     }

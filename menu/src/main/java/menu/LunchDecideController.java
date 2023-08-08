@@ -1,6 +1,7 @@
 package menu;
 
 import static menu.Input.inputCoachName;
+import static menu.Input.inputHateMenu;
 import static menu.Output.*;
 
 public class LunchDecideController {
@@ -14,6 +15,7 @@ public class LunchDecideController {
 
         for (String coachName : lunchDecideService.findCoachNamesOfTeam()) {
             outputHateMenuInputPhrase(coachName);
+            inputHateMenu();
         }
     }
 }
