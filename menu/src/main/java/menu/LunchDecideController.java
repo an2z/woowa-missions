@@ -23,5 +23,6 @@ public class LunchDecideController {
         lunchDecideService.decideLunch();
 
         outputResultPhrase();
+        outputDays();
     }
 }
