@@ -13,11 +13,13 @@ public class Coach {
 
     private final String name;
     private final List<String> hateMenus;
+    private final List<String> lunchMenus;
 
     public Coach(String name) {
         validateNameLength(name);
         this.name = name;
         this.hateMenus = new ArrayList<>();
+        this.lunchMenus = new ArrayList<>();
     }
 
     private void validateNameLength(String name) {
@@ -35,6 +37,13 @@ public class Coach {
         if (MAX_HATE_MENU_SIZE < menus.length) {
             throw new IllegalArgumentException("[ERROR] 싫어하는 메뉴의 개수는 0~2개여야 합니다.");
         }
+    }
+
+    public void addLunchMenu(List<Category> categories) {
+        for (Category category : categories) {
+            lunchMenus.add(category.pickMenu());
+        }
+        //System.out.println("이름 : " + name + " 메뉴 : " + lunchMenus);
     }
 
     public String getName() {

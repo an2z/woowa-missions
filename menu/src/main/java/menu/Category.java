@@ -1,5 +1,7 @@
 package menu;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -28,5 +30,9 @@ public enum Category {
                 .filter(category -> category.key == key)
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(NOT_FOUND_CATEGORY));
+    }
+
+    public String pickMenu() {
+        return Randoms.shuffle(menus).get(0);
     }
 }

@@ -34,4 +34,8 @@ public class LunchTeam {
                 .findFirst()
                 .orElseThrow();
     }
+
+    public void decideLunch(List<Category> categories) {
+        coaches.forEach(coach -> coach.addLunchMenu(categories));
+    }
 }

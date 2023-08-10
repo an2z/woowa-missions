@@ -46,4 +46,8 @@ public class LunchDecideService {
 
         return categories;
     }
+
+    public void decideLunch() {
+        lunchTeam.decideLunch(categories);
+    }
 }
