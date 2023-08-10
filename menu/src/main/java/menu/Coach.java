@@ -50,6 +50,10 @@ public class Coach {
         return name;
     }
 
+    public List<String> getLunchMenus() {
+        return lunchMenus;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

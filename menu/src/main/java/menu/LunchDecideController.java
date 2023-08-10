@@ -13,7 +13,7 @@ public class LunchDecideController {
     public void run() {
         outputStartPhrase();
         outputCoachNameInputPhrase();
-        lunchDecideService.makeLunchTeam(inputCoachName());
+        LunchTeam lunchTeam = lunchDecideService.makeLunchTeam(inputCoachName());
 
         for (String coachName : lunchDecideService.findCoachNamesOfTeam()) {
             outputHateMenuInputPhrase(coachName);
@@ -27,6 +27,6 @@ public class LunchDecideController {
         outputResultPhrase();
         outputDays();
         outputCategories(categories);
-
+        outputLunchMenu(lunchTeam);
     }
 }

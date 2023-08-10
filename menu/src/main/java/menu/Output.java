@@ -49,6 +49,16 @@ public class Output {
         System.out.println(BRACKET_OPEN + CATEGORY_TITLE + SEPARATOR + result + BRACKET_CLOSE);
     }
 
+    public static void outputLunchMenu(LunchTeam lunchTeam) {
+        List<Coach> coaches = lunchTeam.getCoaches();
+
+        for (Coach coach : coaches) {
+            String name = coach.getName();
+            String lunchMenus = String.join(SEPARATOR, coach.getLunchMenus());
+            System.out.println(BRACKET_OPEN + name + SEPARATOR + lunchMenus + BRACKET_CLOSE);
+        }
+    }
+
     private Output() {
     }
 }

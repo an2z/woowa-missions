@@ -38,4 +38,8 @@ public class LunchTeam {
     public void decideLunch(List<Category> categories) {
         coaches.forEach(coach -> coach.addLunchMenu(categories));
     }
+
+    public List<Coach> getCoaches() {
+        return coaches;
+    }
 }
