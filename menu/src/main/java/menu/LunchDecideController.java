@@ -21,5 +21,7 @@ public class LunchDecideController {
 
         lunchDecideService.decideCategory();
         lunchDecideService.decideLunch();
+
+        outputResultPhrase();
     }
 }
