@@ -1,6 +1,7 @@
 package menu;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class Output {
@@ -13,6 +14,7 @@ public class Output {
     public static final String BRACKET_CLOSE = " ]";
     public static final String SEPARATOR = " | ";
     public static final String DAY_TITLE = "구분";
+    public static final String CATEGORY_TITLE = "카테고리";
 
 
     public static void outputStartPhrase() {
@@ -37,6 +39,14 @@ public class Output {
                 .collect(Collectors.joining(SEPARATOR));
 
         System.out.println(BRACKET_OPEN + DAY_TITLE + SEPARATOR + result + BRACKET_CLOSE);
+    }
+
+    public static void outputCategories(List<Category> categories) {
+        String result = categories.stream()
+                .map(Category::getName)
+                .collect(Collectors.joining(SEPARATOR));
+
+        System.out.println(BRACKET_OPEN + CATEGORY_TITLE + SEPARATOR + result + BRACKET_CLOSE);
     }
 
     private Output() {

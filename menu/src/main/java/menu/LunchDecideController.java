@@ -1,5 +1,7 @@
 package menu;
 
+import java.util.List;
+
 import static menu.Input.inputCoachName;
 import static menu.Input.inputHateMenu;
 import static menu.Output.*;
@@ -19,10 +21,12 @@ public class LunchDecideController {
             lunchDecideService.addHateMenu(coachName, hateMenu);
         }
 
-        lunchDecideService.decideCategory();
+        List<Category> categories = lunchDecideService.decideCategory();
         lunchDecideService.decideLunch();
 
         outputResultPhrase();
         outputDays();
+        outputCategories(categories);
+
     }
 }
