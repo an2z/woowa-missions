@@ -15,7 +15,7 @@ public class Output {
     public static final String SEPARATOR = " | ";
     public static final String DAY_TITLE = "구분";
     public static final String CATEGORY_TITLE = "카테고리";
-
+    public static final String END = "추천을 완료했습니다.";
 
     public static void outputStartPhrase() {
         System.out.println(START);
@@ -57,6 +57,10 @@ public class Output {
             String lunchMenus = String.join(SEPARATOR, coach.getLunchMenus());
             System.out.println(BRACKET_OPEN + name + SEPARATOR + lunchMenus + BRACKET_CLOSE);
         }
+    }
+
+    public static void outputEndPhrase() {
+        System.out.println("\n" + END);
     }
 
     private Output() {

@@ -28,5 +28,6 @@ public class LunchDecideController {
         outputDays();
         outputCategories(categories);
         outputLunchMenu(lunchTeam);
+        outputEndPhrase();
     }
 }
