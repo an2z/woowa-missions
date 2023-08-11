@@ -2,9 +2,7 @@ package menu;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class LunchDecideService {
@@ -39,9 +37,15 @@ public class LunchDecideService {
     }
 
     public List<Category> decideCategory() {
+        Map<Integer, Integer> map = new LinkedHashMap<>();
+
         while (categories.size() < DAY_SIZE) {
             int key = Randoms.pickNumberInRange(1, 5);
-            categories.add(Category.find(key));
+            map.put(key, map.getOrDefault(key, 0) + 1);
+
+            if (map.get(key) <= 2) {
+                categories.add(Category.find(key));
+            }
         }
 
         return categories;
