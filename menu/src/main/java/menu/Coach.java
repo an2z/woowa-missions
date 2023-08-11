@@ -41,9 +41,17 @@ public class Coach {
 
     public void addLunchMenu(List<Category> categories) {
         for (Category category : categories) {
-            lunchMenus.add(category.pickMenu());
+            lunchMenus.add(pickUniqueMenu(category));
         }
-        //System.out.println("이름 : " + name + " 메뉴 : " + lunchMenus);
+    }
+
+    private String pickUniqueMenu(Category category) {
+        String menu;
+        do {
+            menu = category.pickMenu();
+        } while (lunchMenus.contains(menu));
+
+        return menu;
     }
 
     public String getName() {
