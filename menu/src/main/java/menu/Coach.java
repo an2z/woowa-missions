@@ -41,17 +41,21 @@ public class Coach {
 
     public void addLunchMenu(List<Category> categories) {
         for (Category category : categories) {
-            lunchMenus.add(pickUniqueMenu(category));
+            lunchMenus.add(pickUniqueAndLikeMenu(category));
         }
     }
 
-    private String pickUniqueMenu(Category category) {
+    private String pickUniqueAndLikeMenu(Category category) {
         String menu;
         do {
             menu = category.pickMenu();
-        } while (lunchMenus.contains(menu));
+        } while (isHateMenu(menu) && lunchMenus.contains(menu));
 
         return menu;
+    }
+
+    private boolean isHateMenu(String menu) {
+        return hateMenus.contains(menu);
     }
 
     public String getName() {
