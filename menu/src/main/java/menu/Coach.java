@@ -49,13 +49,17 @@ public class Coach {
         String menu;
         do {
             menu = category.pickMenu();
-        } while (isHateMenu(menu) && lunchMenus.contains(menu));
+        } while (isHateMenu(menu) && isNotUniqueMenu(menu));
 
         return menu;
     }
 
     private boolean isHateMenu(String menu) {
         return hateMenus.contains(menu);
+    }
+
+    private boolean isNotUniqueMenu(String menu) {
+        return lunchMenus.contains(menu);
     }
 
     public String getName() {
