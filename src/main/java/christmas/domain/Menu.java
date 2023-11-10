@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.util.Arrays;
+
 public enum Menu {
     MUSHROOM_SOUP("양송이수프", Category.APPETIZER, 6000),
     TAPAS("타파스", Category.APPETIZER, 5500),
@@ -17,6 +19,8 @@ public enum Menu {
     RED_WINE("레드와인", Category.DRINK, 60000),
     CHAMPAGNE("샴페인", Category.DRINK, 25000);
 
+    private static final String ORDER_ERROR_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
+
     private final String name;
     private final Category category;
     private final int price;
@@ -28,8 +32,10 @@ public enum Menu {
     }
 
     public static Menu find(String name) {
-        //TODO 실제 메뉴를 찾는 기능 구현
-        return null;
+        return Arrays.stream(values())
+                .filter(menu -> menu.name.equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(ORDER_ERROR_MESSAGE));
     }
 
     public enum Category {
