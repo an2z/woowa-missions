@@ -1,18 +1,18 @@
 package christmas.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class MenuTest {
     @DisplayName("메뉴판에 없는 메뉴일 경우 예외가 발생한다.")
     @Test
     void notFoundMenuEx() {
-        Assertions.assertThatThrownBy(() -> Menu.find("없는메뉴"))
+        assertThatThrownBy(() -> Menu.find("없는메뉴"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -26,7 +26,7 @@ class MenuTest {
     @ParameterizedTest
     void findMenu(String name, Menu expected) {
         Menu menu = Menu.find(name);
-        Assertions.assertThat(menu).isEqualTo(expected);
+        assertThat(menu).isEqualTo(expected);
     }
 
     @DisplayName("음료 메뉴인지 확인한다.")
@@ -38,6 +38,14 @@ class MenuTest {
     @ParameterizedTest
     void checkDrink(Menu menu, boolean expected) {
         boolean result = menu.isDrink();
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("양송이수프 개수에 따른 금액을 구한다.")
+    @CsvSource({"1, 6000", "2, 12000", "3, 18000"})
+    @ParameterizedTest
+    void calculatePrice(int count, int expected) {
+        int result = Menu.MUSHROOM_SOUP.calculatePrice(count);
         assertThat(result).isEqualTo(expected);
     }
 }

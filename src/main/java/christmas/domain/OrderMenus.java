@@ -38,4 +38,11 @@ public class OrderMenus {
                 .filter(OrderMenu::isDrinkMenu)
                 .count();
     }
+
+    public int calculateTotalPrice() {
+        return menus.stream()
+                .map(OrderMenu::calculatePrice)
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
 }

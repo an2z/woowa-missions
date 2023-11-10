@@ -42,6 +42,10 @@ public enum Menu {
         return category == Category.DRINK;
     }
 
+    public int calculatePrice(int count) {
+        return price * count;
+    }
+
     public enum Category {
         APPETIZER, MAIN, DESSERT, DRINK
     }

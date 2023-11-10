@@ -27,6 +27,10 @@ public class OrderMenu {
         return menu.isDrink();
     }
 
+    public int calculatePrice() {
+        return menu.calculatePrice(count);
+    }
+
     public int getCount() {
         return count;
     }
