@@ -27,6 +27,11 @@ public enum Menu {
         this.price = price;
     }
 
+    public static Menu find(String name) {
+        //TODO 실제 메뉴를 찾는 기능 구현
+        return null;
+    }
+
     public enum Category {
         APPETIZER, MAIN, DESSERT, DRINK
     }
