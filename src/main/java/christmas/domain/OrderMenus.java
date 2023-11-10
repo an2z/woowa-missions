@@ -10,6 +10,7 @@ public class OrderMenus {
 
     public OrderMenus(List<OrderMenu> menus) {
         validateTotalCount(menus);
+        validateMenuCategory(menus);
         this.menus = menus;
     }
 
@@ -24,5 +25,17 @@ public class OrderMenus {
                 .map(OrderMenu::getCount)
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    private void validateMenuCategory(List<OrderMenu> menus) {
+        if (calculateDrinkCount(menus) == menus.size()) {
+            throw new IllegalArgumentException(ORDER_ERROR_MESSAGE);
+        }
+    }
+
+    private long calculateDrinkCount(List<OrderMenu> menus) {
+        return menus.stream()
+                .filter(OrderMenu::isDrinkMenu)
+                .count();
     }
 }

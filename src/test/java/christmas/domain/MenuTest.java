@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class MenuTest {
     @DisplayName("메뉴판에 없는 메뉴일 경우 예외가 발생한다.")
     @Test
@@ -25,5 +27,17 @@ class MenuTest {
     void findMenu(String name, Menu expected) {
         Menu menu = Menu.find(name);
         Assertions.assertThat(menu).isEqualTo(expected);
+    }
+
+    @DisplayName("음료 메뉴인지 확인한다.")
+    @CsvSource({
+            "ZERO_COLA, true",
+            "RED_WINE, true",
+            "CHOCO_CAKE, false"
+    })
+    @ParameterizedTest
+    void checkDrink(Menu menu, boolean expected) {
+        boolean result = menu.isDrink();
+        assertThat(result).isEqualTo(expected);
     }
 }

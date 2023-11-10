@@ -38,6 +38,10 @@ public enum Menu {
                 .orElseThrow(() -> new IllegalArgumentException(ORDER_ERROR_MESSAGE));
     }
 
+    public boolean isDrink() {
+        return category == Category.DRINK;
+    }
+
     public enum Category {
         APPETIZER, MAIN, DESSERT, DRINK
     }

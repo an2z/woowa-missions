@@ -19,4 +19,17 @@ class OrderMenusTest {
         Assertions.assertThatThrownBy(() -> new OrderMenus(menus))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("음료만 주문하는 경우 예외가 발생한다.")
+    @Test
+    void onlyDrinkEx() {
+        //given
+        OrderMenu drinkMenu1 = new OrderMenu(Menu.RED_WINE, 1);
+        OrderMenu drinkMenu2 = new OrderMenu(Menu.CHAMPAGNE, 1);
+        List<OrderMenu> menus = List.of(drinkMenu1, drinkMenu2);
+
+        //when,then
+        Assertions.assertThatThrownBy(() -> new OrderMenus(menus))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
