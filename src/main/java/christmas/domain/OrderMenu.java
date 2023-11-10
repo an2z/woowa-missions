@@ -22,4 +22,8 @@ public class OrderMenu {
             throw new IllegalArgumentException(ORDER_ERROR_MESSAGE);
         }
     }
+
+    public int getCount() {
+        return count;
+    }
 }
