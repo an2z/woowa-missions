@@ -6,4 +6,8 @@ public class OutputView {
     public void showGreeting() {
         System.out.println(GREETING);
     }
+
+    public static void showError(String message) {
+        System.out.println(message);
+    }
 }
