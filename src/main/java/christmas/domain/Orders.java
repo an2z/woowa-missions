@@ -48,6 +48,14 @@ public class Orders {
                 .sum();
     }
 
+    public int countDessertMenu() {
+        return orders.stream()
+                .filter(Order::isDessertMenu)
+                .map(Order::getCount)
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
     public int calculateTotalPrice() {
         return orders.stream()
                 .map(Order::calculatePrice)

@@ -40,4 +40,24 @@ class WeekEventTest {
         //then
         assertThat(discount).isEqualTo(expected);
     }
+
+    @DisplayName("방문 요일이 평일일 경우 주문한 디저트 메뉴 개수에 따라 할인 금액을 계산한다.")
+    @CsvSource({
+            "1, 2023",
+            "2, 4046",
+            "3, 6069"
+    })
+    @ParameterizedTest
+    void calculateWeekdayDiscount(int count, int expected) {
+        //given
+        Date weekday = new Date(4);
+        Orders orders = new Orders(List.of(new Order(Menu.ICE_CREAM, count)));
+        Reservation reservation = new Reservation(weekday, orders);
+
+        //when
+        int discount = weekEvent.calculateDiscount(reservation);
+
+        //then
+        assertThat(discount).isEqualTo(expected);
+    }
 }

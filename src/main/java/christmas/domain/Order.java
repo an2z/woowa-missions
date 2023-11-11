@@ -31,6 +31,10 @@ public class Order {
         return menu.isMain();
     }
 
+    public boolean isDessertMenu() {
+        return menu.isDessert();
+    }
+
     public int calculatePrice() {
         return menu.calculatePrice(count);
     }

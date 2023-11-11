@@ -34,6 +34,10 @@ public class Reservation {
         return orders.countMainMenu();
     }
 
+    public int countDessertMenu() {
+        return orders.countDessertMenu();
+    }
+
     public int getDayGap(int day) {
         return visitDate.getDayGap(day);
     }

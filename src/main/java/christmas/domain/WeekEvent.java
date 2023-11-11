@@ -22,8 +22,7 @@ public class WeekEvent implements Event {
         if (reservation.isVisitOnWeekend()) {
             return DEFAULT_DISCOUNT * reservation.countMainMenu();
         }
-        //TODO 평일 할인 계산 로직 구현
-        return DEFAULT_DISCOUNT;
+        return DEFAULT_DISCOUNT * reservation.countDessertMenu();
     }
 
     @Override
