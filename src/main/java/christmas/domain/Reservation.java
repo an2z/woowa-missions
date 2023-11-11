@@ -3,8 +3,6 @@ package christmas.domain;
 import java.util.List;
 
 public class Reservation {
-    private static final int GIFT_CONDITION = 120000;
-
     private final Date visitDate;
     private final Orders orders;
 
