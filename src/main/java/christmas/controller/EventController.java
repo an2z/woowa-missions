@@ -1,8 +1,8 @@
 package christmas.controller;
 
 import christmas.domain.Date;
-import christmas.domain.OrderMenu;
-import christmas.domain.OrderMenus;
+import christmas.domain.Order;
+import christmas.domain.Orders;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -17,19 +17,16 @@ public class EventController {
     public void run() {
         outputView.showGreeting();
         Date date = new Date(inputView.readDate());
-        OrderMenus orderMenus = makeOrderMenus(inputView.readOrderMenus());
+        Orders orders = makeOrders(inputView.readOrderInfo());
     }
 
-    private OrderMenus makeOrderMenus(List<String> input) {
-        return new OrderMenus(makeOrderMenu(input));
-    }
-
-    private List<OrderMenu> makeOrderMenu(List<String> input) {
-        return input.stream()
+    private Orders makeOrders(List<String> orderInfo) {
+        List<Order> orders = orderInfo.stream()
                 .map(menu -> {
                     String[] result = menu.split(ORDER_INFO_SEPARATOR);
-                    return OrderMenu.from(result[0], Integer.parseInt(result[1]));
+                    return Order.from(result[0], Integer.parseInt(result[1]));
                 })
                 .toList();
+        return new Orders(orders);
     }
 }

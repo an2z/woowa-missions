@@ -18,8 +18,8 @@ class GiftEventTest {
     void giftMenu(int count, boolean expected) {
         // given
         Date visitDate = new Date(1);
-        OrderMenus orderMenus = new OrderMenus(List.of(new OrderMenu(Menu.BBQ_RIBS, count)));
-        Reservation reservation = new Reservation(visitDate, orderMenus);
+        Orders orders = new Orders(List.of(new Order(Menu.BBQ_RIBS, count)));
+        Reservation reservation = new Reservation(visitDate, orders);
 
         // when
         Optional<Menu> giftMenu = giftEvent.getGiftMenu(reservation);

@@ -6,17 +6,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class OrderMenusTest {
+class OrdersTest {
     @DisplayName("한번에 주문하는 메뉴 개수가 20개가 넘을 경우 예외가 발생한다.")
     @Test
     void totalCountEx() {
         //given
-        OrderMenu orderMenu1 = new OrderMenu(Menu.TAPAS, 10);
-        OrderMenu orderMenu2 = new OrderMenu(Menu.ICE_CREAM, 20);
-        List<OrderMenu> menus = List.of(orderMenu1, orderMenu2);
+        Order order1 = new Order(Menu.TAPAS, 10);
+        Order order2 = new Order(Menu.ICE_CREAM, 20);
+        List<Order> orders = List.of(order1, order2);
 
         //when,then
-        Assertions.assertThatThrownBy(() -> new OrderMenus(menus))
+        Assertions.assertThatThrownBy(() -> new Orders(orders))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -24,12 +24,12 @@ class OrderMenusTest {
     @Test
     void onlyDrinkEx() {
         //given
-        OrderMenu drinkMenu1 = new OrderMenu(Menu.RED_WINE, 1);
-        OrderMenu drinkMenu2 = new OrderMenu(Menu.CHAMPAGNE, 1);
-        List<OrderMenu> menus = List.of(drinkMenu1, drinkMenu2);
+        Order drinkOrder1 = new Order(Menu.RED_WINE, 1);
+        Order drinkOrder2 = new Order(Menu.CHAMPAGNE, 1);
+        List<Order> orders = List.of(drinkOrder1, drinkOrder2);
 
         //when,then
-        Assertions.assertThatThrownBy(() -> new OrderMenus(menus))
+        Assertions.assertThatThrownBy(() -> new Orders(orders))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
