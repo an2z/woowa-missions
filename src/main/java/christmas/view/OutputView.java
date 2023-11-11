@@ -1,6 +1,9 @@
 package christmas.view;
 
+import christmas.domain.Menu;
 import christmas.domain.Reservation;
+
+import java.util.Optional;
 
 public class OutputView {
     private static final String GREETING = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
@@ -10,6 +13,9 @@ public class OutputView {
     private static final String LINE_BREAK = "\n";
     private static final String ORDER_MENU_FORMAT = "%s %d개";
     private static final String PRICE_FORMAT = "%,d원";
+    private static final String GIFT_MENU = "<증정 메뉴>";
+    private static final String GIFT_MENU_COUNT = " 1개";
+    private static final String NONE = "없음";
 
     public void showGreeting() {
         System.out.println(GREETING);
@@ -32,5 +38,14 @@ public class OutputView {
         System.out.println(TOTAL_ORDER_PRICE);
         System.out.println(String.format(PRICE_FORMAT, reservation.getTotalOrderPrice()));
         System.out.print(LINE_BREAK);
+    }
+
+    public void showGift(Optional<Menu> giftMenu) {
+        System.out.println(GIFT_MENU);
+        String output = NONE;
+        if (giftMenu.isPresent()) {
+            output = giftMenu.get().getName() + GIFT_MENU_COUNT;
+        }
+        System.out.println(output);
     }
 }
