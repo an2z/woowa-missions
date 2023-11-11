@@ -22,6 +22,10 @@ public class Reservation {
         return visitDate.isEventPeriod(startDate, endDate);
     }
 
+    public boolean isSpecialDay(List<Integer> specialDays) {
+        return visitDate.isSpecialDay(specialDays);
+    }
+
     public int getDayGap(int day) {
         return visitDate.getDayGap(day);
     }

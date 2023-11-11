@@ -13,7 +13,7 @@ public class EventStore {
         LocalDate startDate = LocalDate.of(2023, 12, 1);
         events.add(new ChristmasEvent(startDate, christmasDate));
         events.add(new WeekEvent(startDate, lastDate));
-        events.add(new SpecialEvent(startDate, lastDate));
+        events.add(new SpecialEvent(startDate, lastDate, List.of(3, 10, 17, 24, 25, 31)));
     }
 
     public List<Event> findOngoingEvents(LocalDate visitDate) {

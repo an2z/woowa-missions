@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Date {
@@ -22,6 +23,10 @@ public class Date {
 
     public boolean isEventPeriod(int startDate, int endDate) {
         return day >= startDate && day <= endDate;
+    }
+
+    public boolean isSpecialDay(List<Integer> specialDays) {
+        return specialDays.contains(day);
     }
 
     public int getDayGap(int day) {
