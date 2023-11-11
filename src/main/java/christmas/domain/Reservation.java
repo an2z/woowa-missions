@@ -1,6 +1,8 @@
 package christmas.domain;
 
 public class Reservation {
+    private static final int GIFT_CONDITION = 120000;
+
     private final Date visitDate;
     private final OrderMenus orderMenus;
 
@@ -14,5 +16,9 @@ public class Reservation {
     public int calculateTotalOrderPrice() {
         totalOrderPrice = orderMenus.calculateTotalPrice();
         return totalOrderPrice;
+    }
+
+    public boolean isEventPeriod(int startDate, int endDate) {
+        return visitDate.isEventPeriod(startDate, endDate);
     }
 }

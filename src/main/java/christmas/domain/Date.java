@@ -20,6 +20,10 @@ public class Date {
         }
     }
 
+    public boolean isEventPeriod(int startDate, int endDate) {
+        return day >= startDate && day <= endDate;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
