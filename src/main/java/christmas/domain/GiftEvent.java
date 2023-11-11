@@ -39,15 +39,11 @@ public class GiftEvent implements Event {
         return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
     }
 
+    @Override
     public int calculateDiscount(Reservation reservation) {
         if (reservation.isLargerOrderPrice(MIN_ORDER_PRICE)) {
             return giftMenu.getPrice();
         }
         return NO_DISCOUNT;
-    }
-
-    @Override
-    public int calculateDiscount() {
-        return 0;
     }
 }

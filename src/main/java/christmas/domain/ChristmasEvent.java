@@ -19,13 +19,9 @@ public class ChristmasEvent implements Event {
         return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
     }
 
+    @Override
     public int calculateDiscount(Reservation reservation) {
         int dayGap = reservation.getDayGap(startDate.getDayOfMonth());
         return DEFAULT_DISCOUNT + EXTRA_DISCOUNT * dayGap;
-    }
-
-    @Override
-    public int calculateDiscount() {
-        return 0;
     }
 }

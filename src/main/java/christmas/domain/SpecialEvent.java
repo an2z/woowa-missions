@@ -17,19 +17,16 @@ public class SpecialEvent implements Event {
         this.specialDays = specialDays;
     }
 
+    @Override
     public boolean isDateWithinPeriod(LocalDate visitDate) {
         return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
     }
 
+    @Override
     public int calculateDiscount(Reservation reservation) {
         if (reservation.isSpecialDay(specialDays)) {
             return DEFAULT_DISCOUNT;
         }
         return NO_DISCOUNT;
-    }
-
-    @Override
-    public int calculateDiscount() {
-        return 0;
     }
 }

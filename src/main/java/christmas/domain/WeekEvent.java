@@ -18,15 +18,11 @@ public class WeekEvent implements Event {
         return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
     }
 
+    @Override
     public int calculateDiscount(Reservation reservation) {
         if (reservation.isVisitOnWeekend()) {
             return DEFAULT_DISCOUNT * reservation.countMainMenu();
         }
         return DEFAULT_DISCOUNT * reservation.countDessertMenu();
-    }
-
-    @Override
-    public int calculateDiscount() {
-        return 0;
     }
 }

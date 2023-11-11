@@ -5,5 +5,5 @@ import java.time.LocalDate;
 public interface Event {
     boolean isDateWithinPeriod(LocalDate visitDate);
 
-    int calculateDiscount();
+    int calculateDiscount(Reservation reservation);
 }
