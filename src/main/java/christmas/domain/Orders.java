@@ -45,4 +45,8 @@ public class Orders {
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
 }

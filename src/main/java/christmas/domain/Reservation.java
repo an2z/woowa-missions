@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.util.List;
+
 public class Reservation {
     private static final int GIFT_CONDITION = 120000;
 
@@ -20,5 +22,17 @@ public class Reservation {
 
     public boolean isEventPeriod(int startDate, int endDate) {
         return visitDate.isEventPeriod(startDate, endDate);
+    }
+
+    public Date getVisitDate() {
+        return visitDate;
+    }
+
+    public List<Order> getOrders() {
+        return orders.getOrders();
+    }
+
+    public int getTotalOrderPrice() {
+        return totalOrderPrice;
     }
 }

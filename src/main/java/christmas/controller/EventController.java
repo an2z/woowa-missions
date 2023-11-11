@@ -3,6 +3,7 @@ package christmas.controller;
 import christmas.domain.Date;
 import christmas.domain.Order;
 import christmas.domain.Orders;
+import christmas.domain.Reservation;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -18,6 +19,10 @@ public class EventController {
         outputView.showGreeting();
         Date date = new Date(inputView.readDate());
         Orders orders = makeOrders(inputView.readOrderInfo());
+
+        Reservation reservation = new Reservation(date, orders);
+        reservation.calculateTotalOrderPrice();
+        outputView.showReservationInfo(reservation);
     }
 
     private Orders makeOrders(List<String> orderInfo) {

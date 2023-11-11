@@ -46,6 +46,10 @@ public enum Menu {
         return price * count;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public enum Category {
         APPETIZER, MAIN, DESSERT, DRINK
     }

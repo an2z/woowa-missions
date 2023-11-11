@@ -36,4 +36,8 @@ public class Date {
     public int hashCode() {
         return Objects.hash(day);
     }
+
+    public int getDay() {
+        return day;
+    }
 }
