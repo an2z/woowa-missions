@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -27,5 +28,21 @@ class ChristmasEventTest {
         LocalDate visitDate = LocalDate.of(2023, 12, day);
         boolean result = christmasEvent.isDateWithinPeriod(visitDate);
         assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("방문 날짜에 따른 할인 금액을 계산한다.")
+    @CsvSource({"1, 1000", "2, 1100", "3, 1200", "25, 3400"})
+    @ParameterizedTest
+    void calculateDiscount(int day, int expected) {
+        //given
+        Date visitDate = new Date(day);
+        Orders orders = new Orders(List.of(new Order(Menu.TAPAS, 1)));
+        Reservation reservation = new Reservation(visitDate, orders);
+
+        //when
+        int discount = christmasEvent.calculateDiscount(reservation);
+
+        //then
+        assertThat(discount).isEqualTo(expected);
     }
 }

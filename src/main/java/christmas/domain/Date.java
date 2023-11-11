@@ -24,6 +24,10 @@ public class Date {
         return day >= startDate && day <= endDate;
     }
 
+    public int getDayGap(int day) {
+        return this.day - day;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

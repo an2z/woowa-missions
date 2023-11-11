@@ -24,6 +24,10 @@ public class Reservation {
         return visitDate.isEventPeriod(startDate, endDate);
     }
 
+    public int getDayGap(int day) {
+        return visitDate.getDayGap(day);
+    }
+
     public Date getVisitDate() {
         return visitDate;
     }
