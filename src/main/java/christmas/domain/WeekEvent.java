@@ -12,6 +12,11 @@ public class WeekEvent implements Event {
     }
 
     @Override
+    public boolean isDateWithinPeriod(LocalDate visitDate) {
+        return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
+    }
+
+    @Override
     public int calculateDiscount() {
         return 0;
     }

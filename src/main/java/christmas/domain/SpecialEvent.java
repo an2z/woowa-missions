@@ -11,6 +11,10 @@ public class SpecialEvent implements Event {
         this.endDate = endDate;
     }
 
+    public boolean isDateWithinPeriod(LocalDate visitDate) {
+        return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
+    }
+
     @Override
     public int calculateDiscount() {
         return 0;
