@@ -42,6 +42,10 @@ public enum Menu {
         return category == Category.DRINK;
     }
 
+    public boolean isMain() {
+        return category == Category.MAIN;
+    }
+
     public int calculatePrice(int count) {
         return price * count;
     }

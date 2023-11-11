@@ -26,6 +26,14 @@ public class Reservation {
         return visitDate.isSpecialDay(specialDays);
     }
 
+    public boolean isVisitOnWeekend() {
+        return visitDate.isWeekend();
+    }
+
+    public int countMainMenu() {
+        return orders.countMainMenu();
+    }
+
     public int getDayGap(int day) {
         return visitDate.getDayGap(day);
     }

@@ -39,6 +39,15 @@ public class Orders {
                 .count();
     }
 
+    public int countMainMenu() {
+        //TODO 티본스테이크-2, 바비큐립-1 주문 시 주말 할인이 들어가는 메인 메뉴의 개수가 3개? 2개? 우선 3개로 처리
+        return orders.stream()
+                .filter(Order::isMainMenu)
+                .map(Order::getCount)
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
     public int calculateTotalPrice() {
         return orders.stream()
                 .map(Order::calculatePrice)

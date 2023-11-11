@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
@@ -27,6 +29,11 @@ public class Date {
 
     public boolean isSpecialDay(List<Integer> specialDays) {
         return specialDays.contains(day);
+    }
+
+    public boolean isWeekend() {
+        DayOfWeek dayOfWeek = LocalDate.of(2023, 12, day).getDayOfWeek();
+        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 
     public int getDayGap(int day) {
