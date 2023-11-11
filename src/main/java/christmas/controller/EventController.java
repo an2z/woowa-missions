@@ -1,7 +1,6 @@
 package christmas.controller;
 
 import christmas.domain.Date;
-import christmas.domain.GiftEvent;
 import christmas.domain.Order;
 import christmas.domain.Orders;
 import christmas.domain.Reservation;
@@ -15,7 +14,6 @@ public class EventController {
 
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
-    private final GiftEvent giftEvent = new GiftEvent();
 
     public void run() {
         outputView.showGreeting();
@@ -25,8 +23,6 @@ public class EventController {
         Reservation reservation = new Reservation(date, orders);
         reservation.calculateTotalOrderPrice();
         outputView.showReservationInfo(reservation);
-
-        outputView.showGift(giftEvent.getGiftMenu(reservation));
     }
 
     private Orders makeOrders(List<String> orderInfo) {

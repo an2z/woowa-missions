@@ -58,6 +58,10 @@ public enum Menu {
         return name;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
     public enum Category {
         APPETIZER, MAIN, DESSERT, DRINK
     }

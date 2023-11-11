@@ -26,6 +26,10 @@ public class Reservation {
         return visitDate.isSpecialDay(specialDays);
     }
 
+    public boolean isLargerOrderPrice(int minOrderPrice) {
+        return totalOrderPrice > minOrderPrice;
+    }
+
     public boolean isVisitOnWeekend() {
         return visitDate.isWeekend();
     }

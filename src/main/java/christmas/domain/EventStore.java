@@ -14,6 +14,7 @@ public class EventStore {
         events.add(new ChristmasEvent(startDate, christmasDate));
         events.add(new WeekEvent(startDate, lastDate));
         events.add(new SpecialEvent(startDate, lastDate, List.of(3, 10, 17, 24, 25, 31)));
+        events.add(new GiftEvent(startDate, lastDate, Menu.CHAMPAGNE));
     }
 
     public List<Event> findOngoingEvents(LocalDate visitDate) {

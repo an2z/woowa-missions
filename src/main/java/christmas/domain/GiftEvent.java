@@ -1,11 +1,23 @@
 package christmas.domain;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
-public class GiftEvent {
+public class GiftEvent implements Event {
     private static final int START_DATE = 1;
     private static final int END_DATE = 31;
-    private static final int GIFT_CONDITION = 120000;
+    private static final int NO_DISCOUNT = 0;
+    private static final int MIN_ORDER_PRICE = 120000;
+
+    private final LocalDate startDate;
+    private final LocalDate endDate;
+    private final Menu giftMenu;
+
+    public GiftEvent(LocalDate startDate, LocalDate endDate, Menu giftMenu) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.giftMenu = giftMenu;
+    }
 
     public Optional<Menu> getGiftMenu(Reservation reservation) {
         if (isEventPeriod(reservation) && isGiftCondition(reservation)) {
@@ -19,6 +31,23 @@ public class GiftEvent {
     }
 
     private boolean isGiftCondition(Reservation reservation) {
-        return reservation.calculateTotalOrderPrice() >= GIFT_CONDITION;
+        return reservation.calculateTotalOrderPrice() >= MIN_ORDER_PRICE;
+    }
+
+    @Override
+    public boolean isDateWithinPeriod(LocalDate visitDate) {
+        return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
+    }
+
+    public int calculateDiscount(Reservation reservation) {
+        if (reservation.isLargerOrderPrice(MIN_ORDER_PRICE)) {
+            return giftMenu.getPrice();
+        }
+        return NO_DISCOUNT;
+    }
+
+    @Override
+    public int calculateDiscount() {
+        return 0;
     }
 }

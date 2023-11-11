@@ -13,7 +13,7 @@ class EventStoreTest {
     EventStore eventStore = new EventStore();
 
     @DisplayName("방문 날짜에 진행 중인 이벤트를 조회한다.")
-    @CsvSource({"1, 3", "25, 3", "26, 2"})
+    @CsvSource({"1, 4", "25, 4", "26, 3"})
     @ParameterizedTest
     void findOngoingEvents(int day, int expected) {
         LocalDate visitDate = LocalDate.of(2023, 12, day);
