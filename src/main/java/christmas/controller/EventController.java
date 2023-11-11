@@ -10,5 +10,6 @@ public class EventController {
     public void run() {
         outputView.showGreeting();
         inputView.readDate();
+        inputView.readOrderMenus();
     }
 }
