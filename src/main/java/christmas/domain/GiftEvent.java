@@ -11,11 +11,13 @@ public class GiftEvent implements Event {
 
     private final LocalDate startDate;
     private final LocalDate endDate;
+    private final EventType eventType;
     private final Menu giftMenu;
 
-    public GiftEvent(LocalDate startDate, LocalDate endDate, Menu giftMenu) {
+    public GiftEvent(LocalDate startDate, LocalDate endDate, EventType eventType, Menu giftMenu) {
         this.startDate = startDate;
         this.endDate = endDate;
+        this.eventType = eventType;
         this.giftMenu = giftMenu;
     }
 

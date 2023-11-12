@@ -8,10 +8,12 @@ public class ChristmasEvent implements Event {
 
     private final LocalDate startDate;
     private final LocalDate endDate;
+    private final EventType eventType;
 
-    public ChristmasEvent(LocalDate startDate, LocalDate endDate) {
+    public ChristmasEvent(LocalDate startDate, LocalDate endDate, EventType eventType) {
         this.startDate = startDate;
         this.endDate = endDate;
+        this.eventType = eventType;
     }
 
     @Override

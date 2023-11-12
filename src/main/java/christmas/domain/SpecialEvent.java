@@ -9,11 +9,13 @@ public class SpecialEvent implements Event {
 
     private final LocalDate startDate;
     private final LocalDate endDate;
+    private final EventType eventType;
     private final List<Integer> specialDays;
 
-    public SpecialEvent(LocalDate startDate, LocalDate endDate, List<Integer> specialDays) {
+    public SpecialEvent(LocalDate startDate, LocalDate endDate, EventType eventType, List<Integer> specialDays) {
         this.startDate = startDate;
         this.endDate = endDate;
+        this.eventType = eventType;
         this.specialDays = specialDays;
     }
 
