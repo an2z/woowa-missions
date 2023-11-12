@@ -48,4 +48,11 @@ public class EventPlanner {
         }
         return Optional.empty();
     }
+
+    public int calculateTotalBenefit() {
+        return benefitsByEvent.values()
+                .stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
 }

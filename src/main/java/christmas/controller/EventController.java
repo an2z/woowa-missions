@@ -30,6 +30,8 @@ public class EventController {
         Map<Event, Integer> benefitsByEvent = eventPlanner.findBenefitsByEvent(reservation);
         outputView.showGift(eventPlanner.findGiftMenu());
         outputView.showBenefits(benefitsByEvent);
+
+        eventPlanner.calculateTotalBenefit();
     }
 
     private Orders makeOrders(List<String> orderInfo) {
