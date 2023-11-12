@@ -20,6 +20,8 @@ public class OutputView {
     private static final String NONE = "없음";
     private static final String BENEFITS = "<혜택 내역>";
     private static final String BENEFITS_FORMAT = "%s: -%,d원";
+    private static final String TOTAL_BENEFITS = "<총혜택 금액>";
+    private static final String TOTAL_BENEFITS_FORMAT = "-%,d원";
 
     public void showGreeting() {
         System.out.println(GREETING);
@@ -56,13 +58,19 @@ public class OutputView {
     public void showBenefits(Map<Event, Integer> benefitsByEvent) {
         System.out.println(BENEFITS);
         if (benefitsByEvent.isEmpty()) {
-            System.out.println(NONE);
+            System.out.println(NONE + LINE_BREAK);
             return;
         }
         for (Map.Entry<Event, Integer> entry : benefitsByEvent.entrySet()) {
             String eventName = entry.getKey().getEventName();
             int benefits = entry.getValue();
-            System.out.println(String.format(BENEFITS_FORMAT, eventName, benefits));
+            System.out.printf(BENEFITS_FORMAT + LINE_BREAK, eventName, benefits);
         }
+        System.out.print(LINE_BREAK);
+    }
+
+    public void showTotalBenefits(int totalBenefits) {
+        System.out.println(TOTAL_BENEFITS);
+        System.out.printf(TOTAL_BENEFITS_FORMAT + LINE_BREAK, totalBenefits);
     }
 }
