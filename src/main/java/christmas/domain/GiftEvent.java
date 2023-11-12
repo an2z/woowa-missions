@@ -53,4 +53,8 @@ public class GiftEvent implements Event {
     public String getEventName() {
         return eventType.getName();
     }
+
+    public Menu getGiftMenu() {
+        return giftMenu;
+    }
 }

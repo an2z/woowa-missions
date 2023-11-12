@@ -29,6 +29,7 @@ public class EventController {
         outputView.showReservationInfo(reservation);
 
         Map<Event, Integer> benefitsByEvent = eventPlanner.findBenefitsByEvent(reservation);
+        eventPlanner.findGiftMenu();
         outputView.showBenefits(benefitsByEvent);
     }
 
