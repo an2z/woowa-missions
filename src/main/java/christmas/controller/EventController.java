@@ -25,7 +25,6 @@ public class EventController {
         Orders orders = makeOrders(inputView.readOrderInfo());
 
         Reservation reservation = new Reservation(date, orders);
-        reservation.calculateTotalOrderPrice();
         outputView.showReservationInfo(reservation);
 
         Map<Event, Integer> benefitsByEvent = eventPlanner.findBenefitsByEvent(reservation);
