@@ -22,6 +22,8 @@ public class OutputView {
     private static final String BENEFITS_FORMAT = "%s: -%,d원";
     private static final String TOTAL_BENEFITS = "<총혜택 금액>";
     private static final String TOTAL_BENEFITS_FORMAT = "-%,d원";
+    private static final String PAYMENT = "<할인 후 예상 결제 금액>";
+    private static final String PAYMENT_FORMAT = "%,d원";
 
     public void showGreeting() {
         System.out.println(GREETING);
@@ -71,6 +73,11 @@ public class OutputView {
 
     public void showTotalBenefits(int totalBenefits) {
         System.out.println(TOTAL_BENEFITS);
-        System.out.printf(TOTAL_BENEFITS_FORMAT + LINE_BREAK, totalBenefits);
+        System.out.printf(TOTAL_BENEFITS_FORMAT + LINE_BREAK + LINE_BREAK, totalBenefits);
+    }
+
+    public void showPayment(int payment) {
+        System.out.println(PAYMENT);
+        System.out.printf(PAYMENT_FORMAT, payment);
     }
 }

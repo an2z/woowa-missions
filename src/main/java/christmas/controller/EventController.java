@@ -32,7 +32,7 @@ public class EventController {
         outputView.showBenefits(benefitsByEvent);
         int totalBenefits = eventPlanner.calculateTotalBenefit();
         outputView.showTotalBenefits(totalBenefits);
-        reservation.calculatePayment(totalBenefits);
+        outputView.showPayment(reservation.calculatePayment(totalBenefits));
     }
 
     private Orders makeOrders(List<String> orderInfo) {
