@@ -6,10 +6,17 @@ import java.util.List;
 import java.util.Map;
 
 public class EventPlanner {
+    private static final int MIN_ORDER_PRICE = 10000;
+
     private final EventStore eventStore = new EventStore();
 
     public Map<Event, Integer> findBenefitsByEvent(Reservation reservation) {
         Map<Event, Integer> benefitsByEvent = new HashMap<>();
+
+        if (canNotParticipate(reservation)) {
+            return benefitsByEvent;
+        }
+
         for (Event event : findOngoingEvents(reservation)) {
             int discount = event.calculateDiscount(reservation);
             if (discount > 0) {
@@ -17,6 +24,10 @@ public class EventPlanner {
             }
         }
         return benefitsByEvent;
+    }
+
+    private boolean canNotParticipate(Reservation reservation) {
+        return !reservation.isLargerOrderPrice(MIN_ORDER_PRICE);
     }
 
     private List<Event> findOngoingEvents(Reservation reservation) {

@@ -55,6 +55,10 @@ public class OutputView {
 
     public void showBenefits(Map<Event, Integer> benefitsByEvent) {
         System.out.println(BENEFITS);
+        if (benefitsByEvent.isEmpty()) {
+            System.out.println(NONE);
+            return;
+        }
         for (Map.Entry<Event, Integer> entry : benefitsByEvent.entrySet()) {
             String eventName = entry.getKey().getEventName();
             int benefits = entry.getValue();
