@@ -1,8 +1,10 @@
 package christmas.view;
 
+import christmas.domain.Event;
 import christmas.domain.Menu;
 import christmas.domain.Reservation;
 
+import java.util.Map;
 import java.util.Optional;
 
 public class OutputView {
@@ -16,6 +18,8 @@ public class OutputView {
     private static final String GIFT_MENU = "<증정 메뉴>";
     private static final String GIFT_MENU_COUNT = " 1개";
     private static final String NONE = "없음";
+    private static final String BENEFITS = "<혜택 내역>";
+    private static final String BENEFITS_FORMAT = "%s: -%,d원";
 
     public void showGreeting() {
         System.out.println(GREETING);
@@ -47,5 +51,14 @@ public class OutputView {
             output = giftMenu.get().getName() + GIFT_MENU_COUNT;
         }
         System.out.println(output);
+    }
+
+    public void showBenefits(Map<Event, Integer> benefitsByEvent) {
+        System.out.println(BENEFITS);
+        for (Map.Entry<Event, Integer> entry : benefitsByEvent.entrySet()) {
+            String eventName = entry.getKey().getEventName();
+            int benefits = entry.getValue();
+            System.out.println(String.format(BENEFITS_FORMAT, eventName, benefits));
+        }
     }
 }

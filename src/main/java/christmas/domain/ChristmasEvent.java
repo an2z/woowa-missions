@@ -26,4 +26,9 @@ public class ChristmasEvent implements Event {
         int dayGap = reservation.getDayGap(startDate.getDayOfMonth());
         return DEFAULT_DISCOUNT + EXTRA_DISCOUNT * dayGap;
     }
+
+    @Override
+    public String getEventName() {
+        return eventType.getName();
+    }
 }

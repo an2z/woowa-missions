@@ -6,4 +6,6 @@ public interface Event {
     boolean isDateWithinPeriod(LocalDate visitDate);
 
     int calculateDiscount(Reservation reservation);
+
+    String getEventName();
 }

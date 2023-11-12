@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.Date;
+import christmas.domain.Event;
 import christmas.domain.EventPlanner;
 import christmas.domain.Order;
 import christmas.domain.Orders;
@@ -9,6 +10,7 @@ import christmas.view.InputView;
 import christmas.view.OutputView;
 
 import java.util.List;
+import java.util.Map;
 
 public class EventController {
     private static final String ORDER_INFO_SEPARATOR = "-";
@@ -26,7 +28,8 @@ public class EventController {
         reservation.calculateTotalOrderPrice();
         outputView.showReservationInfo(reservation);
 
-        eventPlanner.findBenefitsByEvent(reservation);
+        Map<Event, Integer> benefitsByEvent = eventPlanner.findBenefitsByEvent(reservation);
+        outputView.showBenefits(benefitsByEvent);
     }
 
     private Orders makeOrders(List<String> orderInfo) {

@@ -29,4 +29,9 @@ public class WeekEvent implements Event {
         eventType = EventType.WEEKDAY_EVENT;
         return DEFAULT_DISCOUNT * reservation.countDessertMenu();
     }
+
+    @Override
+    public String getEventName() {
+        return eventType.getName();
+    }
 }

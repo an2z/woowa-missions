@@ -48,4 +48,9 @@ public class GiftEvent implements Event {
         }
         return NO_DISCOUNT;
     }
+
+    @Override
+    public String getEventName() {
+        return eventType.getName();
+    }
 }
