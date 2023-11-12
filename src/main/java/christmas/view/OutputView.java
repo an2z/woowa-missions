@@ -50,7 +50,7 @@ public class OutputView {
         if (giftMenu.isPresent()) {
             output = giftMenu.get().getName() + GIFT_MENU_COUNT;
         }
-        System.out.println(output);
+        System.out.println(output + LINE_BREAK);
     }
 
     public void showBenefits(Map<Event, Integer> benefitsByEvent) {
