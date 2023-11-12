@@ -18,10 +18,6 @@ public class Reservation {
         return totalOrderPrice;
     }
 
-    public boolean isEventPeriod(int startDate, int endDate) {
-        return visitDate.isEventPeriod(startDate, endDate);
-    }
-
     public boolean isSpecialDay(List<Integer> specialDays) {
         return visitDate.isSpecialDay(specialDays);
     }
