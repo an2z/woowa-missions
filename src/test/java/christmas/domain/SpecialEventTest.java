@@ -18,6 +18,7 @@ class SpecialEventTest {
         specialEvent = new SpecialEvent(
                 LocalDate.of(2023, 12, 1),
                 LocalDate.of(2023, 12, 31),
+                EventType.SPECIAL_EVENT,
                 List.of(3, 10, 17, 24, 25, 31)
         );
     }

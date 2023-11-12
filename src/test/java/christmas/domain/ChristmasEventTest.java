@@ -17,7 +17,8 @@ class ChristmasEventTest {
     void setUp() {
         christmasEvent = new ChristmasEvent(
                 LocalDate.of(2023, 12, 1),
-                LocalDate.of(2023, 12, 25)
+                LocalDate.of(2023, 12, 25),
+                EventType.CHRISTMAS_EVENT
         );
     }
 

@@ -19,6 +19,7 @@ class GiftEventTest {
         giftEvent = new GiftEvent(
                 LocalDate.of(2023, 12, 1),
                 LocalDate.of(2023, 12, 31),
+                EventType.GIFT_EVENT,
                 Menu.CHAMPAGNE
         );
     }
