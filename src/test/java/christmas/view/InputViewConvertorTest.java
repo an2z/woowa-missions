@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.entry;
 
 class InputViewConvertorTest {
     InputViewConvertor convertor = new InputViewConvertor();
@@ -21,8 +22,10 @@ class InputViewConvertorTest {
 
         //then
         assertThat(map).hasSize(3);
-        assertThat(map.get("해산물파스타")).isEqualTo(1);
-        assertThat(map.get("레드와인")).isEqualTo(1);
-        assertThat(map.get("초코케이크")).isEqualTo(1);
+        assertThat(map).contains(
+                entry("해산물파스타", 1),
+                entry("레드와인", 1),
+                entry("초코케이크", 1)
+        );
     }
 }
