@@ -10,25 +10,25 @@ public class EventPlanner {
     private static final int MIN_ORDER_PRICE = 10000;
 
     private final EventStore eventStore;
-    private final Map<Event, Integer> benefitsByEvent;
+    private final Map<Event, Integer> benefits;
 
     public EventPlanner() {
         eventStore = new EventStore();
-        benefitsByEvent = new HashMap<>();
+        benefits = new HashMap<>();
     }
 
-    public Map<Event, Integer> findBenefitsByEvent(Reservation reservation) {
+    public Map<Event, Integer> findBenefits(Reservation reservation) {
         if (canNotParticipate(reservation)) {
-            return benefitsByEvent;
+            return benefits;
         }
 
         for (Event event : findOngoingEvents(reservation)) {
             int discount = event.calculateDiscount(reservation);
             if (discount > 0) {
-                benefitsByEvent.put(event, discount);
+                benefits.put(event, discount);
             }
         }
-        return benefitsByEvent;
+        return benefits;
     }
 
     private boolean canNotParticipate(Reservation reservation) {
@@ -41,7 +41,7 @@ public class EventPlanner {
     }
 
     public Optional<Menu> findGiftMenu() {
-        for (Event event : benefitsByEvent.keySet()) {
+        for (Event event : benefits.keySet()) {
             if (event instanceof GiftEvent giftEvent) {
                 return Optional.of(giftEvent.getGiftMenu());
             }
@@ -49,8 +49,8 @@ public class EventPlanner {
         return Optional.empty();
     }
 
-    public int calculateTotalBenefit() {
-        return benefitsByEvent.values()
+    public int calculateTotalBenefitAmount() {
+        return benefits.values()
                 .stream()
                 .mapToInt(Integer::intValue)
                 .sum();
