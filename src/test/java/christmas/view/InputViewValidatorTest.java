@@ -21,7 +21,7 @@ class InputViewValidatorTest {
     @ValueSource(strings = {"a", "!", "1 a", "1 2", "1 "})
     @ParameterizedTest
     void validateDigit(String input) {
-        assertThatThrownBy(() -> validator.validateDigit(input))
+        assertThatThrownBy(() -> validator.validateDate(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

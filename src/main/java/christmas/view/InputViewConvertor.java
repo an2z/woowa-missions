@@ -16,7 +16,7 @@ public class InputViewConvertor {
     }
 
     public int convertToValidatedDate(String input) {
-        validator.validateDigit(input);
+        validator.validateDate(input);
         return Integer.parseInt(input);
     }
 

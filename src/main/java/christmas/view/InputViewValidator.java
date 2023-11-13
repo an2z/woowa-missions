@@ -15,7 +15,7 @@ public class InputViewValidator {
         }
     }
 
-    public void validateDigit(String input) {
+    public void validateDate(String input) {
         if (remove(input, DIGIT_REGEX).length() > 0) {
             throw new IllegalArgumentException(DATE_ERROR_MESSAGE);
         }
