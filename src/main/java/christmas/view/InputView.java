@@ -23,6 +23,7 @@ public class InputView {
     public List<String> readOrderInfo() {
         System.out.println(ORDER_INFO_INPUT_MESSAGE);
         String input = read();
+        validator.validateOrderInfo(input);
         return convert(input);
     }
 

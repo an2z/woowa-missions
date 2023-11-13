@@ -24,4 +24,12 @@ class InputViewValidatorTest {
         assertThatThrownBy(() -> validator.validateDigit(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("입력된 값이 한글, 숫자, 구분자(-,)가 아니거나 공백이 있을 경우 예외가 발생한다.")
+    @ValueSource(strings = {"해산물파스타>2", "해산물 파스타-1", "pasta-2", "파스타-1/음료-2"})
+    @ParameterizedTest
+    void validateOrderInfo(String input) {
+        assertThatThrownBy(() -> validator.validateOrderInfo(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }
