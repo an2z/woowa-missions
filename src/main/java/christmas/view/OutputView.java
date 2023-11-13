@@ -31,7 +31,7 @@ public class OutputView {
         System.out.println(GREETING);
     }
 
-    public static void showError(String message) {
+    public void showError(String message) {
         System.out.println(message);
     }
 

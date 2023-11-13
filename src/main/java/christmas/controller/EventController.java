@@ -22,8 +22,8 @@ public class EventController {
 
     public void run() {
         outputView.showGreeting();
-        Date date = new Date(inputView.readDate());
-        Orders orders = makeOrders(inputView.readOrderInfo());
+        Date date = makeCorrectDate();
+        Orders orders = makeCorrectOrders();
 
         Reservation reservation = new Reservation(date, orders);
         outputView.showReservationInfo(reservation);
@@ -35,6 +35,24 @@ public class EventController {
         outputView.showTotalBenefits(totalBenefits);
         outputView.showPayment(reservation.calculatePayment(totalBenefits));
         outputView.showBadge(EventBadge.find(totalBenefits));
+    }
+
+    private Date makeCorrectDate() {
+        try {
+            return new Date(inputView.readDate());
+        } catch (IllegalArgumentException e) {
+            outputView.showError(e.getMessage());
+            return makeCorrectDate();
+        }
+    }
+
+    private Orders makeCorrectOrders() {
+        try {
+            return makeOrders(inputView.readOrderInfo());
+        } catch (IllegalArgumentException e) {
+            outputView.showError(e.getMessage());
+            return makeCorrectOrders();
+        }
     }
 
     private Orders makeOrders(List<String> orderInfo) {
