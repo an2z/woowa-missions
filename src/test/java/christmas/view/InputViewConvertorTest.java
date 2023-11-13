@@ -11,6 +11,13 @@ import static org.assertj.core.api.Assertions.entry;
 class InputViewConvertorTest {
     InputViewConvertor convertor = new InputViewConvertor();
 
+    @DisplayName("입력된 값을 숫자 형식으로 변환한다.")
+    @Test
+    void convertDate() {
+        int result = convertor.convertToValidatedDate("1");
+        assertThat(result).isEqualTo(1);
+    }
+
     @DisplayName("입력된 값을 Map(메뉴 이름:주문 개수) 형식으로 변환한다.")
     @Test
     void convertOrderInfo() {
