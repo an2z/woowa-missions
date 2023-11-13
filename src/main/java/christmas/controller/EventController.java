@@ -14,8 +14,6 @@ import java.util.List;
 import java.util.Map;
 
 public class EventController {
-    private static final String ORDER_INFO_SEPARATOR = "-";
-
     private final OutputView outputView = new OutputView();
     private final InputView inputView = new InputView();
     private final EventPlanner eventPlanner = new EventPlanner();
@@ -24,7 +22,6 @@ public class EventController {
         outputView.showGreeting();
         Date date = makeCorrectDate();
         Orders orders = makeCorrectOrders();
-
         Reservation reservation = new Reservation(date, orders);
         outputView.showReservationInfo(reservation);
 
@@ -55,12 +52,9 @@ public class EventController {
         }
     }
 
-    private Orders makeOrders(List<String> orderInfo) {
-        List<Order> orders = orderInfo.stream()
-                .map(menu -> {
-                    String[] result = menu.split(ORDER_INFO_SEPARATOR);
-                    return Order.from(result[0], Integer.parseInt(result[1]));
-                })
+    private Orders makeOrders(Map<String, Integer> orderInfo) {
+        List<Order> orders = orderInfo.entrySet().stream()
+                .map(entry -> Order.from(entry.getKey(), entry.getValue()))
                 .toList();
         return new Orders(orders);
     }

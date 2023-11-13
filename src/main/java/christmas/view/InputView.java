@@ -2,7 +2,7 @@ package christmas.view;
 
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.List;
+import java.util.Map;
 
 public class InputView {
     private static final String DATE_INPUT_MESSAGE = "12월 중 식당 예상 방문 날짜는 언제인가요? (숫자만 입력해 주세요!)";
@@ -18,7 +18,7 @@ public class InputView {
         return convertor.convertToDate(input);
     }
 
-    public List<String> readOrderInfo() {
+    public Map<String, Integer> readOrderInfo() {
         System.out.println(ORDER_INFO_INPUT_MESSAGE);
         String input = read();
         validator.validateOrderInfo(input);
