@@ -7,26 +7,30 @@ import java.util.stream.Collectors;
 public class InputViewConvertor {
     private static final String ORDER_SEPARATOR = ",";
     private static final String ORDER_INFO_SEPARATOR = "-";
-    private static final String ORDER_ERROR_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
 
-    public int convertToDate(String input) {
+    private final InputViewValidator validator = new InputViewValidator();
+
+    public String convertValidatedInput(String input) {
+        validator.validateEmpty(input);
+        return input;
+    }
+
+    public int convertToValidatedDate(String input) {
+        validator.validateDigit(input);
         return Integer.parseInt(input);
     }
 
-    public Map<String, Integer> convertToOrderInfo(String input) {
+    public Map<String, Integer> convertToValidatedOrderInfo(String input) {
+        validator.validateOrderInfo(input);
         return Arrays.stream(input.split(ORDER_SEPARATOR))
                 .map(order -> order.split(ORDER_INFO_SEPARATOR))
                 .collect(Collectors.toMap(
                         orderInfo -> orderInfo[0],
-                        orderInfo -> toInt(orderInfo[1])
+                        orderInfo -> {
+                            String orderCount = orderInfo[1];
+                            validator.validateOrderCount(orderCount);
+                            return Integer.parseInt(orderCount);
+                        }
                 ));
-    }
-
-    private int toInt(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ORDER_ERROR_MESSAGE);
-        }
     }
 }

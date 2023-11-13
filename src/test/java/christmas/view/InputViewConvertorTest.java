@@ -17,7 +17,7 @@ class InputViewConvertorTest {
         String input = "해산물파스타-1,레드와인-1,초코케이크-1";
 
         //whe
-        Map<String, Integer> map = convertor.convertToOrderInfo(input);
+        Map<String, Integer> map = convertor.convertToValidatedOrderInfo(input);
 
         //then
         assertThat(map).hasSize(3);
