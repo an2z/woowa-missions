@@ -39,8 +39,8 @@ public class Order {
         return menu.calculatePrice(count);
     }
 
-    public Menu getMenu() {
-        return menu;
+    public String getMenuName() {
+        return menu.getName();
     }
 
     public int getCount() {

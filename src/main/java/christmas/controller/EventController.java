@@ -26,12 +26,12 @@ public class EventController {
         outputView.showReservationInfo(reservation);
 
         Map<Event, Integer> benefitsByEvent = eventPlanner.findBenefitsByEvent(reservation);
+        int totalBenefitAmount = eventPlanner.calculateTotalBenefit();
         outputView.showGift(eventPlanner.findGiftMenu());
-        outputView.showBenefits(benefitsByEvent);
-        int totalBenefits = eventPlanner.calculateTotalBenefit();
-        outputView.showTotalBenefits(totalBenefits);
-        outputView.showPayment(reservation.calculatePayment(totalBenefits));
-        outputView.showBadge(EventBadge.find(totalBenefits));
+        outputView.showBenefits(benefitsByEvent, totalBenefitAmount);
+
+        outputView.showPayment(reservation.calculatePayment(totalBenefitAmount));
+        outputView.showBadge(EventBadge.find(totalBenefitAmount));
     }
 
     private Date makeCorrectDate() {
