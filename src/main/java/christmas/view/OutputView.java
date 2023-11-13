@@ -1,6 +1,7 @@
 package christmas.view;
 
 import christmas.domain.Event;
+import christmas.domain.EventBadge;
 import christmas.domain.Menu;
 import christmas.domain.Reservation;
 
@@ -24,6 +25,7 @@ public class OutputView {
     private static final String TOTAL_BENEFITS_FORMAT = "-%,d원";
     private static final String PAYMENT = "<할인 후 예상 결제 금액>";
     private static final String PAYMENT_FORMAT = "%,d원";
+    private static final String EVENT_BADGE = "<12월 이벤트 배지>";
 
     public void showGreeting() {
         System.out.println(GREETING);
@@ -78,6 +80,11 @@ public class OutputView {
 
     public void showPayment(int payment) {
         System.out.println(PAYMENT);
-        System.out.printf(PAYMENT_FORMAT, payment);
+        System.out.printf(PAYMENT_FORMAT + LINE_BREAK + LINE_BREAK, payment);
+    }
+
+    public void showBadge(EventBadge eventBadge) {
+        System.out.println(EVENT_BADGE);
+        System.out.println(eventBadge.getName());
     }
 }

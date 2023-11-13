@@ -2,6 +2,7 @@ package christmas.controller;
 
 import christmas.domain.Date;
 import christmas.domain.Event;
+import christmas.domain.EventBadge;
 import christmas.domain.EventPlanner;
 import christmas.domain.Order;
 import christmas.domain.Orders;
@@ -33,6 +34,7 @@ public class EventController {
         int totalBenefits = eventPlanner.calculateTotalBenefit();
         outputView.showTotalBenefits(totalBenefits);
         outputView.showPayment(reservation.calculatePayment(totalBenefits));
+        outputView.showBadge(EventBadge.find(totalBenefits));
     }
 
     private Orders makeOrders(List<String> orderInfo) {
