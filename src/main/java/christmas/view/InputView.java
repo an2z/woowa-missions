@@ -31,6 +31,8 @@ public class InputView {
     }
 
     private String read() {
-        return Console.readLine();
+        String input = Console.readLine();
+        validator.validateEmpty(input);
+        return input;
     }
 }

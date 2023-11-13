@@ -9,6 +9,14 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 class InputViewValidatorTest {
     InputViewValidator validator = new InputViewValidator();
 
+    @DisplayName("입력된 값이 빈값일 경우 예외가 발생한다.")
+    @ValueSource(strings = {"", " "})
+    @ParameterizedTest
+    void validateEmpty(String input) {
+        assertThatThrownBy(() -> validator.validateEmpty(input))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
     @DisplayName("입력된 값이 숫자가 아니거나 공백이 있을 경우 예외가 발생한다.")
     @ValueSource(strings = {"a", "!", "1 a", "1 2", "1 "})
     @ParameterizedTest
