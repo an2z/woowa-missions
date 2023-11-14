@@ -2,22 +2,11 @@ package christmas.domain;
 
 import java.time.LocalDate;
 
-public class WeekEvent implements Event {
+public class WeekEvent extends Event {
     private static final int DEFAULT_DISCOUNT = 2023;
 
-    private final LocalDate startDate;
-    private final LocalDate endDate;
-
-    private EventType eventType;
-
     public WeekEvent(LocalDate startDate, LocalDate endDate) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-
-    @Override
-    public boolean isDateWithinPeriod(LocalDate visitDate) {
-        return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
+        super(startDate, endDate);
     }
 
     @Override
@@ -28,10 +17,5 @@ public class WeekEvent implements Event {
         }
         eventType = EventType.WEEKDAY_EVENT;
         return DEFAULT_DISCOUNT * reservation.countDessertMenu();
-    }
-
-    @Override
-    public String getEventName() {
-        return eventType.getName();
     }
 }

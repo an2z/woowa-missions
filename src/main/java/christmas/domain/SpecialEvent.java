@@ -3,25 +3,16 @@ package christmas.domain;
 import java.time.LocalDate;
 import java.util.List;
 
-public class SpecialEvent implements Event {
+public class SpecialEvent extends Event {
     private static final int NO_DISCOUNT = 0;
     private static final int DEFAULT_DISCOUNT = 1000;
 
-    private final LocalDate startDate;
-    private final LocalDate endDate;
-    private final EventType eventType;
     private final List<Integer> specialDays;
 
-    public SpecialEvent(LocalDate startDate, LocalDate endDate, EventType eventType, List<Integer> specialDays) {
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.eventType = eventType;
-        this.specialDays = specialDays;
-    }
-
-    @Override
-    public boolean isDateWithinPeriod(LocalDate visitDate) {
-        return !visitDate.isBefore(startDate) && !visitDate.isAfter(endDate);
+    public SpecialEvent(LocalDate startDate, LocalDate endDate) {
+        super(startDate, endDate);
+        this.eventType = EventType.SPECIAL_EVENT;
+        this.specialDays = List.of(3, 10, 17, 24, 25, 31);
     }
 
     @Override
@@ -30,10 +21,5 @@ public class SpecialEvent implements Event {
             return DEFAULT_DISCOUNT;
         }
         return NO_DISCOUNT;
-    }
-
-    @Override
-    public String getEventName() {
-        return eventType.getName();
     }
 }
