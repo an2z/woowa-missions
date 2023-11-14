@@ -3,8 +3,8 @@ package christmas.view;
 public class InputViewValidator {
 
     private static final String EMPTY = "";
-    private static final String DIGIT_REGEX = "[1-9]";
-    private static final String DIGIT_LETTER_SEPARATOR_REGEX = "[1-9가-힣-,]";
+    private static final String DIGIT_REGEX = "[0-9]";
+    private static final String DIGIT_LETTER_SEPARATOR_REGEX = "[0-9가-힣-,]";
     private static final String EMPTY_ERROR_MESSAGE = "[ERROR] 입력된 값이 없습니다. 다시 입력해 주세요.";
     private static final String DATE_ERROR_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
     private static final String ORDER_ERROR_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
