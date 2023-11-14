@@ -23,10 +23,6 @@ public class Date {
         }
     }
 
-    public boolean isEventPeriod(int startDate, int endDate) {
-        return day >= startDate && day <= endDate;
-    }
-
     public boolean isSpecialDay(List<Integer> specialDays) {
         return specialDays.contains(day);
     }
