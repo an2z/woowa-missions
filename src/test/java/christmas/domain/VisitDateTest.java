@@ -33,4 +33,20 @@ class VisitDateTest {
         boolean result = visitDate.isSpecialDay(List.of(3, 10, 17, 24, 25, 31));
         assertThat(result).isEqualTo(expected);
     }
+
+    @DisplayName("방문 날짜가 주말인지 확인한다.")
+    @CsvSource({
+            "2, true",
+            "8, true",
+            "15, true",
+            "6, false",
+            "25, false",
+            "27, false"
+    })
+    @ParameterizedTest
+    void checkWeekend(int day, boolean expected) {
+        VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
+        boolean result = visitDate.isWeekend();
+        assertThat(result).isEqualTo(expected);
+    }
 }
