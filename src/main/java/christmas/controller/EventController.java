@@ -36,7 +36,7 @@ public class EventController {
 
     private Date makeCorrectDate() {
         try {
-            return new Date(inputView.readDate());
+            return Date.from(inputView.readDate());
         } catch (IllegalArgumentException e) {
             outputView.showError(e.getMessage());
             return makeCorrectDate();

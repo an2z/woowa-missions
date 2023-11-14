@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Reservation {
@@ -37,8 +38,8 @@ public class Reservation {
         return orders.countMenuOfCategory(category);
     }
 
-    public int getDayGap(int day) {
-        return visitDate.getDayGap(day);
+    public int getDaysSinceStart(LocalDate startDate) {
+        return visitDate.getDaysSinceStart(startDate);
     }
 
     public Date getVisitDate() {

@@ -13,7 +13,7 @@ public class ChristmasEvent extends Event {
 
     @Override
     public int calculateDiscount(Reservation reservation) {
-        int dayGap = reservation.getDayGap(startDate.getDayOfMonth());
-        return DEFAULT_DISCOUNT + EXTRA_DISCOUNT * dayGap;
+        int days = reservation.getDaysSinceStart(startDate);
+        return DEFAULT_DISCOUNT + EXTRA_DISCOUNT * days;
     }
 }

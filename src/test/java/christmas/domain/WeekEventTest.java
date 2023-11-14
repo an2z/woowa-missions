@@ -30,7 +30,7 @@ class WeekEventTest {
     @ParameterizedTest
     void calculateWeekendDiscount(int count, int expected) {
         //given
-        Date weekend = new Date(2);
+        Date weekend = Date.from(2);
         Orders orders = new Orders(List.of(new Order(Menu.BBQ_RIBS, count)));
         Reservation reservation = new Reservation(weekend, orders);
 
@@ -50,7 +50,7 @@ class WeekEventTest {
     @ParameterizedTest
     void calculateWeekdayDiscount(int count, int expected) {
         //given
-        Date weekday = new Date(4);
+        Date weekday = Date.from(4);
         Orders orders = new Orders(List.of(new Order(Menu.ICE_CREAM, count)));
         Reservation reservation = new Reservation(weekday, orders);
 

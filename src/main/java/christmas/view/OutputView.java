@@ -39,7 +39,7 @@ public class OutputView {
     }
 
     public void showReservationInfo(Reservation reservation) {
-        showPreview(reservation.getVisitDate().getDay());
+        showPreview(reservation.getVisitDate().getDate().getDayOfMonth());
         showOrders(reservation.getOrders());
         showTotalOrderPrice(reservation.getTotalOrderPrice());
     }

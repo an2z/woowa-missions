@@ -36,7 +36,7 @@ public class EventPlanner {
     }
 
     private List<Event> findOngoingEvents(Reservation reservation) {
-        LocalDate visitDate = LocalDate.of(2023, 12, reservation.getVisitDate().getDay());
+        LocalDate visitDate = reservation.getVisitDate().getDate();
         return eventStore.findOngoingEvents(visitDate);
     }
 

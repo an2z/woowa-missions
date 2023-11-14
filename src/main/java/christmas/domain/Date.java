@@ -1,55 +1,57 @@
 package christmas.domain;
 
+import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 
 public class Date {
-    private static final int FIRST_DAY = 1;
-    private static final int LAST_DAY = 31;
-    private static final String DAY_ERROR_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
+    private static final int YEAR = 2023;
+    private static final int MONTH = 12;
+    private static final String DATE_ERROR_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
 
-    private int day;
+    private final LocalDate date;
 
-    public Date(int day) {
-        validate(day);
-        this.day = day;
+    private Date(LocalDate date) {
+        this.date = date;
     }
 
-    private void validate(int day) {
-        if (day < FIRST_DAY || day > LAST_DAY) {
-            throw new IllegalArgumentException(DAY_ERROR_MESSAGE);
+    public static Date from(int day) {
+        try {
+            return new Date(LocalDate.of(YEAR, MONTH, day));
+        } catch (DateTimeException e) {
+            throw new IllegalArgumentException(DATE_ERROR_MESSAGE);
         }
     }
 
     public boolean isSpecialDay(List<Integer> specialDays) {
-        return specialDays.contains(day);
+        return specialDays.contains(date.getDayOfMonth());
     }
 
     public boolean isWeekend() {
-        DayOfWeek dayOfWeek = LocalDate.of(2023, 12, day).getDayOfWeek();
+        DayOfWeek dayOfWeek = date.getDayOfWeek();
         return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 
-    public int getDayGap(int day) {
-        return this.day - day;
+    public int getDaysSinceStart(LocalDate startDate) {
+        return date.compareTo(startDate);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Date date = (Date) o;
-        return day == date.day;
+        Date date1 = (Date) o;
+        return Objects.equals(date, date1.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(day);
+        return Objects.hash(date);
     }
 
-    public int getDay() {
-        return day;
+    public LocalDate getDate() {
+        return date;
     }
 }

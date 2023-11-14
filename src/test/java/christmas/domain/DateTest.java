@@ -11,7 +11,7 @@ class DateTest {
     @ValueSource(ints = {0, 32, 33, 99})
     @ParameterizedTest
     void wrongDayEx(int day) {
-        assertThatThrownBy(() -> new Date(day))
+        assertThatThrownBy(() -> Date.from(day))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
