@@ -1,12 +1,12 @@
 package christmas.controller;
 
-import christmas.domain.Date;
 import christmas.domain.Event;
 import christmas.domain.EventBadge;
 import christmas.domain.EventPlanner;
 import christmas.domain.Order;
 import christmas.domain.Orders;
 import christmas.domain.Reservation;
+import christmas.domain.VisitDate;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -20,9 +20,9 @@ public class EventController {
 
     public void run() {
         outputView.showGreeting();
-        Date date = makeCorrectDate();
+        VisitDate visitDate = makeCorrectDate();
         Orders orders = makeCorrectOrders();
-        Reservation reservation = new Reservation(date, orders);
+        Reservation reservation = new Reservation(visitDate, orders);
         outputView.showReservationInfo(reservation);
 
         Map<Event, Integer> benefits = eventPlanner.findBenefits(reservation);
@@ -34,9 +34,9 @@ public class EventController {
         outputView.showBadge(EventBadge.find(totalBenefitAmount));
     }
 
-    private Date makeCorrectDate() {
+    private VisitDate makeCorrectDate() {
         try {
-            return Date.from(inputView.readDate());
+            return VisitDate.from(inputView.readDate());
         } catch (IllegalArgumentException e) {
             outputView.showError(e.getMessage());
             return makeCorrectDate();

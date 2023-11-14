@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Reservation {
-    private final Date visitDate;
+    private final VisitDate visitDate;
     private final Orders orders;
     private final int totalOrderPrice;
 
-    public Reservation(Date visitDate, Orders orders) {
+    public Reservation(VisitDate visitDate, Orders orders) {
         this.visitDate = visitDate;
         this.orders = orders;
         this.totalOrderPrice = calculateTotalOrderPrice();
@@ -42,7 +42,7 @@ public class Reservation {
         return visitDate.getDaysSinceStart(startDate);
     }
 
-    public Date getVisitDate() {
+    public VisitDate getVisitDate() {
         return visitDate;
     }
 
