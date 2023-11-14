@@ -28,15 +28,13 @@ public class Orders {
     }
 
     private void validateMenuCategory(List<Order> orders) {
-        if (calculateDrinkCount(orders) == orders.size()) {
+        if (isAllDrinkMenu(orders)) {
             throw new IllegalArgumentException(ORDER_ERROR_MESSAGE);
         }
     }
 
-    private long calculateDrinkCount(List<Order> orders) {
-        return orders.stream()
-                .filter(Order::isDrinkMenu)
-                .count();
+    private boolean isAllDrinkMenu(List<Order> orders) {
+        return orders.stream().allMatch(Order::isDrinkMenu);
     }
 
     public int countMainMenu() {
