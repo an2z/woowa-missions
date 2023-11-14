@@ -3,6 +3,8 @@ package christmas.domain;
 import java.time.LocalDate;
 
 public abstract class Event {
+    private static final String EVENT_TYPE_NULL_ERROR = "이벤트 타입이 초기화되지 않았습니다.";
+
     protected final LocalDate startDate;
     protected final LocalDate endDate;
 
@@ -18,6 +20,9 @@ public abstract class Event {
     }
 
     public String getEventName() {
+        if (eventType == null) {
+            throw new IllegalStateException(EVENT_TYPE_NULL_ERROR);
+        }
         return eventType.getName();
     }
 
