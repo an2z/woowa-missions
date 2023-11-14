@@ -38,16 +38,8 @@ public enum Menu {
                 .orElseThrow(() -> new IllegalArgumentException(ORDER_ERROR_MESSAGE));
     }
 
-    public boolean isDrink() {
-        return category == Category.DRINK;
-    }
-
-    public boolean isMain() {
-        return category == Category.MAIN;
-    }
-
-    public boolean isDessert() {
-        return category == Category.DESSERT;
+    public boolean checkCategory(Category category) {
+        return this.category == category;
     }
 
     public int calculatePrice(int count) {

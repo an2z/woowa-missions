@@ -23,16 +23,8 @@ public class Order {
         }
     }
 
-    public boolean isDrinkMenu() {
-        return menu.isDrink();
-    }
-
-    public boolean isMainMenu() {
-        return menu.isMain();
-    }
-
-    public boolean isDessertMenu() {
-        return menu.isDessert();
+    public boolean isMenuOfCategory(Menu.Category category) {
+        return menu.checkCategory(category);
     }
 
     public int calculatePrice() {

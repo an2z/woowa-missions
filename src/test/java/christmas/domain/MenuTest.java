@@ -29,15 +29,16 @@ class MenuTest {
         assertThat(menu).isEqualTo(expected);
     }
 
-    @DisplayName("음료 메뉴인지 확인한다.")
+    @DisplayName("메뉴가 주어진 카테고리인지 확인한다.")
     @CsvSource({
-            "ZERO_COLA, true",
-            "RED_WINE, true",
-            "CHOCO_CAKE, false"
+            "ZERO_COLA, DRINK, true",
+            "ZERO_COLA, MAIN, false",
+            "CHOCO_CAKE, DESSERT, true",
+            "CHOCO_CAKE, APPETIZER, false"
     })
     @ParameterizedTest
-    void checkDrink(Menu menu, boolean expected) {
-        boolean result = menu.isDrink();
+    void checkCategoryOfMenu(Menu menu, Menu.Category category, boolean expected) {
+        boolean result = menu.checkCategory(category);
         assertThat(result).isEqualTo(expected);
     }
 

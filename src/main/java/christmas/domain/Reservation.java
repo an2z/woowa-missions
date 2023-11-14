@@ -33,12 +33,8 @@ public class Reservation {
         return visitDate.isWeekend();
     }
 
-    public int countMainMenu() {
-        return orders.countMainMenu();
-    }
-
-    public int countDessertMenu() {
-        return orders.countDessertMenu();
+    public int countMenuOfCategory(Menu.Category category) {
+        return orders.countMenuOfCategory(category);
     }
 
     public int getDayGap(int day) {

@@ -34,21 +34,13 @@ public class Orders {
     }
 
     private boolean isAllDrinkMenu(List<Order> orders) {
-        return orders.stream().allMatch(Order::isDrinkMenu);
+        return orders.stream()
+                .allMatch(order -> order.isMenuOfCategory(Menu.Category.DRINK));
     }
 
-    public int countMainMenu() {
-        //TODO 티본스테이크-2, 바비큐립-1 주문 시 주말 할인이 들어가는 메인 메뉴의 개수가 3개? 2개? 우선 3개로 처리
+    public int countMenuOfCategory(Menu.Category category) {
         return orders.stream()
-                .filter(Order::isMainMenu)
-                .map(Order::getCount)
-                .mapToInt(Integer::intValue)
-                .sum();
-    }
-
-    public int countDessertMenu() {
-        return orders.stream()
-                .filter(Order::isDessertMenu)
+                .filter(order -> order.isMenuOfCategory(category))
                 .map(Order::getCount)
                 .mapToInt(Integer::intValue)
                 .sum();
