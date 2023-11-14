@@ -14,7 +14,7 @@ class EventPlannerTest {
     @Test
     void calculateTotalBenefitAmount() {
         // given
-        VisitDate visitDate = VisitDate.from(3);
+        VisitDate visitDate = VisitDate.makeDecemberVisitDate(3);
         Orders orders = new Orders(List.of(
                 new Order(Menu.TAPAS, 1),
                 new Order(Menu.ZERO_COLA, 1)

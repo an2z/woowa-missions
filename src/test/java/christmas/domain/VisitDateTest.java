@@ -15,7 +15,7 @@ class VisitDateTest {
     @ValueSource(ints = {0, 32, 33, 99})
     @ParameterizedTest
     void wrongDayEx(int day) {
-        assertThatThrownBy(() -> VisitDate.from(day))
+        assertThatThrownBy(() -> VisitDate.makeDecemberVisitDate(day))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -29,7 +29,7 @@ class VisitDateTest {
     })
     @ParameterizedTest
     void checkSpecialDay(int day, boolean expected) {
-        VisitDate visitDate = VisitDate.from(day);
+        VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
         boolean result = visitDate.isSpecialDay(List.of(3, 10, 17, 24, 25, 31));
         assertThat(result).isEqualTo(expected);
     }

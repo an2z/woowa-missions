@@ -13,16 +13,16 @@ public class VisitDate {
 
     private final LocalDate date;
 
-    private VisitDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public static VisitDate from(int day) {
+    private VisitDate(int year, int month, int day) {
         try {
-            return new VisitDate(LocalDate.of(YEAR, MONTH, day));
+            this.date = LocalDate.of(year, month, day);
         } catch (DateTimeException e) {
             throw new IllegalArgumentException(DATE_ERROR_MESSAGE);
         }
+    }
+
+    public static VisitDate makeDecemberVisitDate(int day) {
+        return new VisitDate(YEAR, MONTH, day);
     }
 
     public boolean isSpecialDay(List<Integer> specialDays) {
