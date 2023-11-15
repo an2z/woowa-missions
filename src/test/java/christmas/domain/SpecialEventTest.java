@@ -45,7 +45,7 @@ class SpecialEventTest {
     @ParameterizedTest
     void calculateDiscount(int day, int expected) {
         //given
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(day);
         Orders orders = new Orders(List.of(new Order(Menu.TAPAS, 1)));
         Reservation reservation = new Reservation(visitDate, orders);
 

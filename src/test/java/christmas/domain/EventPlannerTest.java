@@ -17,7 +17,7 @@ class EventPlannerTest {
     @Test
     void calculateTotalBenefitPrice() {
         // given
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(3);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(3);
         Orders orders = new Orders(List.of(
                 new Order(Menu.TAPAS, 1),
                 new Order(Menu.ZERO_COLA, 1)
@@ -36,7 +36,7 @@ class EventPlannerTest {
     @Test
     void calculateTotalDiscountPrice() {
         // given
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(3);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(3);
         Orders orders = new Orders(List.of(
                 new Order(Menu.T_BONE_STEAK, 1),
                 new Order(Menu.BBQ_RIBS, 1),
@@ -58,7 +58,7 @@ class EventPlannerTest {
     @ParameterizedTest
     void findGiftMenu(int count, boolean expected) {
         // given
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(3);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(3);
         Orders orders = new Orders(List.of(new Order(Menu.T_BONE_STEAK, count)));
         Reservation reservation = new Reservation(visitDate, orders);
         eventPlanner.findBenefits(reservation);

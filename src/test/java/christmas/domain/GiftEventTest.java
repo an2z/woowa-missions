@@ -41,7 +41,7 @@ class GiftEventTest {
     @ParameterizedTest
     void calculateDiscount(int count, int expected) {
         //given
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(1);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(1);
         Orders orders = new Orders(List.of(new Order(Menu.BBQ_RIBS, count)));
         Reservation reservation = new Reservation(visitDate, orders);
 

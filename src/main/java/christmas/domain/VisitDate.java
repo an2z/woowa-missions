@@ -21,7 +21,7 @@ public class VisitDate {
         }
     }
 
-    public static VisitDate makeDecemberVisitDate(int day) {
+    public static VisitDate makeEventVisitDate(int day) {
         return new VisitDate(Constants.EVENT_YEAR, Constants.EVENT_MONTH, day);
     }
 

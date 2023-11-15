@@ -22,7 +22,7 @@ class ReservationTest {
     @ParameterizedTest
     void calculatePayment(int totalDiscountPrice, int expected) {
         // given
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(1);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(1);
         Orders orders = new Orders(List.of(new Order(Menu.TAPAS, 1)));
         Reservation reservation = new Reservation(visitDate, orders);
 
@@ -37,7 +37,7 @@ class ReservationTest {
     @Test
     void calculatePaymentEx() {
         // given
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(1);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(1);
         Orders orders = new Orders(List.of(new Order(Menu.TAPAS, 1)));
         Reservation reservation = new Reservation(visitDate, orders);
 

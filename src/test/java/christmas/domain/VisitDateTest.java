@@ -17,7 +17,7 @@ class VisitDateTest {
     @ValueSource(ints = {0, 32, 33, 99})
     @ParameterizedTest
     void makeInvalidVisitDate(int day) {
-        assertThatThrownBy(() -> VisitDate.makeDecemberVisitDate(day))
+        assertThatThrownBy(() -> VisitDate.makeEventVisitDate(day))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -31,7 +31,7 @@ class VisitDateTest {
     })
     @ParameterizedTest
     void checkSpecialDay(int day, boolean expected) {
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(day);
         boolean result = visitDate.isSpecialDay(List.of(3, 10, 17, 24, 25, 31));
         assertThat(result).isEqualTo(expected);
     }
@@ -47,7 +47,7 @@ class VisitDateTest {
     })
     @ParameterizedTest
     void checkWeekend(int day, boolean expected) {
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(day);
         boolean result = visitDate.isWeekend();
         assertThat(result).isEqualTo(expected);
     }
@@ -61,7 +61,7 @@ class VisitDateTest {
     })
     @ParameterizedTest
     void getDaysSinceStart(int day, int expected) {
-        VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
+        VisitDate visitDate = VisitDate.makeEventVisitDate(day);
         int result = visitDate.getDaysSinceStart(LocalDate.of(2023, 12, 1));
         assertThat(result).isEqualTo(expected);
     }
@@ -69,9 +69,9 @@ class VisitDateTest {
     @DisplayName("같은 날짜를 가진 방문 날짜의 동등성을 비교한다.")
     @Test
     void checkEqualsAndHashCode() {
-        VisitDate visitDate1 = VisitDate.makeDecemberVisitDate(1);
-        VisitDate visitDate2 = VisitDate.makeDecemberVisitDate(1);
-        VisitDate visitDate3 = VisitDate.makeDecemberVisitDate(2);
+        VisitDate visitDate1 = VisitDate.makeEventVisitDate(1);
+        VisitDate visitDate2 = VisitDate.makeEventVisitDate(1);
+        VisitDate visitDate3 = VisitDate.makeEventVisitDate(2);
         assertThat(visitDate1)
                 .isEqualTo(visitDate2)
                 .hasSameHashCodeAs(visitDate2)

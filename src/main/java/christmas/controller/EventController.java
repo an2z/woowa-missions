@@ -42,7 +42,7 @@ public class EventController {
     private VisitDate makeCorrectDate() {
         while (true) {
             try {
-                return VisitDate.makeDecemberVisitDate(inputView.readDate());
+                return VisitDate.makeEventVisitDate(inputView.readDate());
             } catch (IllegalArgumentException e) {
                 outputView.showError(e.getMessage());
             }
