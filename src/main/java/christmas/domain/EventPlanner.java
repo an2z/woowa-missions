@@ -41,12 +41,10 @@ public class EventPlanner {
     }
 
     public Optional<Menu> findGiftMenu() {
-        for (Event event : benefits.keySet()) {
-            if (event instanceof GiftEvent giftEvent) {
-                return Optional.of(giftEvent.getGiftMenu());
-            }
-        }
-        return Optional.empty();
+        return benefits.keySet().stream()
+                .filter(GiftEvent.class::isInstance)
+                .map(event -> ((GiftEvent) event).getGiftMenu())
+                .findFirst();
     }
 
     public int calculateTotalBenefitAmount() {
