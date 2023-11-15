@@ -27,7 +27,7 @@ public class OutputView {
     private static final String GIFT_FORMAT = "%s 1개";
     private static final String PRICE_FORMAT = "%,d원";
     private static final String BENEFIT_FORMAT = "%s: -%,d원";
-    private static final String TOTAL_BENEFIT_AMOUNT_FORMAT = "-%,d원";
+    private static final String MINUS = "-";
     private static final String NONE = "없음";
 
     public void showGreeting() {
@@ -93,8 +93,11 @@ public class OutputView {
 
     public void showTotalBenefitAmount(int totalBenefitAmount) {
         System.out.println(TOTAL_BENEFIT_AMOUNT_TITLE);
-        String formattedAmount = format(TOTAL_BENEFIT_AMOUNT_FORMAT, totalBenefitAmount);
-        System.out.println(formattedAmount + LINE_SEPARATOR);
+        String output = format(PRICE_FORMAT, totalBenefitAmount);
+        if (totalBenefitAmount > 0) {
+            output = MINUS + output;
+        }
+        System.out.println(output + LINE_SEPARATOR);
     }
 
     public void showPayment(int payment) {
