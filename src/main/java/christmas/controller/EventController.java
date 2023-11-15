@@ -40,20 +40,22 @@ public class EventController {
     }
 
     private VisitDate makeCorrectDate() {
-        try {
-            return VisitDate.makeDecemberVisitDate(inputView.readDate());
-        } catch (IllegalArgumentException e) {
-            outputView.showError(e.getMessage());
-            return makeCorrectDate();
+        while (true) {
+            try {
+                return VisitDate.makeDecemberVisitDate(inputView.readDate());
+            } catch (IllegalArgumentException e) {
+                outputView.showError(e.getMessage());
+            }
         }
     }
 
     private Orders makeCorrectOrders() {
-        try {
-            return makeOrders(inputView.readOrderInfos());
-        } catch (IllegalArgumentException e) {
-            outputView.showError(e.getMessage());
-            return makeCorrectOrders();
+        while (true) {
+            try {
+                return makeOrders(inputView.readOrderInfos());
+            } catch (IllegalArgumentException e) {
+                outputView.showError(e.getMessage());
+            }
         }
     }
 
