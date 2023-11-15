@@ -2,8 +2,11 @@ package christmas.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -48,5 +51,22 @@ class EventPlannerTest {
 
         // then
         assertThat(discount).isEqualTo(6246);
+    }
+
+    @DisplayName("증정 메뉴를 확인한다.")
+    @CsvSource({"1, false", "20, true"})
+    @ParameterizedTest
+    void findGiftMenu(int count, boolean expected) {
+        // given
+        VisitDate visitDate = VisitDate.makeDecemberVisitDate(3);
+        Orders orders = new Orders(List.of(new Order(Menu.T_BONE_STEAK, count)));
+        Reservation reservation = new Reservation(visitDate, orders);
+        eventPlanner.findBenefits(reservation);
+
+        // when
+        Optional<Menu> giftMenu = eventPlanner.findGiftMenu();
+
+        // then
+        assertThat(giftMenu.isPresent()).isEqualTo(expected);
     }
 }
