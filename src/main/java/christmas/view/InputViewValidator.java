@@ -27,12 +27,6 @@ public class InputViewValidator {
         }
     }
 
-    public void validateOrderCount(String input) {
-        if (remove(input, DIGIT_REGEX).length() > 0) {
-            throw new IllegalArgumentException(ORDER_ERROR_MESSAGE);
-        }
-    }
-
     private String remove(String input, String regex) {
         return input.replaceAll(regex, EMPTY);
     }
