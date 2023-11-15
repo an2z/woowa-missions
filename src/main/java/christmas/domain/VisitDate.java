@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.utils.Constants;
+
 import java.time.DateTimeException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -7,8 +9,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class VisitDate {
-    private static final int YEAR = 2023;
-    private static final int MONTH = 12;
     private static final String DATE_ERROR_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";
 
     private final LocalDate date;
@@ -22,7 +22,7 @@ public class VisitDate {
     }
 
     public static VisitDate makeDecemberVisitDate(int day) {
-        return new VisitDate(YEAR, MONTH, day);
+        return new VisitDate(Constants.EVENT_YEAR, Constants.EVENT_MONTH, day);
     }
 
     public boolean isSpecialDay(List<Integer> specialDays) {

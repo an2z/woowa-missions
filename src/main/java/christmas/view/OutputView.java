@@ -5,6 +5,7 @@ import christmas.domain.EventBadge;
 import christmas.domain.Menu;
 import christmas.domain.Order;
 import christmas.domain.Reservation;
+import christmas.utils.Constants;
 
 import java.util.List;
 import java.util.Map;
@@ -19,10 +20,10 @@ public class OutputView {
     private static final String BENEFIT_TITLE = "<혜택 내역>";
     private static final String TOTAL_BENEFIT_AMOUNT_TITLE = "<총혜택 금액>";
     private static final String PAYMENT_TITLE = "<할인 후 예상 결제 금액>";
-    private static final String BADGE_TITLE = "<12월 이벤트 배지>";
+    private static final String BADGE_TITLE = "<%d월 이벤트 배지>";
 
-    private static final String GREETING_FORMAT = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
-    private static final String PREVIEW_FORMAT = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
+    private static final String GREETING_FORMAT = "안녕하세요! 우테코 식당 %d월 이벤트 플래너입니다.";
+    private static final String PREVIEW_FORMAT = "%d월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!";
     private static final String ORDER_FORMAT = "%s %d개";
     private static final String GIFT_FORMAT = "%s 1개";
     private static final String PRICE_FORMAT = "%,d원";
@@ -31,7 +32,7 @@ public class OutputView {
     private static final String NONE = "없음";
 
     public void showGreeting() {
-        System.out.println(GREETING_FORMAT);
+        System.out.println(format(GREETING_FORMAT, Constants.EVENT_MONTH));
     }
 
     public void showError(String message) {
@@ -45,7 +46,7 @@ public class OutputView {
     }
 
     private void showPreview(int date) {
-        String formattedPreview = format(PREVIEW_FORMAT, date);
+        String formattedPreview = format(PREVIEW_FORMAT, Constants.EVENT_MONTH, date);
         System.out.println(formattedPreview + LINE_SEPARATOR);
     }
 
@@ -107,7 +108,7 @@ public class OutputView {
     }
 
     public void showBadge(EventBadge eventBadge) {
-        System.out.println(BADGE_TITLE);
+        System.out.println(format(BADGE_TITLE, Constants.EVENT_MONTH));
         System.out.println(eventBadge.getName());
     }
 
