@@ -1,6 +1,7 @@
 package christmas.domain;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -63,5 +64,18 @@ class VisitDateTest {
         VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
         int result = visitDate.getDaysSinceStart(LocalDate.of(2023, 12, 1));
         assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("같은 날짜를 가진 방문 날짜의 동등성을 비교한다.")
+    @Test
+    void checkEqualsAndHashCode() {
+        VisitDate visitDate1 = VisitDate.makeDecemberVisitDate(1);
+        VisitDate visitDate2 = VisitDate.makeDecemberVisitDate(1);
+        VisitDate visitDate3 = VisitDate.makeDecemberVisitDate(2);
+        assertThat(visitDate1)
+                .isEqualTo(visitDate2)
+                .hasSameHashCodeAs(visitDate2)
+                .isNotEqualTo(visitDate3)
+                .doesNotHaveSameHashCodeAs(visitDate3);
     }
 }
