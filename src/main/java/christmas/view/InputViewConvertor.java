@@ -1,8 +1,7 @@
 package christmas.view;
 
 import java.util.Arrays;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class InputViewConvertor {
     private static final String ORDER_SEPARATOR = ",";
@@ -20,17 +19,10 @@ public class InputViewConvertor {
         return Integer.parseInt(input);
     }
 
-    public Map<String, Integer> convertToValidatedOrderInfo(String input) {
+    public List<String[]> convertToValidatedOrderInfos(String input) {
         validator.validateOrderInfo(input);
         return Arrays.stream(input.split(ORDER_SEPARATOR))
-                .map(order -> order.split(ORDER_INFO_SEPARATOR))
-                .collect(Collectors.toMap(
-                        orderInfo -> orderInfo[0],
-                        orderInfo -> {
-                            String orderCount = orderInfo[1];
-                            validator.validateOrderCount(orderCount);
-                            return Integer.parseInt(orderCount);
-                        }
-                ));
+                .map(orderInfo -> orderInfo.split(ORDER_INFO_SEPARATOR))
+                .toList();
     }
 }

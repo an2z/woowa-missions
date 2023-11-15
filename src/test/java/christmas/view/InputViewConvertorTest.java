@@ -3,10 +3,9 @@ package christmas.view;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.entry;
 
 class InputViewConvertorTest {
     InputViewConvertor convertor = new InputViewConvertor();
@@ -18,21 +17,15 @@ class InputViewConvertorTest {
         assertThat(result).isEqualTo(1);
     }
 
-    @DisplayName("입력된 값을 Map(메뉴 이름:주문 개수) 형식으로 변환한다.")
+    @DisplayName("입력된 값을 주문 정보 리스트 형식으로 변환한다.")
     @Test
     void convertOrderInfo() {
-        //given
-        String input = "해산물파스타-1,레드와인-1,초코케이크-1";
-
-        //whe
-        Map<String, Integer> map = convertor.convertToValidatedOrderInfo(input);
-
-        //then
-        assertThat(map).hasSize(3);
-        assertThat(map).contains(
-                entry("해산물파스타", 1),
-                entry("레드와인", 1),
-                entry("초코케이크", 1)
-        );
+        List<String[]> result = convertor.convertToValidatedOrderInfos("해산물파스타-1,레드와인-1,초코케이크-1");
+        assertThat(result).hasSize(3)
+                .containsExactly(
+                        new String[]{"해산물파스타", "1"},
+                        new String[]{"레드와인", "1"},
+                        new String[]{"초코케이크", "1"}
+                );
     }
 }

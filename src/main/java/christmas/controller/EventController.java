@@ -49,16 +49,16 @@ public class EventController {
 
     private Orders makeCorrectOrders() {
         try {
-            return makeOrders(inputView.readOrderInfo());
+            return makeOrders(inputView.readOrderInfos());
         } catch (IllegalArgumentException e) {
             outputView.showError(e.getMessage());
             return makeCorrectOrders();
         }
     }
 
-    private Orders makeOrders(Map<String, Integer> orderInfo) {
-        List<Order> orders = orderInfo.entrySet().stream()
-                .map(entry -> Order.from(entry.getKey(), entry.getValue()))
+    private Orders makeOrders(List<String[]> orderInfos) {
+        List<Order> orders = orderInfos.stream()
+                .map(Order::from)
                 .toList();
         return new Orders(orders);
     }
