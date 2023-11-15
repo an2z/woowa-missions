@@ -32,4 +32,17 @@ class OrdersTest {
         Assertions.assertThatThrownBy(() -> new Orders(orders))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    @DisplayName("동일한 메뉴를 주문하는 경우 예외가 발생한다.")
+    @Test
+    void duplicatedMenuEx() {
+        //given
+        Order order1 = new Order(Menu.TAPAS, 1);
+        Order order2 = new Order(Menu.TAPAS, 2);
+        List<Order> orders = List.of(order1, order2);
+
+        //when,then
+        Assertions.assertThatThrownBy(() -> new Orders(orders))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 }

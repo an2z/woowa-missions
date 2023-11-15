@@ -1,6 +1,8 @@
 package christmas.domain;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Orders {
     private static final int MAX_TOTAL_COUNT = 20;
@@ -9,9 +11,27 @@ public class Orders {
     private final List<Order> orders;
 
     public Orders(List<Order> orders) {
+        validate(orders);
+        this.orders = orders;
+    }
+
+    private void validate(List<Order> orders) {
+        validateDuplicate(orders);
         validateTotalCount(orders);
         validateMenuCategory(orders);
-        this.orders = orders;
+    }
+
+    private void validateDuplicate(List<Order> orders) {
+        if (isDuplicated(orders)) {
+            throw new IllegalArgumentException(ORDER_ERROR_MESSAGE);
+        }
+    }
+
+    private boolean isDuplicated(List<Order> orders) {
+        Set<String> menuNames = new HashSet<>();
+        return orders.stream()
+                .map(Order::getMenuName)
+                .anyMatch(menuName -> !menuNames.add(menuName));
     }
 
     private void validateTotalCount(List<Order> orders) {
