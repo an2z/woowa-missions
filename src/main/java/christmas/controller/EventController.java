@@ -20,9 +20,7 @@ public class EventController {
 
     public void run() {
         outputView.showGreeting();
-        VisitDate visitDate = makeCorrectDate();
-        Orders orders = makeCorrectOrders();
-        Reservation reservation = new Reservation(visitDate, orders);
+        Reservation reservation = makeReservation();
         outputView.showReservationInfo(reservation);
 
         Map<Event, Integer> benefits = eventPlanner.findBenefits(reservation);
@@ -32,6 +30,12 @@ public class EventController {
 
         outputView.showPayment(reservation.calculatePayment(totalBenefitAmount));
         outputView.showBadge(EventBadge.find(totalBenefitAmount));
+    }
+
+    private Reservation makeReservation() {
+        VisitDate visitDate = makeCorrectDate();
+        Orders orders = makeCorrectOrders();
+        return new Reservation(visitDate, orders);
     }
 
     private VisitDate makeCorrectDate() {
