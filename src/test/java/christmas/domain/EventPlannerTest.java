@@ -28,4 +28,25 @@ class EventPlannerTest {
         // then
         assertThat(totalBenefit).isZero();
     }
+
+    @DisplayName("총 할인 금액을 계산한다.")
+    @Test
+    void calculateTotalDiscountPrice() {
+        // given
+        VisitDate visitDate = VisitDate.makeDecemberVisitDate(3);
+        Orders orders = new Orders(List.of(
+                new Order(Menu.T_BONE_STEAK, 1),
+                new Order(Menu.BBQ_RIBS, 1),
+                new Order(Menu.CHOCO_CAKE, 2),
+                new Order(Menu.ZERO_COLA, 1)
+        ));
+        Reservation reservation = new Reservation(visitDate, orders);
+        eventPlanner.findBenefits(reservation);
+
+        // when
+        int discount = eventPlanner.calculateTotalDiscountPrice();
+
+        // then
+        assertThat(discount).isEqualTo(6246);
+    }
 }
