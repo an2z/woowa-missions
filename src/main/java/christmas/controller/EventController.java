@@ -25,10 +25,11 @@ public class EventController {
 
         Map<Event, Integer> benefits = eventPlanner.findBenefits(reservation);
         int totalBenefitAmount = eventPlanner.calculateTotalBenefitAmount();
+        int totalDiscountPrice = eventPlanner.calculateTotalDiscountPrice();
         outputView.showGift(eventPlanner.findGiftMenu());
         outputView.showBenefits(benefits, totalBenefitAmount);
 
-        outputView.showPayment(reservation.calculatePayment(totalBenefitAmount));
+        outputView.showPayment(reservation.calculatePayment(totalDiscountPrice));
         outputView.showBadge(EventBadge.find(totalBenefitAmount));
     }
 

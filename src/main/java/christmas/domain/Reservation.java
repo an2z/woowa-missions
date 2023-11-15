@@ -18,8 +18,8 @@ public class Reservation {
         return orders.calculateTotalPrice();
     }
 
-    public int calculatePayment(int totalBenefits) {
-        return totalOrderPrice - totalBenefits;
+    public int calculatePayment(int totalDiscountPrice) {
+        return totalOrderPrice - totalDiscountPrice;
     }
 
     public boolean isSpecialDay(List<Integer> specialDays) {

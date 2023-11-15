@@ -53,4 +53,11 @@ public class EventPlanner {
                 .mapToInt(Integer::intValue)
                 .sum();
     }
+
+    public int calculateTotalDiscountPrice() {
+        return benefits.entrySet().stream()
+                .filter(entry -> entry.getKey().eventType != EventType.GIFT_EVENT)
+                .mapToInt(Map.Entry::getValue)
+                .sum();
+    }
 }
