@@ -11,11 +11,14 @@ public class WeekEvent extends Event {
 
     @Override
     public int calculateDiscount(Reservation reservation) {
+        eventType = EventType.WEEKDAY_EVENT;
+        Menu.Category category = Menu.Category.DESSERT;
+
         if (reservation.isVisitOnWeekend()) {
             eventType = EventType.WEEKEND_EVENT;
-            return DEFAULT_DISCOUNT * reservation.countMenuOfCategory(Menu.Category.MAIN);
+            category = Menu.Category.MAIN;
         }
-        eventType = EventType.WEEKDAY_EVENT;
-        return DEFAULT_DISCOUNT * reservation.countMenuOfCategory(Menu.Category.DESSERT);
+
+        return DEFAULT_DISCOUNT * reservation.countMenuOfCategory(category);
     }
 }
