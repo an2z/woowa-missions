@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Reservation {
+    private static final String DISCOUNT_GREATER_THAN_ORDER_PRICE = "[ERROR] 총 할인 금액이 총 주문 금액보다 클 수 없습니다.";
+
     private final VisitDate visitDate;
     private final Orders orders;
     private final int totalOrderPrice;
@@ -19,6 +21,9 @@ public class Reservation {
     }
 
     public int calculatePayment(int totalDiscountPrice) {
+        if (totalOrderPrice < totalDiscountPrice) {
+            throw new IllegalArgumentException(DISCOUNT_GREATER_THAN_ORDER_PRICE);
+        }
         return totalOrderPrice - totalDiscountPrice;
     }
 
