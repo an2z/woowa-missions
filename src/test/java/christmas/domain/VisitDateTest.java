@@ -5,6 +5,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -47,6 +48,20 @@ class VisitDateTest {
     void checkWeekend(int day, boolean expected) {
         VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
         boolean result = visitDate.isWeekend();
+        assertThat(result).isEqualTo(expected);
+    }
+
+    @DisplayName("방문 날짜가 시작일로부터 몇일이 지났는지 구한다.")
+    @CsvSource({
+            "1, 0",
+            "2, 1",
+            "3, 2",
+            "4, 3"
+    })
+    @ParameterizedTest
+    void getDaysSinceStart(int day, int expected) {
+        VisitDate visitDate = VisitDate.makeDecemberVisitDate(day);
+        int result = visitDate.getDaysSinceStart(LocalDate.of(2023, 12, 1));
         assertThat(result).isEqualTo(expected);
     }
 }
