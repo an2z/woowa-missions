@@ -56,7 +56,7 @@ public class EventPlanner {
 
     public int calculateTotalDiscountPrice() {
         return benefits.entrySet().stream()
-                .filter(entry -> entry.getKey().eventType != EventType.GIFT_EVENT)
+                .filter(entry -> !(entry.getKey() instanceof GiftEvent))
                 .mapToInt(Map.Entry::getValue)
                 .sum();
     }
