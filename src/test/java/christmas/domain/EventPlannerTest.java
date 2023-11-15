@@ -12,7 +12,7 @@ class EventPlannerTest {
 
     @DisplayName("총 혜택 금액을 계산한다.")
     @Test
-    void calculateTotalBenefitAmount() {
+    void calculateTotalBenefitPrice() {
         // given
         VisitDate visitDate = VisitDate.makeDecemberVisitDate(3);
         Orders orders = new Orders(List.of(
@@ -23,7 +23,7 @@ class EventPlannerTest {
         eventPlanner.findBenefits(reservation);
 
         // when
-        int totalBenefit = eventPlanner.calculateTotalBenefitAmount();
+        int totalBenefit = eventPlanner.calculateTotalBenefitPrice();
 
         // then
         assertThat(totalBenefit).isZero();

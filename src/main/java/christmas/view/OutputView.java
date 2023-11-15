@@ -72,9 +72,9 @@ public class OutputView {
         System.out.println(output + LINE_SEPARATOR);
     }
 
-    public void showBenefits(Map<Event, Integer> benefits, int totalBenefitAmount) {
+    public void showBenefits(Map<Event, Integer> benefits, int totalBenefitPrice) {
         showBenefitInfo(benefits);
-        showTotalBenefitAmount(totalBenefitAmount);
+        showTotalBenefitPrice(totalBenefitPrice);
     }
 
     private void showBenefitInfo(Map<Event, Integer> benefits) {
@@ -91,10 +91,10 @@ public class OutputView {
         System.out.print(LINE_SEPARATOR);
     }
 
-    public void showTotalBenefitAmount(int totalBenefitAmount) {
+    private void showTotalBenefitPrice(int totalBenefitPrice) {
         System.out.println(TOTAL_BENEFIT_AMOUNT_TITLE);
-        String output = format(PRICE_FORMAT, totalBenefitAmount);
-        if (totalBenefitAmount > 0) {
+        String output = format(PRICE_FORMAT, totalBenefitPrice);
+        if (totalBenefitPrice > 0) {
             output = MINUS + output;
         }
         System.out.println(output + LINE_SEPARATOR);

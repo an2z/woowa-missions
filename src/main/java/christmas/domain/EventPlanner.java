@@ -47,7 +47,7 @@ public class EventPlanner {
                 .findFirst();
     }
 
-    public int calculateTotalBenefitAmount() {
+    public int calculateTotalBenefitPrice() {
         return benefits.values()
                 .stream()
                 .mapToInt(Integer::intValue)
