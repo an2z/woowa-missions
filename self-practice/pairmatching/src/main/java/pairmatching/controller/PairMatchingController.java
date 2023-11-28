@@ -5,6 +5,7 @@ import pairmatching.model.Function;
 import pairmatching.model.Level;
 import pairmatching.model.MatchingInfo;
 import pairmatching.model.Mission;
+import pairmatching.model.PairMatchingService;
 import pairmatching.view.Input;
 import pairmatching.view.Output;
 
@@ -14,10 +15,15 @@ import java.util.function.Supplier;
 public class PairMatchingController {
     private final Input input = new Input();
     private final Output output = new Output();
+    private final PairMatchingService pairMatchingService = new PairMatchingService();
 
     public void run() {
         Function function = retry(() -> Function.of(input.readFunction()));
         MatchingInfo matchingInfo = retry(() -> makeMatchingInfo(input.readMatchingInfo()));
+
+        if (function.equals(Function.MATCHING)) {
+            pairMatchingService.matching(matchingInfo);
+        }
     }
 
     private MatchingInfo makeMatchingInfo(List<String> infos) {
