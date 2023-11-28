@@ -12,12 +12,13 @@ public class PairMatchingService {
     private final CrewStore crewStore = new CrewStore();
     private final Map<MatchingInfo, List<Pair>> matchingResult = new HashMap<>();
 
-    public void matching(MatchingInfo matchingInfo) {
+    public List<Pair> matching(MatchingInfo matchingInfo) {
         Course course = matchingInfo.getCourse();
         List<Crew> crews = crewStore.findAllByCourse(course);
         List<Crew> shuffledCrews = Randoms.shuffle(crews);
         List<Pair> pairs = makePairs(shuffledCrews);
         matchingResult.put(matchingInfo, pairs);
+        return pairs;
     }
 
     private List<Pair> makePairs(List<Crew> crews) {

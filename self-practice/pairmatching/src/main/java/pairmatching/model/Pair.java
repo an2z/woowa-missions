@@ -16,4 +16,10 @@ public class Pair {
     public void addCrew(Crew crew) {
         crews.add(crew);
     }
+
+    public List<String> getCrewNames() {
+        return crews.stream()
+                .map(Crew::getName)
+                .toList();
+    }
 }

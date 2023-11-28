@@ -5,6 +5,7 @@ import pairmatching.model.Function;
 import pairmatching.model.Level;
 import pairmatching.model.MatchingInfo;
 import pairmatching.model.Mission;
+import pairmatching.model.Pair;
 import pairmatching.model.PairMatchingService;
 import pairmatching.view.Input;
 import pairmatching.view.Output;
@@ -22,7 +23,8 @@ public class PairMatchingController {
         MatchingInfo matchingInfo = retry(() -> makeMatchingInfo(input.readMatchingInfo()));
 
         if (function.equals(Function.MATCHING)) {
-            pairMatchingService.matching(matchingInfo);
+            List<Pair> pairs = pairMatchingService.matching(matchingInfo);
+            output.printMatchingResult(pairs);
         }
     }
 
