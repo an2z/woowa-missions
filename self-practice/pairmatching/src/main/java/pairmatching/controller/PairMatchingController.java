@@ -19,7 +19,16 @@ public class PairMatchingController {
     private final PairMatchingService pairMatchingService = new PairMatchingService();
 
     public void run() {
-        Function function = retry(() -> Function.of(input.readFunction()));
+        while (true) {
+            Function function = retry(() -> Function.of(input.readFunction()));
+            if (function.isExit()) {
+                return;
+            }
+            progress(function);
+        }
+    }
+
+    private void progress(Function function) {
         MatchingInfo matchingInfo = retry(() -> makeMatchingInfo(input.readMatchingInfo()));
 
         if (function.equals(Function.MATCHING)) {

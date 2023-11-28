@@ -23,6 +23,10 @@ public enum Function {
                 .orElseThrow(() -> new IllegalArgumentException("기능을 찾을 수 없습니다."));
     }
 
+    public boolean isExit() {
+        return this.equals(EXIT);
+    }
+
     @Override
     public String toString() {
         return String.format("%s. %s", command, description);
