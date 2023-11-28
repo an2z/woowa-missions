@@ -28,8 +28,9 @@
 ### ⌨️ 입력
 
 - `camp.nextstep.edu.missionutils.Console.readLine`을 활용한다.
-- [ ] 기능을 입력 받는다.
+- [x] 기능을 입력 받는다.
     ```text
+    기능을 선택하세요.
     1. 페어 매칭
     2. 페어 조회
     3. 페어 초기화
