@@ -5,6 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
@@ -24,7 +25,7 @@ public class PairMatchingService {
     private List<Pair> makePairs(List<Crew> crews) {
         List<Pair> pairs = IntStream.range(0, crews.size() / 2)
                 .mapToObj(i -> Pair.from(crews.get(2 * i), crews.get(2 * i + 1)))
-                .toList();
+                .collect(Collectors.toList());
 
         if (isOddSize(crews)) {
             Crew lastCrew = crews.get(crews.size() - 1);

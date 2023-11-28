@@ -4,6 +4,7 @@ import pairmatching.model.Function;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
@@ -31,7 +32,7 @@ public class Input {
 
     private List<String> convertToList(String input) {
         return Arrays.stream(input.split(", "))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     private String read() {

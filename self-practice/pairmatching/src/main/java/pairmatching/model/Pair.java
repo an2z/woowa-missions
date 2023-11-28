@@ -1,6 +1,8 @@
 package pairmatching.model;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Pair {
     private final List<Crew> crews;
@@ -10,7 +12,7 @@ public class Pair {
     }
 
     public static Pair from(Crew... crews) {
-        return new Pair(List.of(crews));
+        return new Pair(Arrays.asList(crews));
     }
 
     public void addCrew(Crew crew) {
@@ -20,6 +22,6 @@ public class Pair {
     public List<String> getCrewNames() {
         return crews.stream()
                 .map(Crew::getName)
-                .toList();
+                .collect(Collectors.toList());
     }
 }
