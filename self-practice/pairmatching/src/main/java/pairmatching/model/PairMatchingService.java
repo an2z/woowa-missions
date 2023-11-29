@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class PairMatchingService {
     private final CrewStore crewStore = new CrewStore();
-    private final Map<MatchingInfo, List<Pair>> matchingResult = new HashMap<>();
+    private Map<MatchingInfo, List<Pair>> matchingResult = new HashMap<>();
 
     public boolean isExist(MatchingInfo matchingInfo) {
         return matchingResult.containsKey(matchingInfo);
@@ -59,6 +59,10 @@ public class PairMatchingService {
             return matchingResult.get(matchingInfo);
         }
         throw new IllegalArgumentException("매칭 이력이 없습니다.");
+    }
+
+    public void reset() {
+        matchingResult = new HashMap<>();
     }
 
     public Map<MatchingInfo, List<Pair>> getMatchingResult() {

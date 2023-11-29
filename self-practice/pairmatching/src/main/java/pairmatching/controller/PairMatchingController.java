@@ -45,6 +45,10 @@ public class PairMatchingController {
                 output.printError(e.getMessage());
             }
         }
+
+        if (function.equals(Function.INITIALIZATION)) {
+            pairMatchingService.reset();
+        }
     }
 
     private boolean canMatching(MatchingInfo matchingInfo) {
