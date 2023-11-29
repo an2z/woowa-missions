@@ -43,7 +43,7 @@ public class PairMatchingService {
         List<Pair> pairs = new ArrayList<>();
 
         // 앞에서부터 순서대로 두명씩 페어 생성
-        for (int i = 0; i < crews.size() / 2; i += 2) {
+        for (int i = 0; i < crews.size(); i += 2) {
             pairs.add(Pair.of(crews.get(i), crews.get(i + 1)));
         }
         // 홀수 크루일 경우 마지막 페어에 추가
