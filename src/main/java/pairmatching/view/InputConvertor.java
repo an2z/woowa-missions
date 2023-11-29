@@ -14,8 +14,8 @@ public class InputConvertor {
 
     public static MatchInfo convertToMatchInfo(String input) {
         String[] info = input.split(", ");
-        Level level = Level.find(info[1]);
         Course course = Course.find(info[0]);
+        Level level = Level.find(info[1]);
         Mission mission = Mission.find(info[2], level);
         return new MatchInfo(course, level, mission);
     }
