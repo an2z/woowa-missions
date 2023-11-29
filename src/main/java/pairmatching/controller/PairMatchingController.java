@@ -28,6 +28,11 @@ public class PairMatchingController {
             List<Pair> pairs = service.match(matchInfo);
             output.printPairMatchingResult(pairs);
         }
+
+        if (feature == Feature.PAIR_LOOKUP) {
+            List<Pair> pairs = service.lookUp(matchInfo);
+            output.printPairMatchingResult(pairs);
+        }
     }
 
     private <T> T retry(Supplier<T> supplier) {

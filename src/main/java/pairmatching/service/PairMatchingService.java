@@ -55,4 +55,11 @@ public class PairMatchingService {
 
         return pairs;
     }
+
+    public List<Pair> lookUp(MatchInfo matchInfo) {
+        if (pairMatchingResults.containsKey(matchInfo)) {
+            return pairMatchingResults.get(matchInfo);
+        }
+        throw new IllegalArgumentException("매칭 이력이 없습니다.");
+    }
 }
