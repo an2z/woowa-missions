@@ -2,6 +2,7 @@ package pairmatching.controller;
 
 import pairmatching.domain.Feature;
 import pairmatching.domain.MatchInfo;
+import pairmatching.domain.MatchOption;
 import pairmatching.domain.Pair;
 import pairmatching.service.PairMatchingService;
 import pairmatching.view.Input;
@@ -29,7 +30,7 @@ public class PairMatchingController {
     private void performFeature(Feature feature) {
         MatchInfo matchInfo = retry(input::readMatchInfo);
 
-        if (feature == Feature.PAIR_MATCHING) {
+        if (feature == Feature.PAIR_MATCHING && canMatch(matchInfo)) {
             List<Pair> pairs = service.match(matchInfo);
             output.printPairMatchingResult(pairs);
         }
@@ -42,6 +43,14 @@ public class PairMatchingController {
         if (feature == Feature.PAIR_RESET) {
             service.reset();
         }
+    }
+
+    private boolean canMatch(MatchInfo matchInfo) {
+        if (service.hasMatchingResult(matchInfo)) {
+            MatchOption matchOption = retry(input::readMatchOption);
+            return matchOption == MatchOption.YES;
+        }
+        return true;
     }
 
     private <T> T retry(Supplier<T> supplier) {

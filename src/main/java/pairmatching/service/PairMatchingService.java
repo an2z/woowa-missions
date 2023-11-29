@@ -64,6 +64,10 @@ public class PairMatchingService {
         throw new IllegalArgumentException("매칭 이력이 없습니다.");
     }
 
+    public boolean hasMatchingResult(MatchInfo matchInfo) {
+        return pairMatchingResults.containsKey(matchInfo);
+    }
+
     public void reset() {
         pairMatchingResults = new HashMap<>();
     }
