@@ -17,8 +17,13 @@ public class PairMatchingController {
     private final PairMatchingService service = new PairMatchingService();
 
     public void run() {
-        Feature feature = retry(input::readFeature);
-        performFeature(feature);
+        while (true) {
+            Feature feature = retry(input::readFeature);
+            if (feature == Feature.EXIT) {
+                return;
+            }
+            performFeature(feature);
+        }
     }
 
     private void performFeature(Feature feature) {
