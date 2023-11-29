@@ -17,6 +17,7 @@ public class Output {
                 .map(Pair::getCrewNames)
                 .map(this::joiningNames)
                 .forEach(System.out::println);
+        System.out.print(LINE_SEPARATOR);
     }
 
     private String joiningNames(List<String> names) {

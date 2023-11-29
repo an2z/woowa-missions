@@ -13,6 +13,10 @@ public class PairMatchingService {
     private final CrewStore crewStore = new CrewStore();
     private final Map<MatchingInfo, List<Pair>> matchingResult = new HashMap<>();
 
+    public boolean isExist(MatchingInfo matchingInfo) {
+        return matchingResult.containsKey(matchingInfo);
+    }
+
     public List<Pair> matching(MatchingInfo matchingInfo) {
         Course course = matchingInfo.getCourse();
 

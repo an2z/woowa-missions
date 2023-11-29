@@ -7,6 +7,7 @@ import pairmatching.model.MatchingInfo;
 import pairmatching.model.Mission;
 import pairmatching.model.Pair;
 import pairmatching.model.PairMatchingService;
+import pairmatching.model.RematchDecision;
 import pairmatching.view.Input;
 import pairmatching.view.Output;
 
@@ -31,10 +32,18 @@ public class PairMatchingController {
     private void progress(Function function) {
         MatchingInfo matchingInfo = retry(() -> makeMatchingInfo(input.readMatchingInfo()));
 
-        if (function.equals(Function.MATCHING)) {
+        if (function.equals(Function.MATCHING) && canMatching(matchingInfo)) {
             List<Pair> pairs = pairMatchingService.matching(matchingInfo);
             output.printMatchingResult(pairs);
         }
+    }
+
+    private boolean canMatching(MatchingInfo matchingInfo) {
+        if (pairMatchingService.isExist(matchingInfo)) {
+            RematchDecision rematchDecision = retry(() -> RematchDecision.find(input.readReMathDecision()));
+            return rematchDecision.equals(RematchDecision.YES);
+        }
+        return true;
     }
 
     private MatchingInfo makeMatchingInfo(List<String> infos) {
