@@ -2,12 +2,26 @@ package pairmatching.controller;
 
 import pairmatching.domain.Feature;
 import pairmatching.view.Input;
+import pairmatching.view.Output;
+
+import java.util.function.Supplier;
 
 public class PairMatchingController {
 
     private final Input input = new Input();
+    private final Output output = new Output();
 
     public void run() {
-        Feature feature = input.readFeature();
+        Feature feature = retry(input::readFeature);
+    }
+
+    private <T> T retry(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                output.printError(e.getMessage());
+            }
+        }
     }
 }
