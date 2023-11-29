@@ -11,4 +11,8 @@ public class MatchInfo {
         this.level = level;
         this.mission = mission;
     }
+
+    public Course getCourse() {
+        return course;
+    }
 }
