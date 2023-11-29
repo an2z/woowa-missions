@@ -2,10 +2,12 @@ package pairmatching.controller;
 
 import pairmatching.domain.Feature;
 import pairmatching.domain.MatchInfo;
+import pairmatching.domain.Pair;
 import pairmatching.service.PairMatchingService;
 import pairmatching.view.Input;
 import pairmatching.view.Output;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class PairMatchingController {
@@ -23,7 +25,8 @@ public class PairMatchingController {
         MatchInfo matchInfo = retry(input::readMatchInfo);
 
         if (feature == Feature.PAIR_MATCHING) {
-            service.match(matchInfo);
+            List<Pair> pairs = service.match(matchInfo);
+            output.printPairMatchingResult(pairs);
         }
     }
 

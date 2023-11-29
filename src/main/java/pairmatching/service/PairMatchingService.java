@@ -23,12 +23,13 @@ public class PairMatchingService {
         pairMatchingResults = new HashMap<>();
     }
 
-    public void match(MatchInfo matchInfo) {
+    public List<Pair> match(MatchInfo matchInfo) {
         Course course = matchInfo.getCourse();
         List<String> crewInfo = crewInfoRepository.findCrewInfo(course);
         List<Crew> crews = makeShuffledCrews(course, crewInfo);
         List<Pair> pairs = makePairs(crews);
         pairMatchingResults.put(matchInfo, pairs);
+        return pairs;
     }
 
     private List<Crew> makeShuffledCrews(Course course, List<String> crewInfo) {
