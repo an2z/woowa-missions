@@ -17,5 +17,6 @@ public class Output {
         pairs.stream()
                 .map(pair -> String.join(" : ", pair.getCrewNames()))
                 .forEach(System.out::println);
+        System.out.print(LINE_SEPARATOR);
     }
 }
