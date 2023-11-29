@@ -15,11 +15,21 @@ public class PairMatchingService {
 
     public List<Pair> matching(MatchingInfo matchingInfo) {
         Course course = matchingInfo.getCourse();
-        List<Crew> crews = crewStore.findAllByCourse(course);
-        List<Crew> shuffledCrews = Randoms.shuffle(crews);
-        List<Pair> pairs = makePairs(shuffledCrews);
+
+        List<String> crewNames = crewStore.findAllByCourse(course);
+        List<String> shuffledCrewNames = Randoms.shuffle(crewNames);
+
+        List<Crew> crews = makeCrews(course, shuffledCrewNames);
+        List<Pair> pairs = makePairs(crews);
+
         matchingResult.put(matchingInfo, pairs);
         return pairs;
+    }
+
+    private List<Crew> makeCrews(Course course, List<String> names) {
+        return names.stream()
+                .map(name -> new Crew(course, name))
+                .collect(Collectors.toList());
     }
 
     private List<Pair> makePairs(List<Crew> crews) {

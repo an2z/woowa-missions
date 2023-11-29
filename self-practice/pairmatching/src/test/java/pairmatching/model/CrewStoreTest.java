@@ -1,10 +1,7 @@
-package repository;
+package pairmatching.model;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import pairmatching.model.Course;
-import pairmatching.model.Crew;
-import pairmatching.model.CrewStore;
 
 import java.util.List;
 
@@ -16,8 +13,8 @@ class CrewStoreTest {
     @DisplayName("과정별 크루 목록을 가져온다.")
     @Test
     void findAllByCourse() {
-        List<Crew> backendCrews = crewStore.findAllByCourse(Course.BACKEND);
-        List<Crew> frontendCrews = crewStore.findAllByCourse(Course.FRONTEND);
+        List<String> backendCrews = crewStore.findAllByCourse(Course.BACKEND);
+        List<String> frontendCrews = crewStore.findAllByCourse(Course.FRONTEND);
         assertThat(backendCrews).hasSize(20);
         assertThat(frontendCrews).hasSize(15);
     }
