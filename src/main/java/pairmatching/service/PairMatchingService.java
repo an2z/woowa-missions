@@ -3,11 +3,13 @@ package pairmatching.service;
 import camp.nextstep.edu.missionutils.Randoms;
 import pairmatching.domain.Course;
 import pairmatching.domain.Crew;
+import pairmatching.domain.Level;
 import pairmatching.domain.MatchInfo;
 import pairmatching.domain.Pair;
 import pairmatching.repository.CrewInfoRepository;
 
 import java.util.ArrayList;
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,19 +20,33 @@ public class PairMatchingService {
     private final CrewInfoRepository crewInfoRepository;
 
     private Map<MatchInfo, List<Pair>> pairMatchingResults;
+    private Map<Level, List<Pair>> pairHistoryByLevel;
 
     public PairMatchingService() {
         crewInfoRepository = new CrewInfoRepository();
         pairMatchingResults = new HashMap<>();
+        pairHistoryByLevel = new EnumMap<>(Level.class);
     }
 
     public List<Pair> match(MatchInfo matchInfo) {
         Course course = matchInfo.getCourse();
+        Level level = matchInfo.getLevel();
         List<String> crewInfo = crewInfoRepository.findCrewInfo(course);
-        List<Crew> crews = makeShuffledCrews(course, crewInfo);
-        List<Pair> pairs = makePairs(crews);
-        pairMatchingResults.put(matchInfo, pairs);
-        return pairs;
+
+        for (int i = 0; i < 3; i++) {
+            List<Crew> crews = makeShuffledCrews(course, crewInfo);
+            List<Pair> pairs = makePairs(crews);
+
+            if (canMatching(level, pairs)) {
+                pairs.forEach(pair -> {
+                    pairMatchingResults.computeIfAbsent(matchInfo, key -> new ArrayList<>()).add(pair);
+                    pairHistoryByLevel.computeIfAbsent(level, key -> new ArrayList<>()).add(pair);
+                });
+                return pairs;
+            }
+        }
+
+        throw new IllegalArgumentException("매칭에 실패했습니다.");
     }
 
     private List<Crew> makeShuffledCrews(Course course, List<String> crewInfo) {
@@ -57,6 +73,15 @@ public class PairMatchingService {
         return pairs;
     }
 
+    private boolean canMatching(Level level, List<Pair> pairs) {
+        if (pairHistoryByLevel.containsKey(level)) {
+            List<Pair> pairHistory = this.pairHistoryByLevel.get(level);
+            return pairs.stream()
+                    .noneMatch(pairHistory::contains);
+        }
+        return true;
+    }
+
     public List<Pair> lookUp(MatchInfo matchInfo) {
         if (pairMatchingResults.containsKey(matchInfo)) {
             return pairMatchingResults.get(matchInfo);
@@ -70,5 +95,6 @@ public class PairMatchingService {
 
     public void reset() {
         pairMatchingResults = new HashMap<>();
+        pairHistoryByLevel = new EnumMap<>(Level.class);
     }
 }

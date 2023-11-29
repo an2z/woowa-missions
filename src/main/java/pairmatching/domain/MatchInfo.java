@@ -18,6 +18,10 @@ public class MatchInfo {
         return course;
     }
 
+    public Level getLevel() {
+        return level;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

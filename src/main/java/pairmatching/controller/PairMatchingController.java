@@ -31,8 +31,12 @@ public class PairMatchingController {
         MatchInfo matchInfo = retry(input::readMatchInfo);
 
         if (feature == Feature.PAIR_MATCHING && canMatch(matchInfo)) {
-            List<Pair> pairs = service.match(matchInfo);
-            output.printPairMatchingResult(pairs);
+            try {
+                List<Pair> pairs = service.match(matchInfo);
+                output.printPairMatchingResult(pairs);
+            } catch (IllegalArgumentException e) {
+                output.printError(e.getMessage());
+            }
         }
 
         if (feature == Feature.PAIR_LOOKUP) {
