@@ -1,5 +1,7 @@
 package pairmatching.domain;
 
+import java.util.Objects;
+
 public class MatchInfo {
 
     private final Course course;
@@ -14,5 +16,18 @@ public class MatchInfo {
 
     public Course getCourse() {
         return course;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MatchInfo matchInfo = (MatchInfo) o;
+        return course == matchInfo.course && level == matchInfo.level && mission == matchInfo.mission;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(course, level, mission);
     }
 }
