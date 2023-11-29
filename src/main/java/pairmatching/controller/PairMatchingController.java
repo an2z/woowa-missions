@@ -1,6 +1,7 @@
 package pairmatching.controller;
 
 import pairmatching.domain.Feature;
+import pairmatching.domain.MatchInfo;
 import pairmatching.view.Input;
 import pairmatching.view.Output;
 
@@ -13,6 +14,7 @@ public class PairMatchingController {
 
     public void run() {
         Feature feature = retry(input::readFeature);
+        MatchInfo matchInfo = retry(input::readMatchInfo);
     }
 
     private <T> T retry(Supplier<T> supplier) {
