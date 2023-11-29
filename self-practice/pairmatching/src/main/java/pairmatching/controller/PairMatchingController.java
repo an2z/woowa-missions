@@ -36,6 +36,15 @@ public class PairMatchingController {
             List<Pair> pairs = pairMatchingService.matching(matchingInfo);
             output.printMatchingResult(pairs);
         }
+
+        if (function.equals(Function.LOOKUP)) {
+            try {
+                List<Pair> matchingResult = pairMatchingService.findMatchingResult(matchingInfo);
+                output.printMatchingResult(matchingResult);
+            } catch (IllegalArgumentException e) {
+                output.printError(e.getMessage());
+            }
+        }
     }
 
     private boolean canMatching(MatchingInfo matchingInfo) {

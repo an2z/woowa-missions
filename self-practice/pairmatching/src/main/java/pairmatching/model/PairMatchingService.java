@@ -54,6 +54,13 @@ public class PairMatchingService {
         return crews.size() % 2 != 0;
     }
 
+    public List<Pair> findMatchingResult(MatchingInfo matchingInfo) {
+        if (matchingResult.containsKey(matchingInfo)) {
+            return matchingResult.get(matchingInfo);
+        }
+        throw new IllegalArgumentException("매칭 이력이 없습니다.");
+    }
+
     public Map<MatchingInfo, List<Pair>> getMatchingResult() {
         return matchingResult;
     }
