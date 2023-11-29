@@ -23,7 +23,7 @@ public class PairMatchingController {
         MatchInfo matchInfo = retry(input::readMatchInfo);
 
         if (feature == Feature.PAIR_MATCHING) {
-            service.pairMatching(matchInfo);
+            service.match(matchInfo);
         }
     }
 
