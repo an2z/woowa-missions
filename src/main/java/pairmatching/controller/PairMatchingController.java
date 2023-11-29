@@ -33,6 +33,10 @@ public class PairMatchingController {
             List<Pair> pairs = service.lookUp(matchInfo);
             output.printPairMatchingResult(pairs);
         }
+
+        if (feature == Feature.PAIR_RESET) {
+            service.reset();
+        }
     }
 
     private <T> T retry(Supplier<T> supplier) {

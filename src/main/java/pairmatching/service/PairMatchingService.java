@@ -16,7 +16,8 @@ import java.util.stream.Collectors;
 public class PairMatchingService {
 
     private final CrewInfoRepository crewInfoRepository;
-    private final Map<MatchInfo, List<Pair>> pairMatchingResults;
+
+    private Map<MatchInfo, List<Pair>> pairMatchingResults;
 
     public PairMatchingService() {
         crewInfoRepository = new CrewInfoRepository();
@@ -61,5 +62,9 @@ public class PairMatchingService {
             return pairMatchingResults.get(matchInfo);
         }
         throw new IllegalArgumentException("매칭 이력이 없습니다.");
+    }
+
+    public void reset() {
+        pairMatchingResults = new HashMap<>();
     }
 }
