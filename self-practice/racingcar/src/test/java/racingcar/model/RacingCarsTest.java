@@ -42,4 +42,23 @@ class RacingCarsTest {
         assertThat(wori.getMovement()).isZero();
         assertThat(jun.getMovement()).isEqualTo(1);
     }
+
+    @DisplayName("자동차 경주 우승자를 구한다.")
+    @Test
+    void findWinner() {
+        // given
+        Car pobi = new Car("pobi");
+        Car wori = new Car("wori");
+        Car jun = new Car("jun");
+        RacingCars racingCars = new RacingCars(List.of(pobi, wori, jun));
+        racingCars.race(List.of(1, 4, 4));
+
+        // when
+        List<Car> winner = racingCars.findWinner();
+
+        // then
+        assertThat(winner)
+                .hasSize(2)
+                .containsExactly(wori, jun);
+    }
 }
