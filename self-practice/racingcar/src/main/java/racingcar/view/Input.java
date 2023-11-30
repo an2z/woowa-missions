@@ -12,6 +12,11 @@ public class Input {
         return InputConvertor.convertToList(read(), DELIMITER);
     }
 
+    public int readNumber() {
+        System.out.println("시도할 회수는 몇회인가요?");
+        return InputConvertor.convertToInt(read());
+    }
+
     private String read() {
         return Console.readLine();
     }

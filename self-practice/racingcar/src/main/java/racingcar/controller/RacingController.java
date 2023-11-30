@@ -11,6 +11,7 @@ public class RacingController {
 
     public void run() {
         makeRacingCars();
+        input.readNumber();
     }
 
     public RacingCars makeRacingCars() {

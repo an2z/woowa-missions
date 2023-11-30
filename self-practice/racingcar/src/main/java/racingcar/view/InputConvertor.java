@@ -9,6 +9,10 @@ public class InputConvertor {
                 .toList();
     }
 
+    public static int convertToInt(String input) {
+        return Integer.parseInt(input);
+    }
+
     private InputConvertor() {
     }
 }
