@@ -1,9 +1,11 @@
 package racingcar.model;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
@@ -13,5 +15,13 @@ class CarTest {
     void makeCarWithLongName(String name) {
         assertThatThrownBy(() -> new Car(name))
                 .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @DisplayName("자동차를 전진한다.")
+    @Test
+    void move(int number) {
+        Car car = new Car("pobi");
+        car.move();
+        assertThat(car.getMovement()).isEqualTo(1);
     }
 }
