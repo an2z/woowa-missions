@@ -17,10 +17,8 @@ public class Car {
         }
     }
 
-    public void move(int condition) {
-        if (condition >= 4) {
-            movement++;
-        }
+    public void move() {
+        movement++;
     }
 
     public boolean isMaxMovement(int maxMovement) {

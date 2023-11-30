@@ -2,6 +2,7 @@ package racingcar.controller;
 
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
+import racingcar.model.RandomNumberMaker;
 import racingcar.view.Input;
 import racingcar.view.Output;
 
@@ -22,7 +23,8 @@ public class RacingController {
     public void startRacing(RacingCars racingCars, int count) {
         output.showRacingResult();
         for (int i = 0; i < count; i++) {
-            racingCars.race();
+            List<Integer> randomNumbers = RandomNumberMaker.makeRandomNumbers(racingCars.getSize());
+            racingCars.race(randomNumbers);
             output.showRacingStatus(racingCars);
         }
     }

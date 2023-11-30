@@ -3,6 +3,7 @@ package racingcar.model;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.IntStream;
 
 public class RacingCars {
     private final List<Car> cars;
@@ -26,8 +27,14 @@ public class RacingCars {
         }
     }
 
-    public void race() {
-        cars.forEach(car -> car.move(RandomNumberMaker.makeRandomNumber()));
+    public void race(List<Integer> randomNumbers) {
+        IntStream.range(0, cars.size())
+                .filter(i -> isCanMove(randomNumbers.get(i)))
+                .forEach(i -> cars.get(i).move());
+    }
+
+    private boolean isCanMove(int randomNumber) {
+        return randomNumber >= 4;
     }
 
     public List<Car> findWinner() {
@@ -42,6 +49,10 @@ public class RacingCars {
                 .mapToInt(Car::getMovement)
                 .max()
                 .orElseThrow(() -> new IllegalStateException("최대 값을 찾을 수 없습니다."));
+    }
+
+    public int getSize() {
+        return cars.size();
     }
 
     public List<Car> getCars() {
