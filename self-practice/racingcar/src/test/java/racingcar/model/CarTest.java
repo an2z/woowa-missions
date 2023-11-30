@@ -9,8 +9,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class CarTest {
-    @DisplayName("자동차 이름이 5글자를 넘으면 예외가 발생한다.")
-    @ValueSource(strings = {"spring", "javajigi"})
+    @DisplayName("자동차 이름이 1~5글자가 아니면 예외가 발생한다.")
+    @ValueSource(strings = {"", "spring", "javajigi"})
     @ParameterizedTest
     void makeCarWithLongName(String name) {
         assertThatThrownBy(() -> new Car(name))
