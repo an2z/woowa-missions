@@ -19,7 +19,7 @@ class CarTest {
 
     @DisplayName("자동차를 전진한다.")
     @Test
-    void move(int number) {
+    void move() {
         Car car = new Car("pobi");
         car.move();
         assertThat(car.getMovement()).isEqualTo(1);
