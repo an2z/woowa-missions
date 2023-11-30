@@ -2,6 +2,7 @@ plugins {
     id 'java'
 }
 
+group 'camp.nextstep.edu'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -10,14 +11,12 @@ repositories {
 }
 
 dependencies {
-    implementation('com.github.woowacourse-projects:mission-utils:1.0.0')
-    testImplementation 'org.assertj:assertj-core:3.22.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    implementation 'com.github.woowacourse-projects:mission-utils:1.1.0'
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
