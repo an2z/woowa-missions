@@ -29,11 +29,11 @@ public class RacingCars {
 
     public void race(List<Integer> randomNumbers) {
         IntStream.range(0, cars.size())
-                .filter(i -> isCanMove(randomNumbers.get(i)))
+                .filter(i -> isMoveCondition(randomNumbers.get(i)))
                 .forEach(i -> cars.get(i).move());
     }
 
-    private boolean isCanMove(int randomNumber) {
+    private boolean isMoveCondition(int randomNumber) {
         return randomNumber >= 4;
     }
 
