@@ -23,7 +23,7 @@ class InputValidatorTest {
     })
     @ParameterizedTest
     void validateCarNames(String input) {
-        assertThatThrownBy(() -> InputValidator.validateCarNamesFormat(input))
+        assertThatThrownBy(() -> InputValidator.validateCarNames(input))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 

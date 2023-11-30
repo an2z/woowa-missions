@@ -11,7 +11,7 @@ public class InputValidator {
         return input;
     }
 
-    public static String validateCarNamesFormat(String input) {
+    public static String validateCarNames(String input) {
         if (isWrongValue(input, CAR_NAMES_REGEX)) {
             throw new IllegalArgumentException("자동차 이름 입력이 잘못되었습니다.");
         }
