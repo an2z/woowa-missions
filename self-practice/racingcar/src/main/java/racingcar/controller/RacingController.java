@@ -3,15 +3,18 @@ package racingcar.controller;
 import racingcar.model.Car;
 import racingcar.model.RacingCars;
 import racingcar.view.Input;
+import racingcar.view.Output;
 
 import java.util.List;
+import java.util.function.Supplier;
 
 public class RacingController {
     private final Input input = new Input();
+    private final Output output = new Output();
 
     public void run() {
-        makeRacingCars();
-        input.readNumber();
+        retry(this::makeRacingCars);
+        retry(input::readNumber);
     }
 
     public RacingCars makeRacingCars() {
@@ -22,5 +25,15 @@ public class RacingController {
         return input.readCarNames().stream()
                 .map(Car::new)
                 .toList();
+    }
+
+    private <T> T retry(Supplier<T> supplier) {
+        while (true) {
+            try {
+                return supplier.get();
+            } catch (IllegalArgumentException e) {
+                output.showError(e.getMessage());
+            }
+        }
     }
 }
