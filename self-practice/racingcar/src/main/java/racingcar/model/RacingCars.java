@@ -25,4 +25,12 @@ public class RacingCars {
             throw new IllegalArgumentException("같은 자동차가 있을 수 없습니다.");
         }
     }
+
+    public void race() {
+        cars.forEach(car -> car.move(RandomNumberMaker.makeRandomNumber()));
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 }

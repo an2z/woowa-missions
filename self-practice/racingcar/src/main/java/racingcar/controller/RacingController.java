@@ -13,8 +13,17 @@ public class RacingController {
     private final Output output = new Output();
 
     public void run() {
-        retry(this::makeRacingCars);
-        retry(input::readNumber);
+        RacingCars racingCars = retry(this::makeRacingCars);
+        int count = retry(input::readNumber);
+        startRacing(racingCars, count);
+    }
+
+    public void startRacing(RacingCars racingCars, int count) {
+        output.showRacingResult();
+        for (int i = 0; i < count; i++) {
+            racingCars.race();
+            output.showRacingStatus(racingCars);
+        }
     }
 
     public RacingCars makeRacingCars() {
