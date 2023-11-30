@@ -16,6 +16,10 @@ public class Car {
         }
     }
 
+    public boolean isMaxMovement(int maxMovement) {
+        return this.movement == maxMovement;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

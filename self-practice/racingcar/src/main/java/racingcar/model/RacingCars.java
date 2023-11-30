@@ -30,6 +30,20 @@ public class RacingCars {
         cars.forEach(car -> car.move(RandomNumberMaker.makeRandomNumber()));
     }
 
+    public List<Car> findWinner() {
+        int maxMovement = findMaxMovement();
+        return cars.stream()
+                .filter(car -> car.isMaxMovement(maxMovement))
+                .toList();
+    }
+
+    private int findMaxMovement() {
+        return cars.stream()
+                .mapToInt(Car::getMovement)
+                .max()
+                .orElseThrow(() -> new IllegalStateException("최대 값을 찾을 수 없습니다."));
+    }
+
     public List<Car> getCars() {
         return cars;
     }

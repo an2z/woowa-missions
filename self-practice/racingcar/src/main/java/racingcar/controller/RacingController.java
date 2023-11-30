@@ -16,6 +16,7 @@ public class RacingController {
         RacingCars racingCars = retry(this::makeRacingCars);
         int count = retry(input::readNumber);
         startRacing(racingCars, count);
+        output.showWinner(racingCars.findWinner());
     }
 
     public void startRacing(RacingCars racingCars, int count) {
