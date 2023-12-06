@@ -20,4 +20,8 @@ public class Bridge {
     public boolean canMove(int index, String step) {
         return steps.get(index).equals(step);
     }
+
+    public int getSize() {
+        return steps.size();
+    }
 }

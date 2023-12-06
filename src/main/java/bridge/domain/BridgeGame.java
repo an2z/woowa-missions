@@ -31,6 +31,10 @@ public class BridgeGame {
     public void retry() {
     }
 
+    public boolean allCrossed() {
+        return bridgeGameMap.getSize() == bridge.getSize();
+    }
+
     public BridgeGameMap getBridgeGameMap() {
         return bridgeGameMap;
     }

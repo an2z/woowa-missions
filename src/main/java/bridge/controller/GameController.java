@@ -16,6 +16,8 @@ public class GameController {
     private final OutputView outputView;
     private final BridgeMaker bridgeMaker;
 
+    boolean flag = true;
+
     public GameController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
@@ -26,7 +28,13 @@ public class GameController {
         outputView.printStartMessage();
         Bridge bridge = retry(this::makeBridge);
         BridgeGame bridgeGame = new BridgeGame(bridge);
-        bridgeGame.move(inputView.readMoving());
+
+        while (true) {
+            if (bridgeGame.allCrossed()) {
+                return;
+            }
+            bridgeGame.move(inputView.readMoving());
+        }
     }
 
     private Bridge makeBridge() {
