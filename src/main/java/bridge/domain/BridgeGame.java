@@ -8,11 +8,13 @@ public class BridgeGame {
     private final Bridge bridge;
     private final BridgeGameMap bridgeGameMap;
 
-    private boolean lastGameResult;
+    private boolean gameResult;
+    private int tryCount;
 
     public BridgeGame(Bridge bridge) {
         this.bridge = bridge;
         this.bridgeGameMap = new BridgeGameMap();
+        this.tryCount = 1;
     }
 
     /**
@@ -23,7 +25,7 @@ public class BridgeGame {
     public void move(String step) {
         boolean canMove = bridge.canMove(bridgeGameMap.getSize(), step);
         bridgeGameMap.addMap(step, canMove);
-        lastGameResult = canMove;
+        gameResult = canMove;
     }
 
     /**
@@ -33,10 +35,11 @@ public class BridgeGame {
      */
     public void retry() {
         bridgeGameMap.reset();
+        tryCount++;
     }
 
     public boolean isFail() {
-        return Boolean.FALSE.equals(lastGameResult);
+        return Boolean.FALSE.equals(gameResult);
     }
 
     public boolean allCrossed() {
@@ -45,5 +48,13 @@ public class BridgeGame {
 
     public BridgeGameMap getBridgeGameMap() {
         return bridgeGameMap;
+    }
+
+    public boolean getGameResult() {
+        return gameResult;
+    }
+
+    public int getTryCount() {
+        return tryCount;
     }
 }

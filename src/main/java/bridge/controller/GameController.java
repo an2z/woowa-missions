@@ -47,6 +47,8 @@ public class GameController {
                 flag = false;
             }
         }
+
+        outputView.printResult(bridgeGame.getBridgeGameMap(), bridgeGame.getGameResult(), bridgeGame.getTryCount());
     }
 
     private Bridge makeBridge() {
