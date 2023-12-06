@@ -34,6 +34,7 @@ public class GameController {
                 return;
             }
             bridgeGame.move(inputView.readMoving());
+            outputView.printMap(bridgeGame.getBridgeGameMap());
         }
     }
 

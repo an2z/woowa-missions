@@ -1,5 +1,11 @@
 package bridge.view;
 
+import bridge.domain.BridgeGameMap;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.StringJoiner;
+
 /**
  * 사용자에게 게임 진행 상황과 결과를 출력하는 역할을 한다.
  */
@@ -20,7 +26,25 @@ public class OutputView {
      * <p>
      * 출력을 위해 필요한 메서드의 인자(parameter)는 자유롭게 추가하거나 변경할 수 있다.
      */
-    public void printMap() {
+    public void printMap(BridgeGameMap bridgeGameMap) {
+        System.out.println(makeBridgeOutputShape(bridgeGameMap.getUpBridgeMap()));
+        System.out.println(makeBridgeOutputShape(bridgeGameMap.getDownBridgeMap()));
+    }
+
+    private String makeBridgeOutputShape(List<Optional<Boolean>> map) {
+        StringJoiner result = new StringJoiner(" | ", "[ ", " ]");
+
+        for (Optional<Boolean> status : map) {
+            result.add(status.map(this::convertToSymbol).orElse(" "));
+        }
+        return result.toString();
+    }
+
+    private String convertToSymbol(boolean status) {
+        if (status) {
+            return "O";
+        }
+        return "X";
     }
 
     /**
