@@ -4,6 +4,7 @@ import bridge.domain.Bridge;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class GameController {
@@ -25,7 +26,8 @@ public class GameController {
 
     private Bridge makeBridge() {
         int size = inputView.readBridgeSize();
-        return bridgeMaker.makeBridge(size);
+        List<String> steps = bridgeMaker.makeBridge(size);
+        return new Bridge(steps);
     }
 
     public <T> T retry(Supplier<T> supplier) {
