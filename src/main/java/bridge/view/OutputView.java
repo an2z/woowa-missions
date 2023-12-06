@@ -13,12 +13,12 @@ public class OutputView {
 
     private static final String LINE_SEPARATOR = System.lineSeparator();
 
-    public void printStartMessage() {
-        System.out.println("다리 건너기 게임을 시작합니다." + LINE_SEPARATOR);
+    public static void printErrorMessage(String message) {
+        System.out.println("[ERROR] " + message);
     }
 
-    public void printErrorMessage(String message) {
-        System.out.println("[ERROR] " + message);
+    public void printStartMessage() {
+        System.out.println("다리 건너기 게임을 시작합니다." + LINE_SEPARATOR);
     }
 
     /**

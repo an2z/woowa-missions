@@ -1,5 +1,6 @@
 package bridge.view;
 
+import bridge.util.RetryHandler;
 import camp.nextstep.edu.missionutils.Console;
 
 /**
@@ -21,7 +22,7 @@ public class InputView {
      */
     public String readMoving() {
         System.out.println("\n이동할 칸을 선택해주세요. (위: U, 아래: D)");
-        return InputValidator.validateMoving(read());
+        return RetryHandler.retry(() -> InputValidator.validateMoving(read()));
     }
 
     /**

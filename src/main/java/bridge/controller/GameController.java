@@ -5,10 +5,9 @@ import bridge.domain.BridgeGame;
 import bridge.domain.BridgeMaker;
 import bridge.domain.BridgeRandomNumberGenerator;
 import bridge.domain.RetryStatus;
+import bridge.util.RetryHandler;
 import bridge.view.InputView;
 import bridge.view.OutputView;
-
-import java.util.function.Supplier;
 
 public class GameController {
 
@@ -35,7 +34,7 @@ public class GameController {
 
     private BridgeGame makeBridgeGame() {
         outputView.printStartMessage();
-        Bridge bridge = retry(this::makeBridge);
+        Bridge bridge = RetryHandler.retry(this::makeBridge);
         return new BridgeGame(bridge);
     }
 
@@ -45,27 +44,17 @@ public class GameController {
     }
 
     private void play(BridgeGame bridgeGame) {
-        bridgeGame.move(retry(inputView::readMoving));
+        bridgeGame.move(inputView.readMoving());
         outputView.printMap(bridgeGame.getBridgeGameMap());
     }
 
     private void handleFailedGame(BridgeGame bridgeGame) {
-        RetryStatus retryStatus = retry(() -> RetryStatus.find(inputView.readGameCommand()));
+        RetryStatus retryStatus = RetryHandler.retry(() -> RetryStatus.find(inputView.readGameCommand()));
         if (retryStatus == RetryStatus.RETRY) {
             bridgeGame.retry();
         }
         if (retryStatus == RetryStatus.QUIT) {
             bridgeGame.finishGame();
-        }
-    }
-
-    public <T> T retry(Supplier<T> supplier) {
-        while (true) {
-            try {
-                return supplier.get();
-            } catch (IllegalArgumentException e) {
-                outputView.printErrorMessage(e.getMessage());
-            }
         }
     }
 }
