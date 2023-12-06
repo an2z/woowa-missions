@@ -35,7 +35,7 @@ public class GameController {
             outputView.printMap(bridgeGame.getBridgeGameMap());
 
             if (bridgeGame.isFail()) {
-                RetryStatus retryStatus = RetryStatus.find(inputView.readGameCommand());
+                RetryStatus retryStatus = retry(() -> RetryStatus.find(inputView.readGameCommand()));
                 if (retryStatus.equals(RetryStatus.RETRY)) {
                     bridgeGame.retry();
                 }
