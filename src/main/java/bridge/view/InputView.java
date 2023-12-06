@@ -12,7 +12,8 @@ public class InputView {
      */
     public int readBridgeSize() {
         System.out.println("다리의 길이를 입력해주세요.");
-        return InputConvertor.convertToInt(read());
+        String input = InputValidator.validateDigit(read());
+        return InputConvertor.convertToInt(input);
     }
 
     /**
