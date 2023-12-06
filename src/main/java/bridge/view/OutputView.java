@@ -57,7 +57,6 @@ public class OutputView {
         printMap(bridgeGameMap);
         System.out.println(LINE_SEPARATOR + "게임 성공 여부: " + makeGameResultOutput(gameResult));
         System.out.println("총 시도한 횟수: " + tryCount);
-
     }
 
     private String makeGameResultOutput(boolean gameResult) {
