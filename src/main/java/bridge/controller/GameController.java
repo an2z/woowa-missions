@@ -24,36 +24,41 @@ public class GameController {
     }
 
     public void run() {
-        outputView.printStartMessage();
-        Bridge bridge = retry(this::makeBridge);
-        BridgeGame bridgeGame = new BridgeGame(bridge);
-
-        boolean flag = true;
-        while (flag) {
-            bridgeGame.move(retry(inputView::readMoving));
-            outputView.printMap(bridgeGame.getBridgeGameMap());
-
+        BridgeGame bridgeGame = makeBridgeGame();
+        while (bridgeGame.isInProgress()) {
+            play(bridgeGame);
             if (bridgeGame.isFail()) {
-                RetryStatus retryStatus = retry(() -> RetryStatus.find(inputView.readGameCommand()));
-                if (retryStatus.equals(RetryStatus.RETRY)) {
-                    bridgeGame.retry();
-                }
-                if (retryStatus.equals(RetryStatus.QUIT)) {
-                    flag = false;
-                }
-            }
-            if (bridgeGame.allCrossed()) {
-                flag = false;
+                handleFailedGame(bridgeGame);
             }
         }
-
         outputView.printResult(bridgeGame.getBridgeGameMap(), bridgeGame.getGameResult(), bridgeGame.getTryCount());
+    }
+
+    private BridgeGame makeBridgeGame() {
+        outputView.printStartMessage();
+        Bridge bridge = retry(this::makeBridge);
+        return new BridgeGame(bridge);
     }
 
     private Bridge makeBridge() {
         int size = inputView.readBridgeSize();
         List<String> steps = bridgeMaker.makeBridge(size);
         return new Bridge(steps);
+    }
+
+    private void play(BridgeGame bridgeGame) {
+        bridgeGame.move(retry(inputView::readMoving));
+        outputView.printMap(bridgeGame.getBridgeGameMap());
+    }
+
+    private void handleFailedGame(BridgeGame bridgeGame) {
+        RetryStatus retryStatus = retry(() -> RetryStatus.find(inputView.readGameCommand()));
+        if (retryStatus == RetryStatus.RETRY) {
+            bridgeGame.retry();
+        }
+        if (retryStatus == RetryStatus.QUIT) {
+            bridgeGame.finishGame();
+        }
     }
 
     public <T> T retry(Supplier<T> supplier) {
