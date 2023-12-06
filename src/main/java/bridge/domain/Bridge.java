@@ -16,4 +16,8 @@ public class Bridge {
             throw new IllegalArgumentException("다리 길이는 3 이상 20 이하여야 합니다.");
         }
     }
+
+    public boolean canMove(int index, String step) {
+        return steps.get(index).equals(step);
+    }
 }

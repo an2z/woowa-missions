@@ -22,6 +22,8 @@ public class GameController {
     public void run() {
         outputView.printStartMessage();
         Bridge bridge = retry(this::makeBridge);
+        BridgeGame bridgeGame = new BridgeGame(bridge);
+        bridgeGame.move(inputView.readMoving());
     }
 
     private Bridge makeBridge() {
