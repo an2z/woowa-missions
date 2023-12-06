@@ -7,7 +7,6 @@ public enum RetryStatus {
     RETRY("R", "재시도"),
     QUIT("Q", "종료");
 
-
     private static final String INVALID_COMMAND_MESSAGE = "R과 Q 중 하나의 값을 입력해주세요.";
 
     private final String command;

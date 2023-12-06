@@ -23,7 +23,6 @@ public class GameController {
         this.bridgeMaker = new BridgeMaker(new BridgeRandomNumberGenerator());
     }
 
-
     public void run() {
         outputView.printStartMessage();
         Bridge bridge = retry(this::makeBridge);
