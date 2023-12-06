@@ -1,5 +1,8 @@
 package bridge;
 
+import bridge.view.InputView;
+import bridge.view.OutputView;
+
 public class GameController {
 
     private final InputView inputView;
@@ -11,6 +14,7 @@ public class GameController {
     }
 
     public void run() {
-        //TODO: 기능 구현
+        outputView.printStartMessage();
+        inputView.readBridgeSize();
     }
 }
