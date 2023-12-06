@@ -30,7 +30,7 @@ public class GameController {
 
         boolean flag = true;
         while (flag) {
-            bridgeGame.move(inputView.readMoving());
+            bridgeGame.move(retry(inputView::readMoving));
             outputView.printMap(bridgeGame.getBridgeGameMap());
 
             if (bridgeGame.isFail()) {

@@ -3,6 +3,7 @@ package bridge.view;
 public class InputValidator {
 
     private static final String DIGIT_REGEX = "[0-9]";
+    private static final String MOVING_REGEX = "[U,D]";
 
     private InputValidator() {
     }
@@ -17,6 +18,13 @@ public class InputValidator {
     public static String validateDigit(String input) {
         if (isWrongValue(input, DIGIT_REGEX)) {
             throw new IllegalArgumentException("숫자를 입력해야 합니다.");
+        }
+        return input;
+    }
+
+    public static String validateMoving(String input) {
+        if (isWrongValue(input, MOVING_REGEX)) {
+            throw new IllegalArgumentException("U 또는 D을 입력해야 합니다.");
         }
         return input;
     }
