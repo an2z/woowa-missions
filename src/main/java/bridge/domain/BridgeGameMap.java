@@ -30,12 +30,9 @@ public class BridgeGameMap {
         }
     }
 
-    public List<Boolean> getUpBridgeMap() {
-        return upBridgeMap;
-    }
-
-    public List<Boolean> getDownBridgeMap() {
-        return downBridgeMap;
+    public void reset() {
+        upBridgeMap.clear();
+        downBridgeMap.clear();
     }
 
     public List<Optional<Boolean>> getUpBridgeMap() {
