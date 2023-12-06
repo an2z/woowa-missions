@@ -21,11 +21,11 @@ public class BridgeMaker {
      */
     public List<String> makeBridge(int size) {
         return IntStream.range(0, size)
-                .mapToObj(i -> makeStep())
+                .mapToObj(i -> makeShape())
                 .collect(Collectors.toList());
     }
 
-    private String makeStep() {
+    private String makeShape() {
         if (bridgeNumberGenerator.generate() == 0) {
             return "D";
         }

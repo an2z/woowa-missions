@@ -8,7 +8,6 @@ import bridge.domain.RetryStatus;
 import bridge.view.InputView;
 import bridge.view.OutputView;
 
-import java.util.List;
 import java.util.function.Supplier;
 
 public class GameController {
@@ -42,8 +41,7 @@ public class GameController {
 
     private Bridge makeBridge() {
         int size = inputView.readBridgeSize();
-        List<String> steps = bridgeMaker.makeBridge(size);
-        return new Bridge(steps);
+        return new Bridge(bridgeMaker.makeBridge(size));
     }
 
     private void play(BridgeGame bridgeGame) {
