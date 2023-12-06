@@ -7,15 +7,14 @@ public class BridgeGame {
 
     private final Bridge bridge;
     private final BridgeGameMap bridgeGameMap;
+    private final BridgeGameResult bridgeGameResult;
 
     private GameStatus gameStatus;
-    private boolean gameResult;
-    private int tryCount;
 
     public BridgeGame(Bridge bridge) {
         this.bridge = bridge;
         this.bridgeGameMap = new BridgeGameMap();
-        this.tryCount = 1;
+        this.bridgeGameResult = new BridgeGameResult();
         gameStatus = GameStatus.IN_PROGRESS;
     }
 
@@ -27,7 +26,7 @@ public class BridgeGame {
     public void move(Shape moveShape) {
         boolean canMove = bridge.canMove(bridgeGameMap.getSize(), moveShape);
         bridgeGameMap.addMap(moveShape, canMove);
-        gameResult = canMove;
+        bridgeGameResult.updateMoveStatus(canMove);
 
         if (allCrossed()) {
             finishGame();
@@ -35,7 +34,7 @@ public class BridgeGame {
     }
 
     private boolean allCrossed() {
-        return bridgeGameMap.getSize() == bridge.getSize() && Boolean.TRUE.equals(gameResult);
+        return bridgeGameMap.getSize() == bridge.getSize() && bridgeGameResult.isSuccess();
     }
 
     public void finishGame() {
@@ -49,11 +48,11 @@ public class BridgeGame {
      */
     public void retry() {
         bridgeGameMap.reset();
-        tryCount++;
+        bridgeGameResult.increaseTryCount();
     }
 
     public boolean isFail() {
-        return Boolean.FALSE.equals(gameResult);
+        return bridgeGameResult.isFail();
     }
 
     public boolean isInProgress() {
@@ -64,11 +63,7 @@ public class BridgeGame {
         return bridgeGameMap;
     }
 
-    public boolean getGameResult() {
-        return gameResult;
-    }
-
-    public int getTryCount() {
-        return tryCount;
+    public BridgeGameResult getBridgeGameResult() {
+        return bridgeGameResult;
     }
 }

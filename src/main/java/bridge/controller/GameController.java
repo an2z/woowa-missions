@@ -33,7 +33,7 @@ public class GameController {
                 handleFailedGame(bridgeGame);
             }
         }
-        outputView.printResult(bridgeGame.getBridgeGameMap(), bridgeGame.getGameResult(), bridgeGame.getTryCount());
+        outputView.printResult(bridgeGame.getBridgeGameMap(), bridgeGame.getBridgeGameResult());
     }
 
     private BridgeGame makeBridgeGame() {
