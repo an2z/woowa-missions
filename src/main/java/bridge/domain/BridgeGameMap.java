@@ -18,13 +18,12 @@ public class BridgeGameMap {
         return upBridgeMap.size();
     }
 
-    public void addMap(String step, boolean canMove) {
-        if (step.equals("U")) {
+    public void addMap(Shape shape, boolean canMove) {
+        if (shape == Shape.UP) {
             upBridgeMap.add(Optional.of(canMove));
             downBridgeMap.add(Optional.empty());
         }
-
-        if (step.equals("D")) {
+        if (shape == Shape.DOWN) {
             upBridgeMap.add(Optional.empty());
             downBridgeMap.add(Optional.of(canMove));
         }

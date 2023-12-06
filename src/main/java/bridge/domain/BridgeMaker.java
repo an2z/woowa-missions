@@ -21,14 +21,18 @@ public class BridgeMaker {
      */
     public List<String> makeBridge(int size) {
         return IntStream.range(0, size)
-                .mapToObj(i -> makeShape())
+                .map(i -> bridgeNumberGenerator.generate())
+                .mapToObj(this::convertToBridgeShape)
                 .collect(Collectors.toList());
     }
 
-    private String makeShape() {
-        if (bridgeNumberGenerator.generate() == 0) {
-            return "D";
+    private String convertToBridgeShape(int bridgeNumber) {
+        if (bridgeNumber == 0) {
+            return Shape.DOWN.getSymbol();
         }
-        return "U";
+        if (bridgeNumber == 1) {
+            return Shape.UP.getSymbol();
+        }
+        throw new IllegalArgumentException("유효하지 않은 다리 숫자입니다.");
     }
 }

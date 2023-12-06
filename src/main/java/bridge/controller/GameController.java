@@ -5,9 +5,13 @@ import bridge.domain.BridgeGame;
 import bridge.domain.BridgeMaker;
 import bridge.domain.BridgeRandomNumberGenerator;
 import bridge.domain.RetryStatus;
+import bridge.domain.Shape;
 import bridge.util.RetryHandler;
 import bridge.view.InputView;
 import bridge.view.OutputView;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GameController {
 
@@ -40,21 +44,35 @@ public class GameController {
 
     private Bridge makeBridge() {
         int size = inputView.readBridgeSize();
-        return new Bridge(bridgeMaker.makeBridge(size));
+        List<Shape> shapes = bridgeMaker.makeBridge(size)
+                .stream()
+                .map(Shape::find)
+                .collect(Collectors.toList());
+        return new Bridge(shapes);
     }
 
     private void play(BridgeGame bridgeGame) {
-        bridgeGame.move(inputView.readMoving());
+        Shape moveShape = RetryHandler.retry(this::makeMoveShape);
+        bridgeGame.move(moveShape);
         outputView.printMap(bridgeGame.getBridgeGameMap());
     }
 
+    private Shape makeMoveShape() {
+        String moving = inputView.readMoving();
+        return Shape.find(moving);
+    }
+
     private void handleFailedGame(BridgeGame bridgeGame) {
-        RetryStatus retryStatus = RetryHandler.retry(() -> RetryStatus.find(inputView.readGameCommand()));
+        RetryStatus retryStatus = RetryHandler.retry(this::makeRetryStatus);
         if (retryStatus == RetryStatus.RETRY) {
             bridgeGame.retry();
         }
         if (retryStatus == RetryStatus.QUIT) {
             bridgeGame.finishGame();
         }
+    }
+
+    private RetryStatus makeRetryStatus() {
+        return RetryStatus.find(inputView.readGameCommand());
     }
 }
