@@ -1,4 +1,6 @@
-package bridge.domain;
+package bridge.service;
+
+import bridge.domain.Shape;
 
 import java.util.List;
 import java.util.stream.Collectors;

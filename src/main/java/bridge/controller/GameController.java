@@ -1,11 +1,11 @@
 package bridge.controller;
 
 import bridge.domain.Bridge;
-import bridge.domain.BridgeGame;
-import bridge.domain.BridgeMaker;
-import bridge.domain.BridgeRandomNumberGenerator;
 import bridge.domain.RetryStatus;
 import bridge.domain.Shape;
+import bridge.service.BridgeGame;
+import bridge.service.BridgeMaker;
+import bridge.service.BridgeRandomNumberGenerator;
 import bridge.util.RetryHandler;
 import bridge.view.InputView;
 import bridge.view.OutputView;
